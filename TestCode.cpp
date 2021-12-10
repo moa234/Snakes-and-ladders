@@ -345,9 +345,6 @@ int main()
 		case NEW_GAME:
 			pOut->PrintMessage("Action: NEW_GAME , Click anywhere");
 			break;
-		case EXIT_2:
-			pOut->PrintMessage("Action: EXIT , Click anywhere");
-			break;
 
 		case GRID_AREA:
 			pOut->PrintMessage("Action: GRID_AREA , Click anywhere");
