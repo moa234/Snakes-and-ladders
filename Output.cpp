@@ -10,7 +10,7 @@ Output::Output()
 
 	// Widths and Heights
 
-	UI.StatusBarHeight = 55;
+	UI.StatusBarHeight = 60;
 	UI.ToolBarHeight = 55;
 	UI.MenuItemWidth = 55;
 
@@ -107,7 +107,7 @@ int Output::GetCellStartX(const CellPosition & cellPos) const
 int Output::GetCellStartY(const CellPosition & cellPos) const
 {
 	///TODO: implement the following function as described in Output.h file
-	return cellPos.VCell()*UI.CellHeight+UI.StatusBarHeight; // this line should be changed with your implementation
+	return cellPos.VCell()*UI.CellHeight+UI.ToolBarHeight; // this line should be changed with your implementation
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
