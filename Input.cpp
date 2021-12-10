@@ -89,7 +89,12 @@ ActionType Input::GetUserAction() const
 			case ITM_SWITCH_TO_PLAY_MODE: return TO_PLAY_MODE;			
 
 				///TODO: Add cases for the other items of Design Mode
-
+			case ITM_COPY_CARD: return COPY_CARD;
+			case ITM_CUT_CARD: return CUT_CARD;
+			case ITM_PASTE_CARD: return PASTE_CARD;
+			case ITM_DELETE_GAME_OBJECT: return DELETE_GAME_OBJECT;
+			case ITM_SAVE_GRID: return SAVE_GRID;
+			case ITM_OPEN_GRID: return OPEN_GRID;
 
 
 
@@ -130,14 +135,22 @@ ActionType Input::GetUserAction() const
 			case ITM_SWITCH_TO_DESIGN_MODE: return TO_DESIGN_MODE;
 				///TODO: Add cases for the other items of Design Mode
 
-
+			case ITM_INPUT_DICE_VALUE: return INPUT_DICE_VALUE;
+			case ITM_NEW_GAME: return NEW_GAME;
+			case ITM_EXIT_2: return EXIT_2;
 
 
 			default: return EMPTY;	// A click on empty place in toolbar
 			}
 		}
 
-		return TO_DESIGN_MODE;	// just for now ==> This should be updated
+		if ((y >= UI.ToolBarHeight) && (y < UI.height - UI.StatusBarHeight))
+		{
+			return GRID_AREA;
+		}
+
+		// [3] User clicks on the status bar
+		return STATUS;
 
 
 
@@ -162,7 +175,8 @@ CellPosition Input::GetCellClicked() const
 			///TODO: SetHCell and SetVCell of the object cellPost appropriately
 			//       using the coordinates x, y and the appropriate variables of the UI_Info Object (UI)
 			
-
+			cellPos.SetVCell((y - UI.ToolBarHeight )/UI.CellHeight);
+			cellPos.SetHCell(x/UI.CellWidth);
 
 		}
 	}
