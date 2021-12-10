@@ -303,6 +303,30 @@ int main()
 
 
 			///TODO:  ADD Cases similarly for ALL the remaining actions of DESIGN Mode
+		case COPY_CARD:
+			pOut->PrintMessage("Action: COPY_CARD , Click anywhere");
+			break;
+
+		case CUT_CARD:
+			pOut->PrintMessage("Action: CUT_CARD , Click anywhere");
+			break;
+
+		case PASTE_CARD:
+			pOut->PrintMessage("Action: PASTE_CARD , Click anywhere");
+			break;
+
+		case DELETE_GAME_OBJECT:
+			pOut->PrintMessage("Action: DELETE_GAME_OBJECT , Click anywhere");
+			break;
+
+		case SAVE_GRID:
+			pOut->PrintMessage("Action: SAVE_GRID , Click anywhere");
+			break;
+
+		case OPEN_GRID:
+			pOut->PrintMessage("Action: OPEN_GRID , Click anywhere");
+			break;
+
 
 
 		case ROLL_DICE:
@@ -315,7 +339,23 @@ int main()
 			break;
 
 			///TODO:  ADD Cases similarly for ALL the remaining actions of PLAY Mode
+		case INPUT_DICE_VALUE:
+			pOut->PrintMessage("Action: INPUT_DICE_VALUE , Click anywhere");
+			break;
+		case NEW_GAME:
+			pOut->PrintMessage("Action: NEW_GAME , Click anywhere");
+			break;
+		case EXIT_2:
+			pOut->PrintMessage("Action: EXIT , Click anywhere");
+			break;
 
+		case GRID_AREA:
+			pOut->PrintMessage("Action: GRID_AREA , Click anywhere");
+			break;
+
+		case STATUS:
+			pOut->PrintMessage("Action: STATUS , Click anywhere");
+			break;
 		}
 	}while(ActType != EXIT);
 
