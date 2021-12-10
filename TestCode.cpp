@@ -191,7 +191,7 @@ int main()
 	// 1- Read a string from the user on the status bar
 	// 2- After reading the string clear the status bar
 	// 3- print on the status bar "You Entered" then print the string
-	// NOTE: GetString() is already implemented. It is just required from you to call it
+	// NOTE: GetSrting() is already implemented. It is just required from you to call it
 
 
 

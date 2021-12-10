@@ -20,7 +20,7 @@ void Input::GetPointClicked(int &x, int &y) const
 
 ////////////////////////////////////////////////////////////////////////////////////////// 
 
-string Input::GetString(Output *pO) const 
+string Input::GetSrting(Output *pO) const 
 {
 	string Label;
 	char Key;
@@ -46,8 +46,8 @@ int Input::GetInteger(Output *pO) const
 {
 
 	///TODO: implement the GetInteger function as described in Input.h file 
-	//       using function GetString() defined above and function stoi()
-	string sinteger = GetString(pO);
+	//       using function GetSrting() defined above and function stoi()
+	string sinteger = GetSrting(pO);
 	int integer = stoi(sinteger);
 
 
