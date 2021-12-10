@@ -160,7 +160,10 @@ int main()
 	//    (assuming the entered number is 116)
 	// 3- Call GetPointClicked() function
 
-
+	int integer = pIn->GetInteger(pOut);
+	string intmsg = "you entered " + to_string(integer);
+	pOut->PrintMessage(intmsg);
+	pIn->GetPointClicked(x,y);
 
 	pOut->PrintMessage("FINISHED - (GetInteger) Test, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
