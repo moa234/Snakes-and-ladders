@@ -62,7 +62,6 @@ int main()
 	pOut->PrintMessage("2.2- Drawing (Players) Test,  Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
-	//cout << "start here" << endl;
 	CellPosition player_1 (8, 0);
 	CellPosition player_15 (2, 18);
 	CellPosition player_99 (2, 5);
@@ -298,7 +297,7 @@ int main()
 
 			///TODO:  Call Function (PrintPlayersInfo) of Class Output with a string similar to 
 			//        the one given in the screenshot of project document 
-
+			pOut->PrintPlayersInfo("P0(100,0), P1(100,0), P2(100,0), P2(100,0) | Curr=0");
 			break;
 
 
