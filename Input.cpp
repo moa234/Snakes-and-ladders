@@ -20,7 +20,7 @@ void Input::GetPointClicked(int &x, int &y) const
 
 ////////////////////////////////////////////////////////////////////////////////////////// 
 
-string Input::GetSrting(Output *pO) const 
+string Input::GetString(Output *pO) const 
 {
 	string Label;
 	char Key;
@@ -47,13 +47,14 @@ int Input::GetInteger(Output *pO) const
 
 	///TODO: implement the GetInteger function as described in Input.h file 
 	//       using function GetString() defined above and function stoi()
-	
+	string sinteger = GetString(pO);
+	int integer = stoi(sinteger);
 
 
 
 	// Note: stoi(s) converts string s into its equivalent integer (for example, "55" is converted to 55)
 
-	return 0; // this line should be changed with your implementation
+	return integer; // this line should be changed with your implementation
 }
 
 //======================================================================================//
@@ -112,6 +113,29 @@ ActionType Input::GetUserAction() const
 		///TODO:
 		// perform checks similar to Design mode checks above for the Play Mode
 		// and return the corresponding ActionType
+		// [1] If user clicks on the Toolbar
+		if (y >= 0 && y < UI.ToolBarHeight)
+			{
+			// Check which Menu item was clicked
+			// ==> This assumes that menu items are lined up horizontally <==
+
+			int ClickedItemOrder = (x / UI.MenuItemWidth);
+
+			// Divide x coord of the point clicked by the menu item width (integer division)
+			// If division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+
+			switch (ClickedItemOrder)
+			{
+			case ITM_ROLL_DICE: return ROLL_DICE;
+			case ITM_SWITCH_TO_DESIGN_MODE: return TO_DESIGN_MODE;
+				///TODO: Add cases for the other items of Design Mode
+
+
+
+
+			default: return EMPTY;	// A click on empty place in toolbar
+			}
+		}
 
 		return TO_DESIGN_MODE;	// just for now ==> This should be updated
 
