@@ -158,7 +158,7 @@ int main()
 	// 2- Print it in the status bar in this format:   You Entered: 116
 	//    (assuming the entered number is 116)
 	// 3- Call GetPointClicked() function
-
+	pOut->PrintMessage("Please enter an integer: ");
 	int integer = pIn->GetInteger(pOut);
 	string intmsg = "you entered " + to_string(integer);
 	pOut->PrintMessage(intmsg);
@@ -199,6 +199,7 @@ int main()
 	// 2- After reading the string clear the status bar
 	// 3- print on the status bar "You Entered" then print the string
 	// NOTE: GetSrting() is already implemented. It is just required from you to call it
+	pOut->PrintMessage("Please enter a string: ");
 	string str = pIn->GetSrting(pOut);
 	pOut->PrintMessage("");
 	pOut->PrintMessage("you entered " + str);
@@ -301,8 +302,10 @@ int main()
 
 		const int V3 = cellpos_4.VCell();
 		const int H3 = cellpos_4.HCell();
-		pOut->PrintMessage("Vcell: " + to_string(V3) );
-		pOut->PrintMessage("HCell: " + to_string(H3) );
+		pOut->PrintMessage("Vcell: "  );
+		pIn->GetPointClicked(x, y);	//Wait for any click
+		pOut->PrintMessage("HCell: " );
+		pIn->GetPointClicked(x, y);	//Wait for any click
 	}
 
 
