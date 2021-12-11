@@ -302,9 +302,9 @@ int main()
 
 		const int V3 = cellpos_4.VCell();
 		const int H3 = cellpos_4.HCell();
-		pOut->PrintMessage("Vcell: "  );
+		pOut->PrintMessage("Vcell: " + to_string(V3) );
 		pIn->GetPointClicked(x, y);	//Wait for any click
-		pOut->PrintMessage("HCell: " );
+		pOut->PrintMessage("HCell: " + to_string(H3));
 		pIn->GetPointClicked(x, y);	//Wait for any click
 	}
 
