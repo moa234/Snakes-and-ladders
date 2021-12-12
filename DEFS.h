@@ -18,9 +18,8 @@ enum ActionType // The actions supported (add more as needed)
 	DELETE_GAME_OBJECT,
 	SAVE_GRID,
 	OPEN_GRID,
-	EXIT,			// Exit Application
 	TO_PLAY_MODE,	// Go to Play Mode
-
+	EXIT,			// Exit Application
 	///TODO: Add more action types of Design Mode
 
 	//  [2] Actions of Play Mode
