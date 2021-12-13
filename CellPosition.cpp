@@ -121,7 +121,7 @@ void CellPosition::AddCellNum (int addedNum)
 	/// TODO: Implement this function as described in the .h file
 
 	hCell+=addedNum;
-		if (hCell>11)
+		while (hCell >= 11)
 		{
 			hCell-=11;
 			vCell--;
