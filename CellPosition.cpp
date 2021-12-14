@@ -96,24 +96,29 @@ CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
 {
 
 
-	int i=1;
+	int i=0;
 	bool t,t1;
+	CellPosition position;
 
 	for (int iv = 8; iv >= 0; iv--)
 	{
 		for (int ih = 0; ih <= 10; ih++)
 		{
+			i++;
 			if (cellNum==i)
 			{
-					CellPosition position;
-
 				t=position.SetVCell(iv);
 				t1=position.SetHCell(ih);
-				return position;
+				break;
 			}
-			i++;
+			
+		}
+		if (cellNum == i)
+		{
+			break;
 		}
 	}	
+	return position;
 }
 
 void CellPosition::AddCellNum (int addedNum)
@@ -125,6 +130,12 @@ void CellPosition::AddCellNum (int addedNum)
 		{
 			hCell-=11;
 			vCell--;
+			if (vCell < 0)
+			{
+				vCell = 0;
+				hCell = 10;
+				break;
+			}
 		}
 }
 
