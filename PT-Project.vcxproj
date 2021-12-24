@@ -13,6 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectName>PT Project</ProjectName>
     <ProjectGuid>{1AC3DDD7-FDDE-487E-A2A4-52A8FCF7BDB9}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -23,7 +24,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -128,6 +129,13 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Action.cpp" />
+    <ClCompile Include="AddCardAction.cpp" />
+    <ClCompile Include="AddLadderAction.cpp" />
+    <ClCompile Include="ApplicationManager.cpp" />
+    <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardOne.cpp" />
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellPosition.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
@@ -165,11 +173,24 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Ladder.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Output.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RollDiceAction.cpp" />
     <ClCompile Include="TestCode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="AddCardAction.h" />
+    <ClInclude Include="AddLadderAction.h" />
+    <ClInclude Include="ApplicationManager.h" />
+    <ClInclude Include="Card.h" />
+    <ClInclude Include="CardOne.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="CellPosition.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
@@ -192,8 +213,13 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Ladder.h" />
     <ClInclude Include="Output.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="RollDiceAction.h" />
     <ClInclude Include="UI_Info.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
