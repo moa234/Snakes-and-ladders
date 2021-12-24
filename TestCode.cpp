@@ -1,4 +1,4 @@
-#include "Input.h"
+/*#include "Input.h"
 #include "Output.h"
 using namespace std;
 //This is a test code to test the Input and Output classes
@@ -417,5 +417,5 @@ int main()
 	delete pOut;	
 	return 0;
 }
-
+*/
 
