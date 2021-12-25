@@ -10,12 +10,12 @@ action:
 	delete game object
 	save grid
 	open grid
-	switch to play mode
+
+	switch to play mode & to design mode
 
 	roll dice
 	input dice value
 	new game
-	switch to design mode
 }
 
 
@@ -42,7 +42,7 @@ Game objects:
 	snake
 }
 
-Player Class: (data about player)
+Player Class: (data about player) [moaaz]
 
 Cell class: (Contains game object)
 
