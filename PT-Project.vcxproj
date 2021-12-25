@@ -230,6 +230,9 @@
     <ClInclude Include="RollDiceAction.h" />
     <ClInclude Include="UI_Info.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Text.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
