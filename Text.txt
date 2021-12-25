@@ -30,10 +30,14 @@ cards:
 	card 12
 
 Game objects:
-1. ladder 
-2. card (base class for card 1->12) 
-3. snake
+	ladder 
+	card (base class for card 1->12) 
+	snake
+
 Player Class: (data about player)
+
 Cell class: (Contains game object)
+
 Grid class: (Grid handler , 2D array, array of 4 players, connects classes together)
+
 Application manager: (get user input& execute action)
