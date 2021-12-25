@@ -185,6 +185,18 @@
     </ClCompile>
     <ClCompile Include="TestCode.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="AddSnake.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="CopyCard.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="DeleteGameObject.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="CutCard.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -296,5 +308,17 @@
       <Filter>GUIClasses</Filter>
     </ClInclude>
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="AddSnake.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="CopyCard.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="DeleteGameObject.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="CutCard.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
