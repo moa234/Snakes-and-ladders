@@ -197,6 +197,15 @@
     <ClCompile Include="CutCard.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="InputDiceValue.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="CardSeven.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -319,6 +328,15 @@
     </ClInclude>
     <ClInclude Include="CutCard.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDiceValue.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="CardSeven.h">
+      <Filter>GameObjects\Cards</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
