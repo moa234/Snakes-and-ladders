@@ -10,11 +10,12 @@ action:
 	delete game object
 	save grid
 	open grid
-	
+	switch to play mode
 
 	roll dice
 	input dice value
 	new game
+	switch to design mode
 }
 
 
