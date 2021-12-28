@@ -30,6 +30,16 @@ void AddCardAction::ReadActionParameters()
 	// 4- Make the needed validations on the read parameters
 
 	// 5- Clear status bar
+	Grid* pGrid = pManager->GetGrid();
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
+	pOut->PrintMessage("Enter the card number:");
+	int cnum= pIn->GetInteger(pOut);
+	while (cnum < 1 || cnum>12)
+	{
+		pOut->PrintMessage("Wrong card number please enter card number between 1 and 12");
+		cnum = pIn->GetInteger(pOut);
+	}
 }
 
 void AddCardAction::Execute() 

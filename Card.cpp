@@ -1,5 +1,5 @@
 #include "Card.h"
-
+#include "fstream"
 
 Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position of the GameObject
 {
@@ -7,7 +7,8 @@ Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position
 
 void Card::SetCardNumber(int cnum)
 {
-	cardNumber = cnum; // needs validation
+	if(cnum>0&&cnum<=12) //valaditing the card number is between 1 to 12 inclusive
+	cardNumber = cnum; 
 }
 
 int Card::GetCardNumber()
@@ -17,9 +18,7 @@ int Card::GetCardNumber()
 
 void Card::Draw(Output* pOut) const
 {
-
-	///TODO: call the appropriate Ouput function that draws a cell containing the "cardNumber" in "position"
-
+	pOut->DrawCell(position,cardNumber); //Drawing the cell with cardNumber passed to function
 
 }
 
@@ -28,7 +27,19 @@ void Card::ReadCardParameters(Grid * pGrid)
 	// we should not make it pure virtual because some Cards doesn't have parameters
 	// and if we make it pure virtual, that will make those Cards abstract classes
 }
-
+void Card::Save(ofstream& OutFile, Object_Type obj)
+{
+	if (obj != card)
+		return;
+	OutFile << cardNumber << " " << position.GetCellNum() << " "; // output the card num and it's cell becacuse this step will be printed for all Cards therefore it's implemented in base class
+}
+void Card::Load(ifstream& Infile, Object_Type obj)
+{
+	int cnum, cposition;
+	Infile >> cnum >> cposition;
+	SetCardNumber(cnum);
+	position = CellPosition::GetCellPositionFromNum(cposition);// setting the cell position to the correspoding cellnumber that is found in the load file
+}
 void Card::Apply(Grid* pGrid, Player* pPlayer) 
 {
 	// As written below the "Roll Dice" action in the document ==> Check the Project Document
