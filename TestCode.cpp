@@ -1,21 +1,24 @@
-/*#include "Input.h"
+#include "Input.h"
 #include "Output.h"
 using namespace std;
 //This is a test code to test the Input and Output classes
 
 int main()
 {
-	int x,y;
+	int x, y;
 
 	//Create Input and Output objects to test
-	Output * pOut = new Output();
-	Input * pIn = pOut->CreateInput();
+	Output* pOut = new Output();
+	Input* pIn = pOut->CreateInput();
 
 	//Starting the test
 	pOut->PrintMessage("This demo is to test classes of phase 1, Click anywhere to start the test");
-	pIn->GetPointClicked(x,y);	//Wait for any click
 
+	//pIn->GetPointClicked(x, y);	//Wait for any click
+	int val = pIn->GetInteger(pOut);
 
+}
+/*
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 0:	
 	//			Create The FULL Tool bar of Design Mode, the grid area and the status bar	
@@ -25,7 +28,7 @@ int main()
 	pOut->PrintMessage("TEST1: Drawing Tool bar, Grid and Status bar, Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
-
+	
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 2:	
 	//			Testing the Output Class

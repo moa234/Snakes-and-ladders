@@ -35,11 +35,24 @@ void AddCardAction::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 	pOut->PrintMessage("Enter the card number:");
 	int cnum= pIn->GetInteger(pOut);
-	while (cnum < 1 || cnum>12)
+	while (cnum < 1 || cnum>12) //validating that the card number is between 1 and 12
 	{
 		pOut->PrintMessage("Wrong card number please enter card number between 1 and 12");
 		cnum = pIn->GetInteger(pOut);
 	}
+	cardNumber = cnum;
+	pOut->PrintMessage("Select card postion on the grid"); //taking from the user the cell position from the grid to set the card cell position with
+	CellPosition CP = pIn->GetCellClicked();
+	pOut->PrintMessage("You have selected cell number " + to_string(CP.GetCellNum()) + " are you sure(y/n)? ");
+	string answer = pIn->GetString(pOut);
+	while (answer == "n" || answer == "N")
+	{
+		pOut->PrintMessage("Re-select card postion on the grid");
+		CP = pIn->GetCellClicked();
+		pOut->PrintMessage("You have selected cell number " + to_string(CP.GetCellNum()) + " are you sure(y/n)? ");
+		answer = pIn->GetString(pOut);
+	}
+	cardPosition = CP;
 }
 
 void AddCardAction::Execute() 
@@ -47,7 +60,7 @@ void AddCardAction::Execute()
 
 	
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
+	ReadActionParameters();
 
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
@@ -60,14 +73,53 @@ void AddCardAction::Execute()
 	case 1:
 		pCard = new CardOne(cardPosition);
 		break;
+	/*case 2:
+		pCard = new CardTwo(cardPosition);
+		break;
+	case 3:
+		pCard = new CardThree(cardPosition);
+		break;
+	case 4:
+		pCard = new CardFour(cardPosition);
+		break;
+	case 5:
+		pCard = new CardFive(cardPosition);
+		break;
+	case 6:
+		pCard = new CardSix(cardPosition);
+		break;
+	case 7:
+		pCard = new CardSeven(cardPosition);
+		break;
+	case 8:
+		pCard = new CardEight(cardPosition);
+		break;
+	case 9:
+		pCard = new CardNine(cardPosition);
+		break;
+	case 10:
+		pCard = new CardTen(cardPosition);
+		break;
+	case 11:
+		pCard = new CardEleven(cardPosition);
+		break;
+	case 12:
+		pCard = new CardTwelve(cardPosition);
+		break;
+*/
 
-		// A- Add the remaining cases
+
 
 	}
 
 	// 3- if pCard is correctly set in the switch case (i.e. if pCard is pointing to an object -- NOT NULL)
 	if (pCard)
 	{
+		Grid* pGrid = pManager->GetGrid();
+		pCard->ReadCardParameters(pGrid);
+		bool added = pGrid->AddObjectToCell(pCard);
+		if (!added)
+			pGrid->PrintErrorMessage("Error: This cell already has a card! Click to continue ...");
 		// A- We get a pointer to the Grid from the ApplicationManager
 
 		// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
