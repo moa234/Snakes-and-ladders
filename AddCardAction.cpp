@@ -3,7 +3,10 @@
 #include "Input.h"
 #include "Output.h"
 #include "CardOne.h"
+#include "CardSix.h"
 
+#include <iostream>
+using namespace std;
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
 	// Initializes the pManager pointer of Action with the passed pointer
@@ -84,11 +87,11 @@ void AddCardAction::Execute()
 		break;
 	case 5:
 		pCard = new CardFive(cardPosition);
-		break;
+		break;*/
 	case 6:
 		pCard = new CardSix(cardPosition);
 		break;
-	case 7:
+	/*case 7:
 		pCard = new CardSeven(cardPosition);
 		break;
 	case 8:
@@ -113,6 +116,7 @@ void AddCardAction::Execute()
 	}
 
 	// 3- if pCard is correctly set in the switch case (i.e. if pCard is pointing to an object -- NOT NULL)
+
 	if (pCard)
 	{
 		Grid* pGrid = pManager->GetGrid();

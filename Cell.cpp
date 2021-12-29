@@ -59,7 +59,7 @@ Card * Cell::HasCard() const
 
 	///TODO: Implement the following function like HasLadder() function
 
-	return false; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
+	return dynamic_cast<Card*>(pGameObject);
 
 }
 
@@ -69,6 +69,14 @@ Card * Cell::HasCard() const
 void Cell::DrawCellOrCard(Output* pOut) const
 {
 	// Checks if there is a Card on the cell
+	/*if (HasCard())
+	{
+		cout << "ok" << endl;
+	}
+	else
+	{
+		cout << "no" << endl;
+	}*/
 	if (HasCard()) // means if not NULL
 		pGameObject->Draw(pOut); // draw the card then
 	else

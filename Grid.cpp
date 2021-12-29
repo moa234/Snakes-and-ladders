@@ -47,9 +47,9 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 		GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if( pPrevObject)  // the cell already contains a game object
 			return false; // do NOT add and return false
-
 		// Set the game object of the Cell with the new game object
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(pNewObject);
+
 		return true; // indicating that addition is done
 	}
 	return false; // if not a valid position
@@ -174,7 +174,7 @@ void Grid::UpdateInterface() const
 		}
 
 		// 2- Draw other cell objects (ladders, snakes)
-		for (int i = NumVerticalCells-1; i >= 0 ; i--) // bottom up
+		for (int i = NumVerticalCells - 1; i >= 0; i--) // bottom up
 		{
 			for (int j = 0; j < NumHorizontalCells; j++) // left to right
 			{

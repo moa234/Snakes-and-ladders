@@ -35,10 +35,12 @@ void RollDiceAction::Execute()
 	// 4- Move the currentPlayer using function Move of class player
 
 	// 5- Advance the current player number of pGrid
-
+	
 	// Moaaz dh comment mni hna t2reban hthtag ts2al lw feh ladder aw snake aw card ya5odha
 	// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
 
+	//Moaaz na kateb al hta deh mn 3andi 3alshan a3ml test fakrni aolk 3mltha leh
+	
 }
 
 RollDiceAction::~RollDiceAction()
