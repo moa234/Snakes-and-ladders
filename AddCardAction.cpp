@@ -120,6 +120,7 @@ void AddCardAction::Execute()
 		bool added = pGrid->AddObjectToCell(pCard);
 		if (!added)
 			pGrid->PrintErrorMessage("Error: This cell already has a card! Click to continue ...");
+		
 		// A- We get a pointer to the Grid from the ApplicationManager
 
 		// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type

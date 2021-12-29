@@ -1,5 +1,4 @@
 #include "Grid.h"
-
 #include "Cell.h"
 #include "GameObject.h"
 #include "Ladder.h"
@@ -147,7 +146,16 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	}
 	return NULL; // not found
 }
-
+GameObject* Grid::CurrentCellObject(const CellPosition& position)
+{
+	//this function find whether the cell has a card or ladder or snake and return 
+	//pointer to this object if there is no one of those three it will return null
+	GameObject *current;
+	current=CellList[position.VCell()][position.HCell()]->HasCard();
+	//current= CellList[position.VCell()][position.HCell()]->HasSnake();//to be activated
+	current=CellList[position.VCell()][position.HCell()]->HasLadder();
+	return current;
+}
 
 // ========= User Interface Functions =========
 
