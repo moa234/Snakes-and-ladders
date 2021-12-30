@@ -105,6 +105,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	if (cellObj != NULL)
 	{
 		cellObj->Apply(pGrid, this);
+		pGrid->UpdatePlayerCell(this, pos);
 	}
 
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
