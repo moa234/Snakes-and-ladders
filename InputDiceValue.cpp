@@ -2,6 +2,10 @@
 # include "Grid.h"
 #include "Player.h"
 
+InputDiceValue::InputDiceValue(ApplicationManager* pApp) : Action(pApp)
+{
+}
+
 void InputDiceValue::ReadActionParameters()
 {
 	Grid* pGrid = pManager->GetGrid();
@@ -20,6 +24,7 @@ void InputDiceValue::ReadActionParameters()
 
 void InputDiceValue::Execute()
 {
+	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
 	pGrid->GetCurrentPlayer()->Move(pGrid, dicevalue);
 	pGrid->AdvanceCurrentPlayer();

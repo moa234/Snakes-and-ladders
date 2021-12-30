@@ -4,6 +4,7 @@
 #include "AddLadderAction.h"
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
+#include "InputDiceValue.h"
 
 ///TODO: Add #include for all action types
 
@@ -75,6 +76,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ROLL_DICE:
 		// create an object of RollDiceAction here
 		pAct = new RollDiceAction(this);
+		break;
+
+	case INPUT_DICE_VALUE:
+		pAct = new InputDiceValue(this);
 		break;
 
 	case TO_DESIGN_MODE:
