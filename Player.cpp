@@ -38,6 +38,14 @@ int Player::GetTurnCount() const
 	return turnCount;
 }
 
+bool Player::DeductWallet(int Amount)
+{
+	if(wallet-Amount<0)
+	return false;
+	wallet -= Amount;
+	return true;
+}
+
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const

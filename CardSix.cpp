@@ -10,15 +10,19 @@ CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card
 {
 	 Input* pIn = pGrid->GetInput();
 	 Output* pOut = pGrid->GetOutput();
-	 pOut->PrintMessage("Enter cell number to move player to: ");
-	 int cellnum = pIn->GetInteger(pOut);
-	 while (cellnum < 0 || cellnum>99)
+	 pOut->PrintMessage("Select cell number to move player to: ");
+	 CellPosition Cell_selected = pIn->GetCellClicked();
+	 pOut->PrintMessage("You have selected cell number " + to_string(Cell_selected.GetCellNum()) + " are you sure(y/n)? ");
+	 string answer = pIn->GetString(pOut);
+	 while (answer == "n" || answer == "N") //double check on user input
 	 {
-		 pGrid->PrintErrorMessage("Error! Please Enter Cell Number between 1 and 99! click anywhere to continue");
-		 pOut->PrintMessage("Re-Enter Cell Number: ");
-		 cellnum = pIn->GetInteger(pOut);
+		 pOut->PrintMessage("Re-select card postion on the grid");
+		 Cell_selected = pIn->GetCellClicked();
+		 pOut->PrintMessage("You have selected cell number " + to_string(Cell_selected.GetCellNum()) + " are you sure(y/n)? ");
+		 answer = pIn->GetString(pOut);
 	 }
-	 CP = CellPosition(cellnum);
+	 CP = Cell_selected;
+	 pOut->ClearStatusBar();
 }
  void CardSix::Apply(Grid* pGrid, Player* pPlayer) // Applies the effect of CardSix on the passed Player
 												// if there is a gameobject its effect will be implemented
