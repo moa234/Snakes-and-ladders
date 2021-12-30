@@ -23,8 +23,12 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 	
 	// 1- Print a message "You have reached a ladder. Click to continue ..." and wait mouse click
 
+	pGrid->PrintErrorMessage("You have reached a ladder. Click to continue ...");
+
 	// 2- Apply the ladder's effect by moving the player to the endCellPos
 	//    Review the "pGrid" functions and decide which function can be used for that
+
+	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
 	
 }
 
