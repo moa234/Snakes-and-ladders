@@ -45,7 +45,7 @@ int Player::GetRolledDiceNum() const {
 void Player::SetRolledDiceNum(int value) {
 	justRolledDiceNum = value;
 }
-//....
+//3amalt setters we getters lel roll number 34an 2e7tagto fe card 5
 
 // ====== Drawing Functions ======
 

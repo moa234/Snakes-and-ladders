@@ -135,9 +135,13 @@
     <ClCompile Include="AddSnake.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardEleven.cpp" />
+    <ClCompile Include="CardNine.cpp" />
     <ClCompile Include="CardOne.cpp" />
     <ClCompile Include="CardSeven.cpp" />
     <ClCompile Include="CardSix.cpp" />
+    <ClCompile Include="CardTen.cpp" />
+    <ClCompile Include="CardTwelve.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellPosition.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -198,9 +202,13 @@
     <ClInclude Include="AddSnake.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CardEleven.h" />
+    <ClInclude Include="CardNine.h" />
     <ClInclude Include="CardOne.h" />
     <ClInclude Include="CardSeven.h" />
     <ClInclude Include="CardSix.h" />
+    <ClInclude Include="CardTen.h" />
+    <ClInclude Include="CardTwelve.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellPosition.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />

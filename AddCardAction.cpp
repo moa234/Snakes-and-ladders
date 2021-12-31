@@ -49,7 +49,7 @@ void AddCardAction::ReadActionParameters()
 	CellPosition CP = pIn->GetCellClicked();
 	pOut->PrintMessage("You have selected cell number " + to_string(CP.GetCellNum()) + " are you sure(y/n)? ");
 	string answer = pIn->GetString(pOut);
-	while (answer == "n" || answer == "N")
+	while (answer == "n" || answer == "N") //double check on user input
 	{
 		pOut->PrintMessage("Re-select card postion on the grid");
 		CP = pIn->GetCellClicked();
@@ -57,6 +57,8 @@ void AddCardAction::ReadActionParameters()
 		answer = pIn->GetString(pOut);
 	}
 	cardPosition = CP;
+
+	pOut->ClearStatusBar();
 }
 
 void AddCardAction::Execute() 
@@ -126,8 +128,10 @@ void AddCardAction::Execute()
 		pCard->ReadCardParameters(pGrid);
 		bool added = pGrid->AddObjectToCell(pCard);
 		if (!added)
+		{
 			pGrid->PrintErrorMessage("Error: This cell already has a card! Click to continue ...");
-		
+			delete pGrid;// there is no need to continue storing the Card because it will already not be added 
+		}
 		// A- We get a pointer to the Grid from the ApplicationManager
 
 		// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
