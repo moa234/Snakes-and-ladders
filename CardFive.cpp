@@ -18,3 +18,7 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer) {
 	playerCellPosition.AddCellNum(-1 * diceValueRolled);
 	pGrid->UpdatePlayerCell(pPlayer, playerCellPosition);
 }
+
+CardFive::~CardFive()
+{
+}

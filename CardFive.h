@@ -5,9 +5,9 @@
 class CardFive : public Card {
     int roll;
 
-    public:
-        CardFive(const CellPosition& pos);
-        virtual void Apply(Grid* pGrid, Player* pPlayer);
-        ~CardFive();
+public:
+    CardFive(const CellPosition& pos);
+    virtual void Apply(Grid* pGrid, Player* pPlayer);
+    ~CardFive();
 
 };
