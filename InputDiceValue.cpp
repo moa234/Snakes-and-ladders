@@ -28,6 +28,7 @@ void InputDiceValue::Execute()
 	Grid* pGrid = pManager->GetGrid();
 	pGrid->GetCurrentPlayer()->Move(pGrid, dicevalue);
 	pGrid->AdvanceCurrentPlayer();
+	pGrid->GetOutput()->ClearStatusBar();
 	
 }
 
