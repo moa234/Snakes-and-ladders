@@ -245,6 +245,18 @@ void Grid::PrintErrorMessage(string msg)
 }
 
 
+void Grid::SaveAll(ofstream& OutFile, Object_Type obj)
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--) // to move from bottom up
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) // to move from left to right
+		{
+			if(CellList[i][j]->HasSnake() || CellList[i][j]->HasLadder()|| CellList[i][j]->HasCard()) //checks that the cell has any object 
+			(CellList[i][j]->GetGameObject())->Save(OutFile, obj);// Calls save function of cell that contains an object
+		}
+	}
+}
+
 Grid::~Grid()
 {
 	delete pIn;

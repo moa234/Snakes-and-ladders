@@ -61,7 +61,7 @@ public:
 	bool GetEndGame() const;		 // A getter for endGame data member
 
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
-	GameObject* CurrentCellObject(const CellPosition & position); //determine whether current cell has a gameobject or not
+	GameObject* CurrentCellObject(const CellPosition & position); //determine whether current cell send has a gameobject or not
     Player* MinWalletPlayer() const; //retruns player with minimum wallet value
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
@@ -80,7 +80,7 @@ public:
 
 	void PrintErrorMessage(string msg); // Prints an error message on statusbar, Waits for mouse click then clears statusbar
 									    // We added this function once here because it is used many times by other classes
-
+	void SaveAll(ofstream& OutFile, Object_Type obj);
 	~Grid(); // A destructor for any needed deallcations
 };
 
