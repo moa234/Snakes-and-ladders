@@ -3,6 +3,7 @@
 #include "Input.h"
 #include "Output.h"
 #include "Ladder.h"
+#include "Snake.h"
 
 AddLadderAction::AddLadderAction(ApplicationManager *pApp) : Action(pApp)
 {
@@ -48,7 +49,11 @@ void AddLadderAction::ReadActionParameters()
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: start cell and endcell cannot be in a different column! Click to continue ...");
 	}
-	for (int i = startPos.GetCellNum(); i < endPos.GetCellNum(); i = i + 11)
+	else if (dynamic_cast<Snake*>(pGrid->CurrentCellObject(endPos)) != NULL)
+	{
+		pGrid->PrintErrorMessage("Error: endcell cannot contain snake! Click to continue ...");
+	}
+	for (int i = startPos.GetCellNum(); i <= endPos.GetCellNum(); i = i + 11)
 	{
 		if (occupied[i] == 1)
 		{
@@ -85,7 +90,7 @@ void AddLadderAction::Execute()
 	bool added = pGrid->AddObjectToCell(pLadder);
 	if (added)
 	{
-		for (int i = startPos.GetCellNum(); i < endPos.GetCellNum(); i = i + 11)
+		for (int i = startPos.GetCellNum(); i <= endPos.GetCellNum(); i = i + 11)
 		{
 			occupied[i] = 1;
 		}
