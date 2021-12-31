@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Grid.h"
-
+#include "fstream"
 // Base Class for All Game Objects ( ladders, snakes and cards )
 class GameObject
 {
@@ -29,9 +29,9 @@ public:
 	// They should be overridden by each inherited class
 
 	// Decide the parameters that you should pass to each function	
-	
-//	virtual void Save(ofstream &OutFile,Object_Type obj) = 0;	// Saves the GameObject parameters to the file
-//	virtual void Load(ifstream &Infile,Object_Type obj) = 0;	// Loads and Reads the GameObject parameters from the file
+	virtual int GetObjectCount()=0;//A getter for object(snake,ladder or card) number of occurance
+	virtual void Save(ofstream &OutFile,Object_Type obj) = 0;	// Saves the GameObject parameters to the file
+	virtual void Load(ifstream &Infile,Object_Type obj) = 0;	// Loads and Reads the GameObject parameters from the file
 	virtual ~GameObject(); // Virtual destructor
 };
 
