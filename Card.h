@@ -28,7 +28,6 @@ public:
 	                                                   // It is a virtual function (implementation depends on Card Type)
 	virtual void Load(ifstream& Infile, Object_Type obj);
 	virtual void Save(ofstream& OutFile, Object_Type obj);
-	virtual int GetObjectCount();
+	static int GetObjectCount();
 	virtual ~Card(); // A Virtual Destructor
 };
-int Card:: CardCount = 0;

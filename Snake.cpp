@@ -65,7 +65,7 @@ int Snake::GetObjectCount()
 {
 	return SnakeCount;
 }
-
+int Snake::SnakeCount = 0;
 Snake::~Snake()
 {
 	SnakeCount--;

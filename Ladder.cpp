@@ -50,7 +50,7 @@ void Ladder::Load(ifstream& Infile, Object_Type obj)
 	SetEndcell(CellPosition(endcell)); //setting endcell with loaded value from file
 	position = CellPosition(startcell);// setting startcell with loaded value from file
 }
-
+int Ladder::LadderCount = 0;
 void Ladder::Save(ofstream& OutFile, Object_Type obj)
 {
 	if (obj != ladder)

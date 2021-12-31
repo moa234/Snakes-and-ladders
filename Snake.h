@@ -19,7 +19,7 @@ public:
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 	virtual void Load(ifstream& Infile, Object_Type obj);
 	virtual void Save(ofstream& OutFile, Object_Type obj);
-	virtual int GetObjectCount();
+	static int GetObjectCount();
 	virtual ~Snake(); // Virtual destructor
 };
-int Snake::SnakeCount = 0;
+

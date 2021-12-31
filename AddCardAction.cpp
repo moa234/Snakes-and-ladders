@@ -6,8 +6,7 @@
 #include "CardSix.h"
 //#include "CardFive.h"
 
-#include <iostream>
-using namespace std;
+
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
 	// Initializes the pManager pointer of Action with the passed pointer
