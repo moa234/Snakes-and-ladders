@@ -49,9 +49,10 @@ void AddLadderAction::ReadActionParameters()
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: start cell and endcell cannot be in a different column! Click to continue ...");
 	}
-	else if (dynamic_cast<Snake*>(pGrid->CurrentCellObject(endPos)) != NULL)
+	else if (pGrid->CurrentCellObject(endPos) != NULL)
 	{
-		pGrid->PrintErrorMessage("Error: endcell cannot contain snake! Click to continue ...");
+		valid = 0;
+		pGrid->PrintErrorMessage("Error: endcell cannot contain object! Click to continue ...");
 	}
 	for (int i = startPos.GetCellNum(); i <= endPos.GetCellNum(); i = i + 11)
 	{

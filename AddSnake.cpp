@@ -49,11 +49,12 @@ void AddSnake::ReadActionParameters()
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: start cell and endcell cannot be in a different column! Click to continue ...");
 	}
-	else if (dynamic_cast<Ladder*>(pGrid->CurrentCellObject(endPos)) != NULL)
+	else if (pGrid->CurrentCellObject(endPos) != NULL)
 	{
-		pGrid->PrintErrorMessage("Error: endcell cannot contain ladder! Click to continue ...");
+		valid = 0;
+		pGrid->PrintErrorMessage("Error: endcell cannot contain object! Click to continue ...");
 	}
-	for (int i = startPos.GetCellNum(); i <= endPos.GetCellNum(); i = i + 11)
+	for (int i = endPos.GetCellNum(); i <= startPos.GetCellNum(); i = i + 11)
 	{
 		if (occupied[i] == 1)
 		{
@@ -90,7 +91,7 @@ void AddSnake::Execute()
 	bool added = pGrid->AddObjectToCell(pSnake);
 	if (added)
 	{
-		for (int i = startPos.GetCellNum(); i <= endPos.GetCellNum(); i = i + 11)
+		for (int i = endPos.GetCellNum(); i <= startPos.GetCellNum(); i = i + 11)
 		{
 			occupied[i] = 1;
 		}

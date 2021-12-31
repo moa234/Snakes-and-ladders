@@ -4,6 +4,7 @@
 #include "Ladder.h"
 #include "Card.h"
 #include "Player.h"
+#include "Snake.h"
 
 Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pIn, pOut
 {
@@ -153,9 +154,9 @@ GameObject* Grid::CurrentCellObject(const CellPosition& position)
 	//this function find whether the cell has a card or ladder or snake and return 
 	//pointer to this object if there is no one of those three it will return null
 	GameObject *current;
-	current=CellList[position.VCell()][position.HCell()]->HasCard();
-	//current= CellList[position.VCell()][position.HCell()]->HasSnake();//to be activated
-	current=CellList[position.VCell()][position.HCell()]->HasLadder();
+	current = CellList[position.VCell()][position.HCell()]->HasCard();
+	current = CellList[position.VCell()][position.HCell()]->HasSnake();//to be activated
+	current = CellList[position.VCell()][position.HCell()]->HasLadder();
 	return current;
 }
 
