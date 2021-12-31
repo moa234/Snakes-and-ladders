@@ -13,4 +13,5 @@ CellPosition GameObject::GetPosition() const
 
 GameObject::~GameObject()
 {
+
 }

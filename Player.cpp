@@ -38,13 +38,14 @@ int Player::GetTurnCount() const
 	return turnCount;
 }
 
-bool Player::DeductWallet(int Amount)
-{
-	if(wallet-Amount<0)
-	return false;
-	wallet -= Amount;
-	return true;
+int Player::GetRolledDiceNum() const {
+	return justRolledDiceNum;
 }
+
+void Player::SetRolledDiceNum(int value) {
+	justRolledDiceNum = value;
+}
+//3amalt setters we getters lel roll number 34an 2e7tagto fe card 5
 
 // ====== Drawing Functions ======
 

@@ -32,7 +32,6 @@ public:
 	
 //	virtual void Save(ofstream &OutFile,Object_Type obj) = 0;	// Saves the GameObject parameters to the file
 //	virtual void Load(ifstream &Infile,Object_Type obj) = 0;	// Loads and Reads the GameObject parameters from the file
-
 	virtual ~GameObject(); // Virtual destructor
 };
 
