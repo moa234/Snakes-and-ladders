@@ -31,6 +31,8 @@ Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pI
 
 	// Initialize endGame with false
 	endGame = false;
+	
+	
 }
 
 
@@ -155,6 +157,21 @@ GameObject* Grid::CurrentCellObject(const CellPosition& position)
 	//current= CellList[position.VCell()][position.HCell()]->HasSnake();//to be activated
 	current=CellList[position.VCell()][position.HCell()]->HasLadder();
 	return current;
+}
+
+Player* Grid::MinWalletPlayer() const
+{
+	int min = PlayerList[0]->GetWallet();
+	Player* P = PlayerList[0];
+	for (int i = 1;i < 4;i++)
+	{
+		if (PlayerList[i]->GetWallet() < min)
+		{
+			min = PlayerList[i]->GetWallet();
+			P = PlayerList[i];
+		}
+	}
+	return P;
 }
 
 // ========= User Interface Functions =========

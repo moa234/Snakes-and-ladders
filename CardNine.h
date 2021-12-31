@@ -3,15 +3,17 @@
 class CardNine :
     public Card
 {
-    int Purchase_Price;
-    int Fees_Pay;
-    const Player* owner;
+    CellPosition CP;
+    static int Purchase_Price;
+    static int Fees_Pay;
+    static Player* owner;
 public:
-    CardNine();
-    int GetPrice(int);
-    void set_owner(Player* pPlayer); 
+    CardNine(const CellPosition& pos);
+    static int GetPrice();
+    static void set_owner(Player* pPlayer); 
+    static bool isOwner(const Player* Check_Owner); // checks that the send player is the owner of the card or not
     virtual void ReadCardParameters(Grid* pGrid);
     virtual void Apply(Grid* pGrid, Player* pPlayer);
     virtual ~CardNine();
 };
-
+Player* CardNine:: owner = NULL;

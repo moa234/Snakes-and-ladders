@@ -27,6 +27,7 @@ public:
 	                                                   // It is a virtual function (implementation depends on Card Type)
 	//virtual void Load(ifstream& Infile, Object_Type obj);
 	//virtual void Save(ofstream& OutFile, Object_Type obj);
+	virtual void 
 	virtual ~Card(); // A Virtual Destructor
 };
 
