@@ -153,10 +153,20 @@ GameObject* Grid::CurrentCellObject(const CellPosition& position)
 {
 	//this function find whether the cell has a card or ladder or snake and return 
 	//pointer to this object if there is no one of those three it will return null
-	GameObject *current;
-	current = CellList[position.VCell()][position.HCell()]->HasCard();
-	current = CellList[position.VCell()][position.HCell()]->HasSnake();//to be activated
-	current = CellList[position.VCell()][position.HCell()]->HasLadder();
+	GameObject *current = NULL;
+	if (CellList[position.VCell()][position.HCell()]->HasCard())
+	{
+		current = CellList[position.VCell()][position.HCell()]->HasCard();
+	}
+	else if (CellList[position.VCell()][position.HCell()]->HasSnake())
+	{
+		current = CellList[position.VCell()][position.HCell()]->HasSnake();
+	}
+	else if (CellList[position.VCell()][position.HCell()]->HasLadder())
+	{
+		current = CellList[position.VCell()][position.HCell()]->HasLadder();
+	}
+	
 	return current;
 }
 

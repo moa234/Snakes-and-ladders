@@ -52,7 +52,7 @@ void AddSnake::ReadActionParameters()
 	else if (pGrid->CurrentCellObject(endPos) != NULL)
 	{
 		valid = 0;
-		pGrid->PrintErrorMessage("Error: endcell cannot contain object! Click to continue ...");
+		pGrid->PrintErrorMessage("Error: endcell cannot contain ladder! Click to continue ...");
 	}
 	for (int i = endPos.GetCellNum(); i <= startPos.GetCellNum(); i = i + 11)
 	{
