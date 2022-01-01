@@ -206,6 +206,21 @@ Player* Grid::MinWalletPlayer() const
 	return P;
 }
 
+int Grid::GetLadderCount()
+{
+	return Ladder::GetObjectCount();
+}
+
+int Grid::GetSnakeCount()
+{
+	return Snake::GetObjectCount();
+}
+
+int Grid::GetCardCount()
+{
+	return Card::GetObjectCount();
+}
+
 // ========= User Interface Functions =========
 
 
@@ -265,6 +280,57 @@ void Grid::PrintErrorMessage(string msg)
 	pOut->ClearStatusBar();
 }
 
+
+void Grid::SaveAll(ofstream& OutFile, Object_Type obj)
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--) // to move from bottom up
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) // to move from left to right
+		{
+			if(CellList[i][j]->HasSnake() || CellList[i][j]->HasLadder()|| CellList[i][j]->HasCard()) //checks that the cell has any object 
+			(CellList[i][j]->GetGameObject())->Save(OutFile, obj);// Calls save function of cell that contains an object
+		}
+	}
+}
+
+void Grid::ClearGrid()
+{
+	// Deallocate the Cell Objects of the CellList
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			delete CellList[i][j];
+		}
+	}
+	// Allocate the Cell Objects of the CellList
+	for (int i = NumVerticalCells - 1; i >= 0; i--) // to allocate cells from bottom up
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) // to allocate cells from left to right
+		{
+			CellList[i][j] = new Cell(i, j);
+		}
+	}
+	//reset the players 
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		delete PlayerList[i];
+	}
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		PlayerList[i] = new Player(CellList[NumVerticalCells - 1][0], i); // first cell
+		PlayerList[i]->Draw(pOut); // initially draw players in the first cell
+	}
+
+	// Initialize currPlayerNumber with 0 (first player)
+	currPlayerNumber = 0; // start with the first player
+
+	// Initialize Clipboard with NULL
+	Clipboard = NULL;
+
+	// Initialize endGame with false
+	endGame = false;
+}
 
 Grid::~Grid()
 {

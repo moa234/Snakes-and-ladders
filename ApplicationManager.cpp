@@ -6,6 +6,8 @@
 #include "RollDiceAction.h"
 #include "InputDiceValue.h"
 #include "AddSnake.h"
+#include "SaveGrid.h"
+#include "OpenGrid.h"
 
 ///TODO: Add #include for all action types
 
@@ -90,7 +92,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case TO_DESIGN_MODE:
 		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
-
+	case SAVE_GRID:
+		pAct = new SaveGrid(this);
+		break;
+	case OPEN_GRID:
+		pAct = new OpenGrid(this);
+		break;
 		
 
 		///TODO: Add a case for EACH Action type in the Design mode or Play mode
