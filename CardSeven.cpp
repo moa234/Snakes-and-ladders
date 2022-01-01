@@ -12,10 +12,19 @@ void CardSeven::ReadCardParameters(Grid* pGrid)
 void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
-	
-	if (pGrid->GetNextPlayer(position))
+	Player* next = pGrid->GetNextPlayer(position);
+	if (next)
 	{
-		pGrid->UpdatePlayerCell(pGrid->GetNextPlayer(position), firstCell);
+		CellPosition nextpos = next->GetCell()->GetCellPosition();
+		for (int i = 0; i < 4; i++)
+		{
+			Player* another = pGrid->CheckCurrentCellPlayer(nextpos, i);
+			if (another)
+			{
+				pGrid->UpdatePlayerCell(another,firstCell)  ;
+			}
+			
+		}
 	}
 }
 

@@ -47,31 +47,6 @@ Ladder * Cell::HasLadder() const
 	return dynamic_cast<Ladder *>(pGameObject);
 }
 
-Player* Cell::HasPlayer(Player* p1, Player* p2, Player* p3, Player* p4) const
-{
-	int pos1 = p1->GetCell()->GetCellPosition().GetCellNum();
-	int pos2 = p2->GetCell()->GetCellPosition().GetCellNum();
-	int pos3 = p3->GetCell()->GetCellPosition().GetCellNum();
-	int pos4 = p4->GetCell()->GetCellPosition().GetCellNum();
-
-	if (pos1 == this->GetCellPosition().GetCellNum())
-	{
-		return p1;
-	}
-	else if (pos2 == this->GetCellPosition().GetCellNum())
-	{
-		return p2;
-	}
-	else if (pos3 == this->GetCellPosition().GetCellNum())
-	{
-		return p3;
-	}
-	else if (pos4 == this->GetCellPosition().GetCellNum())
-	{
-		return p4;
-	}
-	return NULL;
-}
 
 Snake * Cell::HasSnake() const
 {

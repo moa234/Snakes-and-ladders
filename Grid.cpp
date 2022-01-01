@@ -163,15 +163,27 @@ Player* Grid::GetNextPlayer(const CellPosition& position)
 
 
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
-			if (CellList[i][j]->HasPlayer(PlayerList[0], PlayerList[1], PlayerList[2], PlayerList[3]))
+			for (int k = 0; k < 4; k++)
 			{
-				return CellList[i][j]->HasPlayer(PlayerList[0], PlayerList[1], PlayerList[2], PlayerList[3]);
+				if (CellList[i][j]->GetCellPosition().GetCellNum() == PlayerList[k]->GetCell()->GetCellPosition().GetCellNum())
+				{
+					return PlayerList[k];
+				}
 			}
 
 		}
 		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
 	}
 	return NULL; // not found
+}
+
+Player* Grid::CheckCurrentCellPlayer(const CellPosition& position, int pnum)
+{
+	if (PlayerList[pnum]->GetCell()->GetCellPosition().GetCellNum() == position.GetCellNum())
+	{
+		return PlayerList[pnum];
+	}
+	return NULL;
 }
 
 GameObject* Grid::CurrentCellObject(const CellPosition& position)

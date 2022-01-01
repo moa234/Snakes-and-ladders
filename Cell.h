@@ -33,7 +33,6 @@ public:
 	GameObject * GetGameObject() const;     // A getter for pGameObject of the cell
 		
 	Ladder * HasLadder() const;	// Checks if pGameObject is a Ladder Then returns it if a ladder or returns NULL if not ladder
-	Player* HasPlayer(Player* p1, Player* p2, Player* p3, Player* p4) const; //checls if current cell contains a player
 	Snake * HasSnake() const;	// Checks if pGameObject is a Snake Then returns it if a snake or returns NULL if not snake
 	Card * HasCard() const;	    // Checks if pGameObject is a Card Then returns it if a card or returns NULL if not card
 	

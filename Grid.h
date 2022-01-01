@@ -77,6 +77,8 @@ public:
 
 	Player* GetNextPlayer(const CellPosition& position);
 
+	Player* CheckCurrentCellPlayer(const CellPosition& position, int pnum);
+
 	// ========= User Interface Functions =========
 
 	void UpdateInterface() const;		// It Updates the Grid according to the last state of the game
