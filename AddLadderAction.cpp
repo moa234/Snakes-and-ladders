@@ -11,7 +11,6 @@ AddLadderAction::AddLadderAction(ApplicationManager *pApp) : Action(pApp)
 	valid = 1;
 }
 
-bool AddLadderAction::occupied[100];
 
 AddLadderAction::~AddLadderAction()
 {
@@ -55,27 +54,38 @@ void AddLadderAction::ReadActionParameters()
 		pGrid->PrintErrorMessage("Error: endcell cannot contain snake! Click to continue ...");
 	}
 	CellPosition col(0,startPos.HCell());
-	for (int i = 0; i <= 8; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		GameObject* snake = pGrid->CurrentCellSnake(col);
+		
 		GameObject* ladder = pGrid->CurrentCellLadder(col);
+		
 		if (snake)
 		{
-			if (endPos.GetCellNum() == col.GetCellNum())
+			CellPosition snakeEnd = dynamic_cast<Snake*>(snake)->GetEndPosition();
+			if (startPos.GetCellNum() == snakeEnd.GetCellNum())
 			{
-				pGrid->PrintErrorMessage("Error: endcell cannot contain snake! Click to continue ...");
+				valid = 0;
+				pGrid->PrintErrorMessage("Error: startcell cannot contain snake! Click to continue ...");
+			}
+			
+		}
+		if (ladder)
+		{
+			CellPosition ladderEnd = dynamic_cast<Ladder*>(ladder)->GetEndPosition();
+			if (startPos.GetCellNum() == ladderEnd.GetCellNum())
+			{
+				valid = 0;
+				pGrid->PrintErrorMessage("Error: startcell cannot contain ladder! Click to continue ...");
+			}
+			if (endPos.GetCellNum() > col.GetCellNum() && startPos.GetCellNum() < ladderEnd.GetCellNum() )
+			{
+				valid = 0;
+				pGrid->PrintErrorMessage("Error: ladders cannot overlap! Click to continue ...");
 			}
 		}
+		col.SetVCell(i + 1);
 	}
-	//for (int i = startPos.GetCellNum(); i <= endPos.GetCellNum(); i = i + 11)
-	//{
-	//	if (occupied[i] == 1)
-	//	{
-	//		valid = 0;
-	//		pGrid->PrintErrorMessage("Error: ladders cannot overlap! Click to continue ...");
-	//		break;
-	//	}
-	//}
 	
 
 	// Clear messages
@@ -102,13 +112,7 @@ void AddLadderAction::Execute()
 
 	// Add the card object to the GameObject of its Cell:
 	bool added = pGrid->AddObjectToCell(pLadder);
-	if (added)
-	{
-		for (int i = startPos.GetCellNum(); i <= endPos.GetCellNum(); i = i + 11)
-		{
-			occupied[i] = 1;
-		}
-	}
+
 	// if the GameObject cannot be added
 	if (! added)
 	{

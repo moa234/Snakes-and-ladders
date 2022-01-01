@@ -10,7 +10,6 @@ class AddLadderAction : public Action
 	CellPosition startPos; // 1- The start position of the ladder
 	CellPosition endPos;   // 2- The end position of the ladder
 	bool valid;
-	static bool occupied[];
 	// Note: These parameters should be read in ReadActionParameters()
 
 public:
