@@ -62,6 +62,8 @@ public:
 
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
 	GameObject* CurrentCellObject(const CellPosition & position); //determine whether current cell has a gameobject or not
+	GameObject* CurrentCellSnake(const CellPosition& position);
+	GameObject* CurrentCellLadder(const CellPosition& position);
     Player* MinWalletPlayer() const; //retruns player with minimum wallet value
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 

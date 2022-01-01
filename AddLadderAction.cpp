@@ -54,15 +54,28 @@ void AddLadderAction::ReadActionParameters()
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: endcell cannot contain snake! Click to continue ...");
 	}
-	for (int i = startPos.GetCellNum(); i <= endPos.GetCellNum(); i = i + 11)
+	CellPosition col(0,startPos.HCell());
+	for (int i = 0; i <= 8; i++)
 	{
-		if (occupied[i] == 1)
+		GameObject* snake = pGrid->CurrentCellSnake(col);
+		GameObject* ladder = pGrid->CurrentCellLadder(col);
+		if (snake)
 		{
-			valid = 0;
-			pGrid->PrintErrorMessage("Error: ladders cannot overlap! Click to continue ...");
-			break;
+			if (endPos.GetCellNum() == col.GetCellNum())
+			{
+				pGrid->PrintErrorMessage("Error: endcell cannot contain snake! Click to continue ...");
+			}
 		}
 	}
+	//for (int i = startPos.GetCellNum(); i <= endPos.GetCellNum(); i = i + 11)
+	//{
+	//	if (occupied[i] == 1)
+	//	{
+	//		valid = 0;
+	//		pGrid->PrintErrorMessage("Error: ladders cannot overlap! Click to continue ...");
+	//		break;
+	//	}
+	//}
 	
 
 	// Clear messages

@@ -142,7 +142,10 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 
 
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
-			
+			if (CellList[i][j]->HasLadder())
+			{
+				return CellList[i][j]->HasLadder();
+			}
 
 		}
 		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
@@ -167,6 +170,24 @@ GameObject* Grid::CurrentCellObject(const CellPosition& position)
 		current = CellList[position.VCell()][position.HCell()]->HasLadder();
 	}
 	
+	return current;
+}
+
+GameObject* Grid::CurrentCellSnake(const CellPosition& position)
+{
+	//this function find whether the cell has a snake and return 
+	//pointer to this object if there is no snake it will return null
+	GameObject* current = CellList[position.VCell()][position.HCell()]->HasSnake();
+
+	return current;
+}
+
+GameObject* Grid::CurrentCellLadder(const CellPosition& position)
+{
+	//this function find whether the cell has a Ladder and return 
+	//pointer to this object if there is no ladder it will return null
+	GameObject* current = CellList[position.VCell()][position.HCell()]->HasLadder();
+
 	return current;
 }
 
