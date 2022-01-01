@@ -152,6 +152,28 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	}
 	return NULL; // not found
 }
+
+Player* Grid::GetNextPlayer(const CellPosition& position)
+{
+	int startH = position.HCell(); // represents the start hCell in the current row to search for the ladder in
+	for (int i = position.VCell(); i >= 0; i--) // searching from position.vCell and ABOVE
+	{
+		for (int j = startH + 1; j < NumHorizontalCells; j++) // searching from startH and RIGHT
+		{
+
+
+			///TODO: Check if CellList[i][j] has a ladder, if yes return it
+			if (CellList[i][j]->HasPlayer(PlayerList[0], PlayerList[1], PlayerList[2], PlayerList[3]))
+			{
+				return CellList[i][j]->HasPlayer(PlayerList[0], PlayerList[1], PlayerList[2], PlayerList[3]);
+			}
+
+		}
+		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
+	}
+	return NULL; // not found
+}
+
 GameObject* Grid::CurrentCellObject(const CellPosition& position)
 {
 	//this function find whether the cell has a card or ladder or snake and return 

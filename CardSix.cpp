@@ -1,5 +1,4 @@
 #include "CardSix.h"
-#include "Card.h"
 
 
 CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card position
