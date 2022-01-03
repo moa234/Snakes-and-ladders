@@ -47,6 +47,7 @@ Ladder * Cell::HasLadder() const
 	return dynamic_cast<Ladder *>(pGameObject);
 }
 
+
 Snake * Cell::HasSnake() const
 {
 

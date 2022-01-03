@@ -62,13 +62,22 @@ public:
 
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
 	GameObject* CurrentCellObject(const CellPosition & position); //determine whether current cell has a gameobject or not
+	GameObject* CurrentCellSnake(const CellPosition& position);
+	GameObject* CurrentCellLadder(const CellPosition& position);
     Player* MinWalletPlayer() const; //retruns player with minimum wallet value
+	int GetLadderCount(); //getter for number of ladders in the grid
+	int GetSnakeCount();// getter for number of snakes in grid
+	int GetCardCount();//getter for number of cards in grid
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
 	// ========= Other Getters =========
 	
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
+
+	Player* GetNextPlayer(const CellPosition& position);
+
+	Player* CheckCurrentCellPlayer(const CellPosition& position, int pnum);
 
 	// ========= User Interface Functions =========
 
@@ -80,7 +89,8 @@ public:
 
 	void PrintErrorMessage(string msg); // Prints an error message on statusbar, Waits for mouse click then clears statusbar
 									    // We added this function once here because it is used many times by other classes
-
+	void SaveAll(ofstream& OutFile, Object_Type obj);
+	void ClearGrid();
 	~Grid(); // A destructor for any needed deallcations
 };
 

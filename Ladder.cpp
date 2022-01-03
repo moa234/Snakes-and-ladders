@@ -3,7 +3,7 @@
 Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPos) : GameObject(startCellPos)
 {
 	this->endCellPos = endCellPos;
-
+	LadderCount++;
 	///TODO: Do the needed validation
 }
 
@@ -11,7 +11,10 @@ void Ladder::Draw(Output* pOut) const
 {
 	pOut->DrawLadder(position, endCellPos);
 }
-
+void Ladder::SetEndcell(CellPosition CP)
+{
+	endCellPos = CP;
+}
 void Ladder::Apply(Grid* pGrid, Player* pPlayer) 
 {
 	
@@ -36,7 +39,29 @@ CellPosition Ladder::GetEndPosition() const
 {
 	return endCellPos;
 }
-
+void Ladder::Load(ifstream& Infile, Object_Type obj)
+{
+	if (obj != ladder)
+		return;
+	CellPosition CP;
+	int startcell;
+	int endcell;
+	Infile >> startcell >> endcell;
+	SetEndcell(CellPosition(endcell)); //setting endcell with loaded value from file
+	position = CellPosition(startcell);// setting startcell with loaded value from file
+}
+int Ladder::LadderCount = 0;
+void Ladder::Save(ofstream& OutFile, Object_Type obj)
+{
+	if (obj != ladder)
+		return;
+	OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() << endl;
+}
+int Ladder::GetObjectCount()
+{
+	return LadderCount;
+}
 Ladder::~Ladder()
 {
+	LadderCount--;
 }

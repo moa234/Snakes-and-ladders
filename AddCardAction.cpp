@@ -4,10 +4,10 @@
 #include "Output.h"
 #include "CardOne.h"
 #include "CardSix.h"
-//#include "CardFive.h"
+#include "CardFive.h"
+#include "CardSeven.h"
 
-#include <iostream>
-using namespace std;
+
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
 	// Initializes the pManager pointer of Action with the passed pointer
@@ -66,12 +66,13 @@ void AddCardAction::Execute()
 
 	
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-	ReadActionParameters();
-
+	
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- The first line of any Action Execution is to read its parameter first
-	
+
+	ReadActionParameters();
+
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
 	Card * pCard = NULL; // will point to the card object type
 	switch (cardNumber)
@@ -88,18 +89,18 @@ void AddCardAction::Execute()
 	case 4:
 		pCard = new CardFour(cardPosition);
 		break;*/
-	//case 5:
-	//	pCard = new CardFive(cardPosition); 
-	//	break;
+	case 5:
+		pCard = new CardFive(cardPosition); 
+		break;
 
 	//	//....
 	case 6:
 		pCard = new CardSix(cardPosition);
 		break;
-	/*case 7:
+	case 7:
 		pCard = new CardSeven(cardPosition);
 		break;
-	case 8:
+	/*case 8:
 		pCard = new CardEight(cardPosition);
 		break;
 	case 9:

@@ -134,12 +134,51 @@ Ladder *Grid::GetNextLadder(const CellPosition &position)
 			return CellList[i][j]->HasLadder();
 
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
+			if (CellList[i][j]->HasLadder())
+			{
+				return CellList[i][j]->HasLadder();
+			}
+
 		}
 		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
 	}
 	return NULL; // not found
 }
-GameObject *Grid::CurrentCellObject(const CellPosition &position)
+
+Player* Grid::GetNextPlayer(const CellPosition& position)
+{
+	int startH = position.HCell(); // represents the start hCell in the current row to search for the ladder in
+	for (int i = position.VCell(); i >= 0; i--) // searching from position.vCell and ABOVE
+	{
+		for (int j = startH + 1; j < NumHorizontalCells; j++) // searching from startH and RIGHT
+		{
+
+
+			///TODO: Check if CellList[i][j] has a ladder, if yes return it
+			for (int k = 0; k < 4; k++)
+			{
+				if (CellList[i][j]->GetCellPosition().GetCellNum() == PlayerList[k]->GetCell()->GetCellPosition().GetCellNum())
+				{
+					return PlayerList[k];
+				}
+			}
+
+		}
+		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
+	}
+	return NULL; // not found
+}
+
+Player* Grid::CheckCurrentCellPlayer(const CellPosition& position, int pnum)
+{
+	if (PlayerList[pnum]->GetCell()->GetCellPosition().GetCellNum() == position.GetCellNum())
+	{
+		return PlayerList[pnum];
+	}
+	return NULL;
+}
+
+GameObject* Grid::CurrentCellObject(const CellPosition& position)
 {
 	//this function find whether the cell has a card or ladder or snake and return
 	//pointer to this object if there is no one of those three it will return null
@@ -160,7 +199,25 @@ GameObject *Grid::CurrentCellObject(const CellPosition &position)
 	return current;
 }
 
-Player *Grid::MinWalletPlayer() const
+GameObject* Grid::CurrentCellSnake(const CellPosition& position)
+{
+	//this function find whether the cell has a snake and return 
+	//pointer to this object if there is no snake it will return null
+	GameObject* current = CellList[position.VCell()][position.HCell()]->HasSnake();
+
+	return current;
+}
+
+GameObject* Grid::CurrentCellLadder(const CellPosition& position)
+{
+	//this function find whether the cell has a Ladder and return 
+	//pointer to this object if there is no ladder it will return null
+	GameObject* current = CellList[position.VCell()][position.HCell()]->HasLadder();
+
+	return current;
+}
+
+Player* Grid::MinWalletPlayer() const
 {
 	int min = PlayerList[0]->GetWallet();
 	Player *P = PlayerList[0];
@@ -173,6 +230,21 @@ Player *Grid::MinWalletPlayer() const
 		}
 	}
 	return P;
+}
+
+int Grid::GetLadderCount()
+{
+	return Ladder::GetObjectCount();
+}
+
+int Grid::GetSnakeCount()
+{
+	return Snake::GetObjectCount();
+}
+
+int Grid::GetCardCount()
+{
+	return Card::GetObjectCount();
 }
 
 // ========= User Interface Functions =========
@@ -231,6 +303,58 @@ void Grid::PrintErrorMessage(string msg)
 	int x, y;
 	pIn->GetPointClicked(x, y);
 	pOut->ClearStatusBar();
+}
+
+
+void Grid::SaveAll(ofstream& OutFile, Object_Type obj)
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--) // to move from bottom up
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) // to move from left to right
+		{
+			if(CellList[i][j]->HasSnake() || CellList[i][j]->HasLadder()|| CellList[i][j]->HasCard()) //checks that the cell has any object 
+			(CellList[i][j]->GetGameObject())->Save(OutFile, obj);// Calls save function of cell that contains an object
+		}
+	}
+}
+
+void Grid::ClearGrid()
+{
+	// Deallocate the Cell Objects of the CellList
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			delete CellList[i][j];
+		}
+	}
+	// Allocate the Cell Objects of the CellList
+	for (int i = NumVerticalCells - 1; i >= 0; i--) // to allocate cells from bottom up
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) // to allocate cells from left to right
+		{
+			CellList[i][j] = new Cell(i, j);
+		}
+	}
+	//reset the players 
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		delete PlayerList[i];
+	}
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		PlayerList[i] = new Player(CellList[NumVerticalCells - 1][0], i); // first cell
+		PlayerList[i]->Draw(pOut); // initially draw players in the first cell
+	}
+
+	// Initialize currPlayerNumber with 0 (first player)
+	currPlayerNumber = 0; // start with the first player
+
+	// Initialize Clipboard with NULL
+	Clipboard = NULL;
+
+	// Initialize endGame with false
+	endGame = false;
 }
 
 Grid::~Grid()
