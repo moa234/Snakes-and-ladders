@@ -188,9 +188,6 @@
     <ClCompile Include="AddSnake.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="CopyCard.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="DeleteGameObject.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -228,6 +225,21 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="OpenGrid.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="CardThree.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardFour.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardEight.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="Paste.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="CopyCard.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -344,9 +356,6 @@
     <ClInclude Include="AddSnake.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="CopyCard.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
     <ClInclude Include="DeleteGameObject.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -384,6 +393,21 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="OpenGrid.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="CardThree.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardFour.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardEight.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="Paste.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="CopyCard.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
