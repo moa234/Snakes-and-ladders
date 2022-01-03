@@ -16,11 +16,6 @@ CellPosition playerCellPosition = pPlayer->GetCell()->GetCellPosition();
 
 Ladder *pLadder=pGrid->GetNextLadder(playerCellPosition);
 
-if(pLadder==NULL){
-pGrid->UpdatePlayerCell(pPlayer,playerCellPosition);
-}
-
 if(pLadder){
     pLadder->Apply(pGrid, pPlayer);
-}
 }
