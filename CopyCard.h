@@ -1,5 +1,11 @@
 #pragma once
-class CopyCard
+#include "Action.h"
+class CopyCard: public Action
 {
+	CellPosition CopiedCell;
+public:
+	CopyCard(ApplicationManager* pApp);
+	virtual void ReadActionParameters();
+	virtual void Execute() ;  
+	virtual ~CopyCard();  
 };
-
