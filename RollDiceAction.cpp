@@ -36,13 +36,13 @@ void RollDiceAction::Execute()
 
 	Player* currentplayer = pManager->GetGrid()->GetCurrentPlayer();
 
-if (currentplayer->GetDoNotPlay==0) //made by Abdelrahman for card 3,4,8
+if (currentplayer->GetDoNotPlay() == 0) //made by Abdelrahman for card 3,4,8
 {
 	currentplayer->SetRolledDiceNum(diceNumber);
 		// 4- Move the currentPlayer using function Move of class player
 	currentplayer->Move(pManager->GetGrid(), diceNumber);
 }
-else if (currentplayer->GetDoNotPlay==-1)
+else if (currentplayer->GetDoNotPlay() == -1)
 {
 		//extra dice roll
 	srand((int)time(NULL));
@@ -54,7 +54,7 @@ currentplayer->SetDoNotPlay(0);
 }
 else
 {
-int x=currentplayer->GetDoNotPlay;
+int x=currentplayer->GetDoNotPlay();
 currentplayer->SetDoNotPlay(x-1);
 }
 	

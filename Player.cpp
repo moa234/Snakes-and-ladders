@@ -58,7 +58,7 @@ void Player::SetDoNotPlay(int penalty) //penalty should be from -1 to 3
 }
 int Player::GetDoNotPlay() 
 {
-	return DoNotPlay;
+	return this->DoNotPlay;
 }
 // ====== Drawing Functions ======
 
