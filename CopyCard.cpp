@@ -1,15 +1,13 @@
 #include "CopyCard.h"
 #include "Grid.h"
-#include "ApplicationManager.h"
-#include "Cell.h"
-CopyCard::CopyCard(ApplicationManager* pApp): Action(pApp)
-{
-}
+
+CopyCard::CopyCard(ApplicationManager* pApp): Action(pApp) {}
+
  void CopyCard::ReadActionParameters()
  {
 	Grid *pGrid;
 	Output* pOut = pGrid->GetOutput();
-	pOut->PrintMessage("Click on the source cell");
+	pOut->PrintMessage("Click on the source cell to copy");
 	Input* pIn = pGrid->GetInput();
 	CopiedCell = pIn->GetCellClicked();
 	pOut->ClearStatusBar();
@@ -22,6 +20,4 @@ CopyCard::CopyCard(ApplicationManager* pApp): Action(pApp)
 	 card=c.HasCard();
 	 pGrid->SetClipboard(card);
  }
-CopyCard::~CopyCard()
-{
-}
+CopyCard::~CopyCard() {}
