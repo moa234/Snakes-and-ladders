@@ -61,6 +61,8 @@ public:
 	bool GetEndGame() const;		 // A getter for endGame data member
 
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
+	//void Replay();
+
 	GameObject* CurrentCellObject(const CellPosition & position); //determine whether current cell has a gameobject or not
 	GameObject* CurrentCellSnake(const CellPosition& position);
 	GameObject* CurrentCellLadder(const CellPosition& position);

@@ -14,7 +14,7 @@ CopyCard::CopyCard(ApplicationManager* pApp): Action(pApp) {}
  }
  void	CopyCard:: Execute() 
  {
-	 Grid *pGrid;
+	 Grid* pGrid = pManager->GetGrid();
 	 Card * card;
 	 Cell c(CopiedCell);
 	 card=c.HasCard();

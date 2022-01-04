@@ -11,8 +11,15 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 
 	Output* pOut = pGrid->GetOutput();
 	pOut->PrintMessage("You won an extra dice roll!" );
-	pPlayer->SetRolledDiceNum(-1);
+	pPlayer->SetDoNotPlay(5);
 	pOut->ClearStatusBar();
+	/*
+	ActionType ActType=;
+	ApplicationManager AppManager;
+	AppManager.ExecuteAction(ActType);
+	AppManager.UpdateInterface();
+	*/
+
 }
 
 CardThree::~CardThree(void)

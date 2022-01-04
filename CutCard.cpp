@@ -14,7 +14,7 @@ void CutCard::ReadActionParameters()
  }
 void CutCard::Execute() 
 {
-	 Grid *pGrid;
+	Grid* pGrid = pManager->GetGrid();
 	 Card * card;
 	 Cell c(CutCell);
 	 card=c.HasCard();
