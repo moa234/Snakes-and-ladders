@@ -195,7 +195,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="OpenGrid.cpp" />
     <ClCompile Include="Output.cpp" />
-    <ClCompile Include="Paste.cpp" />
+    <ClCompile Include="PasteCard.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RollDiceAction.cpp" />
     <ClCompile Include="SaveGrid.cpp" />
@@ -253,7 +253,7 @@
     <ClInclude Include="Ladder.h" />
     <ClInclude Include="OpenGrid.h" />
     <ClInclude Include="Output.h" />
-    <ClInclude Include="Paste.h" />
+    <ClInclude Include="PasteCard.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RollDiceAction.h" />
     <ClInclude Include="SaveGrid.h" />

@@ -9,7 +9,7 @@ void PasteCard:: ReadActionParameters()
 {
 	Grid *pGrid;
 	Output* pOut = pGrid->GetOutput();
-	pOut->PrintMessage("Click on the  cell to Paste");
+	pOut->PrintMessage("Click on the destination cell");
 	Input* pIn = pGrid->GetInput();
 	PasteCell = pIn->GetCellClicked();
 	pOut->ClearStatusBar();
