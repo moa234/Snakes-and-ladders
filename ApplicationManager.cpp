@@ -8,7 +8,9 @@
 #include "AddSnake.h"
 #include "SaveGrid.h"
 #include "OpenGrid.h"
-
+#include "CopyCard.h"
+#include "CutCard.h"
+#include "PasteCard.h"
 ///TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -67,6 +69,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_SNAKE:
 		pAct = new AddSnake(this);
 		break;
+
+	case COPY_CARD:
+		pAct = new CopyCard(this);
+		break;
+	case CUT_CARD:
+		pAct = new CutCard(this);
+		break;
+	case PASTE_CARD:
+		pAct = new PasteCard(this);
+		break;		
 
 	case ADD_CARD:
 		// create an object of AddCardAction here
