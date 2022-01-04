@@ -45,6 +45,8 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 			pPlayer->SetDoNotPlay(3);
 		}
 	}
+	pOut->ClearStatusBar();
+
 }
 
 CardEight::~CardEight(void)

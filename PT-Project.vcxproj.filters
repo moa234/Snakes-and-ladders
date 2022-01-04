@@ -236,7 +236,7 @@
     <ClCompile Include="CardEight.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="Paste.cpp">
+    <ClCompile Include="PasteCard.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="CopyCard.cpp">
@@ -404,7 +404,7 @@
     <ClInclude Include="CardEight.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="Paste.h">
+    <ClInclude Include="PasteCard.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="CopyCard.h">

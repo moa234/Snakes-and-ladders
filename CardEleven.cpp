@@ -100,3 +100,4 @@ void CardEleven::Apply(Grid *pGrid, Player *pPlayer)
         }
     }
 }
+CardEleven::~CardEleven() {}

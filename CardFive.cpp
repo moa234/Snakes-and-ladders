@@ -23,6 +23,7 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer) {
 	 }
 }
 
+CardFive::~CardFive(){}
 
 
 
