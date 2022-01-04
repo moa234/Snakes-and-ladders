@@ -236,14 +236,13 @@
     <ClCompile Include="CardEight.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
-<<<<<<< Updated upstream
-    <ClCompile Include="PasteCard.cpp">
-=======
     <ClCompile Include="CopyCard.cpp">
->>>>>>> Stashed changes
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="PasteCard.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="NewGame.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -408,14 +407,13 @@
     <ClInclude Include="CardEight.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-<<<<<<< Updated upstream
-    <ClInclude Include="PasteCard.h">
-=======
     <ClInclude Include="CopyCard.h">
->>>>>>> Stashed changes
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="PasteCard.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="NewGame.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

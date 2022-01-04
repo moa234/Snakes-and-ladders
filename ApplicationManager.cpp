@@ -11,6 +11,9 @@
 #include "CopyCard.h"
 #include "CutCard.h"
 #include "PasteCard.h"
+#include "NewGame.h"
+
+
 ///TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -99,6 +102,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case INPUT_DICE_VALUE:
 		pAct = new InputDiceValue(this);
+		break;
+
+	case NEW_GAME:
+		pAct = new NewGame(this);
 		break;
 
 	case TO_DESIGN_MODE:

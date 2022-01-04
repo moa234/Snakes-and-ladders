@@ -46,11 +46,12 @@ else if (currentplayer->GetDoNotPlay() == -1)
 {
 		//extra dice roll
 	srand((int)time(NULL));
-	int diceNumber = 1 + rand() % 6; 
+	int diceNumber = 1 + rand() % 6;
+
 	currentplayer->SetRolledDiceNum(diceNumber);
 	currentplayer->Move(pManager->GetGrid(), diceNumber);
-		//setting DoNotPlay to 0
-currentplayer->SetDoNotPlay(0);
+		
+currentplayer->SetDoNotPlay(0);//setting DoNotPlay to 0
 }
 else
 {
