@@ -17,10 +17,12 @@ void DeleteGameObject::ReadActionParameters()
 
 void DeleteGameObject::Execute()
 {
+    Grid* pGrid = pManager->GetGrid();
     ReadActionParameters();
-    Cell selectedCell = Cell(startPosition);
+    pGrid->RemoveObjectFromCell(startPosition);
 
-    Ladder* pLadder = selectedCell.HasLadder();
+
+   /* Ladder* pLadder = selectedCell.HasLadder();
     Snake* pSnek = selectedCell.HasSnake();
     Card* pCard = selectedCell.HasCard();
 
@@ -35,7 +37,7 @@ void DeleteGameObject::Execute()
     if(pCard) {
         delete pCard;
         return;
-    }
+    }*/
 
 }
 
