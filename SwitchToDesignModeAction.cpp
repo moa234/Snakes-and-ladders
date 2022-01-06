@@ -1,19 +1,18 @@
-#include "SwitchToPlayModeAction.h"
+#include "SwitchToDesignModeAction.h"
 #include "Grid.h"
 
-SwitchToPlayModeAction::SwitchToPlayModeAction(ApplicationManager *pApp) : Action(pApp)
+SwitchToDesignModeAction::SwitchToDesignModeAction(ApplicationManager *pApp) : Action(pApp)
 {
-    pManager = pApp;
 }
-void SwitchToPlayModeAction::ReadActionParameters() {
+void SwitchToDesignModeAction::ReadActionParameters() {
 
 }
-void SwitchToPlayModeAction::Execute()
+void SwitchToDesignModeAction::Execute()
 {
     Grid *pGrid = pManager->GetGrid();
     Output *pOut = pGrid->GetOutput();
     pOut->CreateDesignModeToolBar();
 }
-SwitchToPlayModeAction::~SwitchToPlayModeAction() {
+SwitchToDesignModeAction::~SwitchToDesignModeAction() {
 
 }

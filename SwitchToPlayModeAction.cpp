@@ -1,10 +1,8 @@
 #include "SwitchToPlayModeAction.h"
 #include "Grid.h"
 
-SwitchToPlayModeAction::SwitchToPlayModeAction(ApplicationManager *pApp) : Action(pApp)
-{
-    pManager = pApp;
-}
+SwitchToPlayModeAction::SwitchToPlayModeAction(ApplicationManager* pApp) : Action(pApp) {}
+
 void SwitchToPlayModeAction::ReadActionParameters() {
 
 }
@@ -15,6 +13,4 @@ void SwitchToPlayModeAction::Execute()
 
     pOut->CreatePlayModeToolBar();
 }
-SwitchToPlayModeAction::~SwitchToPlayModeAction{
-
-}
+SwitchToPlayModeAction::~SwitchToPlayModeAction() {}

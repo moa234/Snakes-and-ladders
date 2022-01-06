@@ -14,6 +14,7 @@
 #include "CutCard.h"
 #include "PasteCard.h"
 #include "NewGame.h"
+#include "DeleteGameObject.h"
 
 
 ///TODO: Add #include for all action types
@@ -86,7 +87,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case PASTE_CARD:
 		pAct = new PasteCard(this);
 		break;		
-
+	case DELETE_GAME_OBJECT:
+		pAct = new DeleteGameObject(this);
+		break;
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);

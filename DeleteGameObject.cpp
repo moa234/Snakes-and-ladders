@@ -3,7 +3,6 @@
 
 DeleteGameObject::DeleteGameObject(ApplicationManager *pApp) : Action(pApp)
 {
-    pManager = pApp;
 }
 
 void DeleteGameObject::ReadActionParameters()
@@ -40,6 +39,6 @@ void DeleteGameObject::Execute()
 
 }
 
-DeleteGameObject::~DeleteGameObject{
+DeleteGameObject::~DeleteGameObject() {
 
 }

@@ -34,6 +34,3 @@ CardTwo::~CardTwo()
 {
 	CardCount--;
 }
-CardTwo::~CardTwo{
-
-}

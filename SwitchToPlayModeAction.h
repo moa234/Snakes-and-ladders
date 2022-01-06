@@ -3,7 +3,7 @@
 class SwitchToPlayModeAction : public Action
 {
  
-    public:
+public:
     SwitchToPlayModeAction(ApplicationManager* pApp);
     virtual void ReadActionParameters();
     virtual void Execute();
