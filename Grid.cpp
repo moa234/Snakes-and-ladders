@@ -349,7 +349,7 @@ void Grid::NewGame()
 	
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
-		PlayerList[i]->Restart(pOut);
+		PlayerList[i]->ClearDrawing(pOut);
 	}
 	//reset the players 
 	for (int i = 0; i < MaxPlayerCount; i++)
