@@ -30,7 +30,7 @@ void CardOne::ReadCardParameters(Grid * pGrid)
 	// 2- Read an Integer from the user using the Input class and set the walletAmount parameter with it
 	//    Don't forget to first print to a descriptive message to the user like:"New CardOne: Enter its wallet amount ..."
 
-	pOut->PrintMessage("New CardOne: Please enter its wallet amount...");
+	pOut->PrintMessage("New Card1: Please enter its wallet amount...");
 	int walletAmountEntered = pIn->GetInteger(pOut);
 	walletAmount = walletAmountEntered;
 

@@ -16,6 +16,7 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
+	int DoNotPlay;		   // if NOT EQUAL to zero the player will not roll the dice
 	
 public:
 
@@ -30,6 +31,9 @@ public:
 	int GetWallet() const;			// a getter for the wallet
 	void SetRolledDiceNum(int value);
 	int GetRolledDiceNum() const;
+	void SetDoNotPlay(int penalty);
+	int GetDoNotPlay() ;
+
 	//....
 
 	int GetTurnCount() const;		// A getter for the turnCount

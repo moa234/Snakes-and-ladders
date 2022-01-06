@@ -1,5 +1,5 @@
 #pragma once
-#include "card.h"
+#include "Card.h"
 class CardSix : public Card
 {
 	CellPosition CP;  // the position that the player will move to 

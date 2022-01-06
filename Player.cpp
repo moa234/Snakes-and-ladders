@@ -6,6 +6,7 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 {
 	this->pCell = pCell;
 	this->turnCount = 0;
+	this->DoNotPlay=0;
 
 	// Make all the needed initialization or validations
 }
@@ -47,6 +48,18 @@ void Player::SetRolledDiceNum(int value) {
 }
 //3amalt setters we getters lel roll number 34an 2e7tagto fe card 5
 
+//Abdelrahman  I added  a data member called DoNotPlay, Setter and getter -for cards 3,4,8
+void Player::SetDoNotPlay(int penalty) //penalty should be from -1 to 3
+{
+	if (penalty>=-1||penalty>=3)
+	{
+		DoNotPlay=penalty;
+	}
+}
+int Player::GetDoNotPlay() 
+{
+	return this->DoNotPlay;
+}
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const
