@@ -10,7 +10,7 @@ void OpenGrid::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 	pOut->PrintMessage("Enter the file name to load data from:");
 	name = pIn->GetString(pOut);
-	InFile.open(name);
+	InFile.open(name+".txt");
 	pOut->ClearStatusBar();
 }
 void OpenGrid::Execute()

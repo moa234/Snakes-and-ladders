@@ -4,12 +4,14 @@
 #include "Output.h"
 #include "CardOne.h"
 #include "CardSix.h"
+#include "CardTwelve.h"
 //#include "CardFive.h"
 
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
 	// Initializes the pManager pointer of Action with the passed pointer
+	Can_Add = 1; // intializes Can_Add flag with 1 
 }
 
 AddCardAction::~AddCardAction()
@@ -46,7 +48,12 @@ void AddCardAction::ReadActionParameters()
 	cardNumber = cnum;
 	pOut->PrintMessage("Select card postion on the grid"); //taking from the user the cell position from the grid to set the card cell position with
 	CellPosition CP = pIn->GetCellClicked();
-	pOut->PrintMessage("You have selected cell number " + to_string(CP.GetCellNum()) + " are you sure(y/n)? ");
+	if (CP.GetCellNum() == 1 || CP.GetCellNum() == 99)
+	{
+		pGrid->PrintErrorMessage("You can't add a card in the First/Last cell, Click anywhere to continue");
+		Can_Add = 0;
+	}
+	/*pOut->PrintMessage("You have selected cell number " + to_string(CP.GetCellNum()) + " are you sure(y/n)? ");
 	string answer = pIn->GetString(pOut);
 	while (answer == "n" || answer == "N") //double check on user input
 	{
@@ -54,18 +61,21 @@ void AddCardAction::ReadActionParameters()
 		CP = pIn->GetCellClicked();
 		pOut->PrintMessage("You have selected cell number " + to_string(CP.GetCellNum()) + " are you sure(y/n)? ");
 		answer = pIn->GetString(pOut);
-	}
+	}*/
+	
 	cardPosition = CP;
-
 	pOut->ClearStatusBar();
 }
 
 void AddCardAction::Execute() 
 {
-
 	
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 	ReadActionParameters();
+	if (!Can_Add)// if there is a violation to rules of positioning the card the Execute function won't continue
+	{
+		return;
+	}
 
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
@@ -129,7 +139,7 @@ void AddCardAction::Execute()
 		if (!added)
 		{
 			pGrid->PrintErrorMessage("Error: This cell already has a card! Click to continue ...");
-			delete pGrid;// there is no need to continue storing the Card because it will already not be added 
+			delete pCard;// there is no need to continue storing the Card because it will already not be added 
 		}
 		// A- We get a pointer to the Grid from the ApplicationManager
 

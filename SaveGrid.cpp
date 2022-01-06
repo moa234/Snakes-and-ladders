@@ -11,7 +11,7 @@ void SaveGrid::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 	pOut->PrintMessage("Enter the file name to save data into:");
 	name=pIn->GetString(pOut);
-	OutFile.open(name);
+	OutFile.open(name+".txt");
 	pOut->ClearStatusBar();
 }
 

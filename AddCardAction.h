@@ -7,7 +7,7 @@ class AddCardAction : public Action
 	// [Action Parameters]
 	int cardNumber;            // 1- the card number
 	CellPosition cardPosition; // 2- cell position of the card
-
+	bool Can_Add;  //This is a boolean indecates the avilability to add a card without violation to rules and allows Execute function to work 
 	// Note: These parameters should be read in ReadActionParameters()
 	
 public:
