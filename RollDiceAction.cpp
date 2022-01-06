@@ -16,6 +16,7 @@ void RollDiceAction::ReadActionParameters()
 
 void RollDiceAction::Execute()
 {
+	/*
 				///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 	
 			// == Here are some guideline steps (numbered below) to implement this function ==
@@ -30,34 +31,34 @@ void RollDiceAction::Execute()
 			return;
 		}
 	Player* currentplayer = pManager->GetGrid()->GetCurrentPlayer();
+	bool x = 0;
 
-	if (currentplayer->GetDoNotPlay() == 5)
+	if (currentplayer->GetDoNotPlay() <0)
 	{
 		//extra dice roll
 		srand((int)time(NULL));
 		int diceNumber = 1 + rand() % 6;
-
 		currentplayer->SetRolledDiceNum(diceNumber);
 		currentplayer->Move(pManager->GetGrid(), diceNumber);
-
+	
 		currentplayer->SetDoNotPlay(0);//setting DoNotPlay to 0
-	}
-			// 2- Generate a random number from 1 to 6 --> This step is done for you
-	srand((int)time(NULL)); // time is for different seed each run
-	int diceNumber = 1 + rand() % 6; // from 1 to 6 --> should change seed
-			// 3- Get the "current" player from pGrid
 
+	}
+	currentplayer->SetDoNotPlay(0);//setting DoNotPlay to 0
 
 if (currentplayer->GetDoNotPlay() == 0) //made by Abdelrahman for card 3,4,8
-{
+{													// 2- Generate a random number from 1 to 6 --> This step is done for you
+	srand((int)time(NULL));							// time is for different seed each run
+	int diceNumber = 1 + rand() % 6;				// from 1 to 6 --> should change seed
+													// 3- Get the "current" player from pGrid
 	currentplayer->SetRolledDiceNum(diceNumber);
-		// 4- Move the currentPlayer using function Move of class player
+													// 4- Move the currentPlayer using function Move of class player
 	currentplayer->Move(pManager->GetGrid(), diceNumber);
 }
 
-
 else
 {
+currentplayer->Move(pManager->GetGrid(), 0);
 int x=currentplayer->GetDoNotPlay();
 currentplayer->SetDoNotPlay(x-1);
 }
@@ -72,7 +73,7 @@ pManager->GetGrid()->AdvanceCurrentPlayer();
 	// 8ayyart feeh
 
 
-/*
+
 Abdelrahman 
 	I added if condition to check DoNotPlay data member 
 	if =0 the player'll roll the dice normally
@@ -80,21 +81,38 @@ Abdelrahman
 	else the DoNotPlay will be>0 so he wont roll the dice till DoNotPlay==0 
 */
 
-/*  da el code el aslyy isA mane7taghoo4
+  //da el code el aslyy isA mane7taghoo4
 
 	bool ended = pManager->GetGrid()->GetEndGame();
 	if (ended)
 	{
 		return;
 	}
+
+	Player* currentplayer = pManager->GetGrid()->GetCurrentPlayer();
+	if (currentplayer->GetDoNotPlay() > 0)
+	{
+		
+		currentplayer->SetDoNotPlay((currentplayer->GetDoNotPlay()) - 1);
+		currentplayer->Move(pManager->GetGrid(), 0);
+
+		pManager->GetGrid()->AdvanceCurrentPlayer();
+		return;
+	}
 	srand((int)time(NULL));
 	int diceNumber = 1 + rand() % 6; 
-	Player* currentplayer = pManager->GetGrid()->GetCurrentPlayer();
 	currentplayer->SetRolledDiceNum(diceNumber);
 	currentplayer->Move(pManager->GetGrid(), diceNumber);
 
+	if (currentplayer->GetDoNotPlay() ==-1)
+	{
+		currentplayer->SetDoNotPlay(0);
+		pManager->GetGrid()->AdvanceCurrentPlayer();
+		return;
+	}
 
-*/
+	pManager->GetGrid()->AdvanceCurrentPlayer();
+
 }
 
 RollDiceAction::~RollDiceAction()

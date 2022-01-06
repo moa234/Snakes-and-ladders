@@ -116,9 +116,10 @@ void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
-/*void Grid::Replay()
+/*
+void Grid::Replay()
 {
-	if (currPlayerNumber==0)
+	if (currPlayerNumber == 0)
 	{
 		currPlayerNumber = MaxPlayerCount - 1;
 	}
@@ -128,13 +129,13 @@ void Grid::AdvanceCurrentPlayer()
 	}
 	else	if (currPlayerNumber == 2)
 	{
-		currPlayerNumber =1;
+		currPlayerNumber = 1;
 	}
 	else	if (currPlayerNumber == 3)
 	{
 		currPlayerNumber = 2;
 	}
-	 // this generates value from MaxPlayerCount - 1 to 0
+	// this generates value from MaxPlayerCount - 1 to 0
 }*/
 // ========= Other Getters =========
 

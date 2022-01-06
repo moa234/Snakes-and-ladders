@@ -12,7 +12,8 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 
 	Output* pOut = pGrid->GetOutput();
 	pGrid->PrintErrorMessage("You won an extra dice roll! click to continue" );
-	pPlayer->SetDoNotPlay(5);
+	pPlayer->SetDoNotPlay(-1);
+	//pGrid->Replay();
 	pOut->ClearStatusBar();
 	/*
 	ActionType ActType=;
