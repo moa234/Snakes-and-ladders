@@ -57,7 +57,12 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 		pOut->ClearStatusBar();
 		return;
 	}
-	int PrevPlayerNum = pGrid->GetCurrentPlayerNum(); //storing the index of player who's ownership will be moved
+	int PrevPlayerNum = pGrid->GetCurrentPlayerNum(); //Storing the index of player who's ownership will be moved
+	if (pPlayer == leastp)
+	{
+		pGrid->PrintErrorMessage("Current player has least amount of coins and no ownership will be changed, click to continue");
+		return;
+	}
 	switch (card_num)
 	{
 	case 9:
