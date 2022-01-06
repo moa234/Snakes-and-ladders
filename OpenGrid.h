@@ -5,6 +5,15 @@
 #include "Ladder.h"
 #include "Snake.h"
 #include "Card.h"
+#include "CardOne.h"
+
+#include "CardThree.h"
+#include "CardFour.h"
+#include "CardFive.h"
+#include "CardSix.h"
+#include "CardSeven.h"
+#include "CardEight.h"
+#include "CardTwelve.h"
 class OpenGrid :
 	public Action
 {

@@ -32,7 +32,7 @@ void AddLadderAction::ReadActionParameters()
 	endPos = pIn->GetCellClicked();
 
     
-	
+
 
 	///TODO: Make the needed validations on the read parameters
 

@@ -50,7 +50,49 @@ void OpenGrid::Execute()
 	InFile >> CardCount;
 	for (int i = 0;i < CardCount;i++)
 	{
-		GameObject* pCard = new Card(CellPosition(0)); //creating empty object
+		int cardNumber;
+		InFile >> cardNumber;
+		GameObject* pCard;
+		switch (cardNumber) //switch case to create empty card of specific number
+		{
+		case 1:
+			pCard = new CardOne(0);
+			break;
+			/*case 2:
+				pCard = new CardTwo(cardPosition);
+				break;*/
+		case 3:
+			pCard = new CardThree(0);
+			break;
+		case 4:
+			pCard = new CardFour(0);
+			break;
+		case 5:
+			pCard = new CardFive(0);
+			break;
+		case 6:
+			pCard = new CardSix(0);
+			break;
+		case 7:
+			pCard = new CardSeven(0);
+			break;
+		case 8:
+			pCard = new CardEight(0);
+			break;
+		case 9:
+			pCard = new CardNine(0);
+			break;
+		case 10:
+			pCard = new CardTen(0);
+			break;
+		case 11:
+			pCard = new CardEleven(0);
+			break;
+		case 12:
+			pCard = new CardTwelve(0);
+			break;
+
+		}
 		pCard->Load(InFile, card);
 		pGrid->AddObjectToCell(pCard);
 	}

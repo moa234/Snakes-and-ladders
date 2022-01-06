@@ -24,7 +24,7 @@ void SaveGrid::Execute()
 	int ladderCount, SnakeCount, CardCount; //variables to store count of game objects
 	ladderCount = pGrid->GetLadderCount();// storing the number of occurance
 	SnakeCount = pGrid->GetSnakeCount();
-	CardCount = pGrid->GetLadderCount();
+	CardCount = pGrid->GetCardCount();
 	OutFile << ladderCount << endl; //printing as required file format
 	pGrid->SaveAll(OutFile, ladder); //calling SaveAll in Grid to be able to Call Save of ladder objects in the cell list
 	OutFile << SnakeCount << endl;

@@ -1,6 +1,7 @@
 #include "CardTwelve.h"
 CardTwelve::CardTwelve(const CellPosition& pos):Card(pos)
 {
+	CardCount++;
 	cardNumber = 12;
 }
 
@@ -13,9 +14,11 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 	// gets least player with coins using MinWalletPlayer function
 	// moves the ownership from current player to least player
 	Card::Apply(pGrid, pPlayer);
-	int card_num=-1;
-	int maximum=-1;
-	Player* leastp = pGrid->MinWalletPlayer(); //getting player with least wallet value
+
+	int card_num=0;
+	int maximum=0;
+	int MinPlayerNum;
+	Player* leastp = pGrid->MinWalletPlayer(MinPlayerNum); //getting player with least wallet value
 	if (CardNine::isOwner(pPlayer))
 	{
 		//checking that the current player owns this station or not
@@ -42,7 +45,7 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 			card_num = 11;
 		}
 	}
-	if (card_num == -1)
+	if (card_num == 0)
 	{
 		//in case no station owned by player
 		pOut->PrintMessage("No station ownership by player to move, click anywhere to continue");
@@ -50,16 +53,34 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 		pOut->ClearStatusBar();
 		return;
 	}
+	int PrevPlayerNum = pGrid->GetCurrentPlayerNum(); //storing the index of player who's ownership will be moved
 	switch (card_num)
 	{
 	case 9:
-		CardNine::set_owner(leastp);
+		CardNine::SetOwner(leastp);
 		break;
 	case 10:
-		CardTen::set_owner(leastp);
+		CardTen::SetOwner(leastp);
 		break;
 	case 11:
-		CardEleven::set_owner(leastp);
+		CardEleven::SetOwner(leastp);
 		break;
 	}
+	pGrid->PrintErrorMessage("OwnerShip of Card "+to_string(card_num)+" is moved from player "+to_string(PrevPlayerNum)+" to "+to_string(MinPlayerNum)+" Click to continue");
 }
+
+void CardTwelve::Save(ofstream& OutFile, Object_Type obj)
+{
+	if (obj != card)
+		return;
+	Card::Save(OutFile, obj);
+	OutFile  << endl;
+}
+
+CardTwelve::~CardTwelve()
+{
+	CardCount--;
+}
+
+
+

@@ -111,6 +111,7 @@ bool Grid::GetEndGame() const
 	return endGame;
 }
 
+
 void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
@@ -236,16 +237,17 @@ GameObject* Grid::CurrentCellLadder(const CellPosition& position)
 	return current;
 }
 
-Player* Grid::MinWalletPlayer() const
+Player* Grid::MinWalletPlayer(int &who) const
 {
 	int min = PlayerList[0]->GetWallet();
 	Player *P = PlayerList[0];
-	for (int i = 1; i < 4; i++)
+	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		if (PlayerList[i]->GetWallet() < min)
 		{
 			min = PlayerList[i]->GetWallet();
 			P = PlayerList[i];
+			who = i;
 		}
 	}
 	return P;
@@ -264,6 +266,11 @@ int Grid::GetSnakeCount()
 int Grid::GetCardCount()
 {
 	return Card::GetObjectCount();
+}
+
+int Grid::GetCurrentPlayerNum() const
+{
+	return currPlayerNumber;
 }
 
 // ========= User Interface Functions =========
