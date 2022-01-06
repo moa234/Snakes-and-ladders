@@ -202,6 +202,8 @@
     <ClCompile Include="RollDiceAction.cpp" />
     <ClCompile Include="SaveGrid.cpp" />
     <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="SwitchToDesignModeAction.cpp" />
+    <ClCompile Include="SwitchToPlayModeAction.cpp" />
     <ClCompile Include="TestCode.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -262,6 +264,8 @@
     <ClInclude Include="RollDiceAction.h" />
     <ClInclude Include="SaveGrid.h" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="SwitchToDesignModeAction.h" />
+    <ClInclude Include="SwitchToPlayModeAction.h" />
     <ClInclude Include="UI_Info.h" />
   </ItemGroup>
   <ItemGroup>
