@@ -150,3 +150,10 @@ void Player::AppendPlayerInfo(string & playersInfo) const
 	playersInfo += to_string(wallet) + ", ";
 	playersInfo += to_string(turnCount) + ")";
 }
+
+void Restart(Player* pPlayer)
+{
+	Output* pOut;
+	pPlayer->ClearDrawing(pOut);
+
+}
