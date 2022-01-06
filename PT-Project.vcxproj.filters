@@ -437,5 +437,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt" />
+    <Text Include="Text1.txt">
+      <Filter>Player</Filter>
+    </Text>
   </ItemGroup>
 </Project>
