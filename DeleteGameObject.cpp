@@ -39,3 +39,7 @@ void DeleteGameObject::Execute()
     }
 
 }
+
+DeleteGameObject::~DeleteGameObject{
+
+}

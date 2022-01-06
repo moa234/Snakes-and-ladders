@@ -5,10 +5,15 @@ SwitchToPlayModeAction::SwitchToPlayModeAction(ApplicationManager *pApp) : Actio
 {
     pManager = pApp;
 }
+void SwitchToPlayModeAction::ReadActionParameters() {
 
+}
 void SwitchToPlayModeAction::Execute()
 {
     Grid *pGrid = pManager->GetGrid();
     Output *pOut = pGrid->GetOutput();
     pOut->CreateDesignModeToolBar();
+}
+SwitchToPlayModeAction::~SwitchToPlayModeAction() {
+
 }
