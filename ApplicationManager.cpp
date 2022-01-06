@@ -8,6 +8,8 @@
 #include "AddSnake.h"
 #include "SaveGrid.h"
 #include "OpenGrid.h"
+#include "SwitchToPlayModeAction.h"
+#include "SwitchToDesignModeAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -77,7 +79,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_PLAY_MODE:
-		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwitchToPlayModeAction(this);
 		break;
 
 	case ROLL_DICE:
@@ -90,7 +92,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_DESIGN_MODE:
-		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwitchToDesignModeAction(this);
 		break;
 	case SAVE_GRID:
 		pAct = new SaveGrid(this);
