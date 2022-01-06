@@ -100,17 +100,31 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
-
-	turnCount += 1;
 	
-	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
-	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
-	
-	if (turnCount == 3)
+	if (diceNumber == 0)
 	{
-		wallet += 10 * diceNumber;
-		turnCount = 0;
+		turnCount += 1;
+		if (turnCount == 3)
+		{
+			wallet += 10 * diceNumber;
+			turnCount = 0;
+			return;
+		}
 		return;
+	}
+	if (DoNotPlay == 0)
+	{
+		turnCount += 1;
+
+		// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
+		//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
+
+		if (turnCount == 3)
+		{
+			wallet += 10 * diceNumber;
+			turnCount = 0;
+			return;
+		}
 	}
 
 	// 3- Set the justRolledDiceNum with the passed diceNumber
