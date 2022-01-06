@@ -346,11 +346,10 @@ void Grid::SaveAll(ofstream& OutFile, Object_Type obj)
 void Grid::NewGame()
 {
 	//Delete players drawings
-
+	
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
-		Player* pPlayer = PlayerList[i];
-		pPlayer->ClearDrawing(pOut);
+		PlayerList[i]->Restart(pOut);
 	}
 	//reset the players 
 	for (int i = 0; i < MaxPlayerCount; i++)
@@ -371,6 +370,7 @@ void Grid::NewGame()
 
 	// Initialize endGame with false
 	endGame = false;
+
 }
 
 void Grid::ClearGrid()

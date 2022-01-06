@@ -151,9 +151,7 @@ void Player::AppendPlayerInfo(string & playersInfo) const
 	playersInfo += to_string(turnCount) + ")";
 }
 
-void Restart(Player* pPlayer)
+void Player::Restart(Output* pOut)
 {
-	Output* pOut;
-	pPlayer->ClearDrawing(pOut);
-
+	this->ClearDrawing(pOut);
 }
