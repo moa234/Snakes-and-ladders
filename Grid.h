@@ -94,6 +94,7 @@ public:
 									    // We added this function once here because it is used many times by other classes
 	void SaveAll(ofstream& OutFile, Object_Type obj);
 	void ClearGrid();
+	void NewGame();
 	~Grid(); // A destructor for any needed deallcations
 };
 
