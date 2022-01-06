@@ -31,6 +31,7 @@ void CardTwo::Apply(Grid* pGrid, Player* pPlayer) {
 	Ladder* pLadder = pGrid->GetNextLadder(playerCellPosition);
 
 	if (pLadder) {
+		pGrid->UpdatePlayerCell(pPlayer, pLadder->GetPosition());//moving the player to the next ladder
 		pLadder->Apply(pGrid, pPlayer);
 	}
 }

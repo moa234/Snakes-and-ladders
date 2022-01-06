@@ -11,7 +11,7 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);// output card num...
 
 	Output* pOut = pGrid->GetOutput();
-	pOut->PrintMessage("You won an extra dice roll!" );
+	pGrid->PrintErrorMessage("You won an extra dice roll! click to continue" );
 	pPlayer->SetDoNotPlay(5);
 	pOut->ClearStatusBar();
 	/*

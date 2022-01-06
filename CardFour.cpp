@@ -7,7 +7,7 @@ CardFour:: CardFour(const CellPosition& pos):Card(pos) // A Constructor takes ca
  void CardFour:: Apply(Grid* pGrid, Player* pPlayer)
  {
 	Output* pOut = pGrid->GetOutput();
-	pOut->PrintMessage("Congratulations!..you can't roll next turn!" );
+	pGrid->PrintErrorMessage("Congratulations!..you can't roll next turn! click to continue" );
 		pPlayer->SetDoNotPlay(1);
 		pOut->ClearStatusBar();
  }
