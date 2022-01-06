@@ -75,6 +75,11 @@ void CardTen::reset_is_saved()
     issaved = 0;
 }
 
+void CardTen::reset_is_Set()
+{
+    isSet = 0;
+}
+
 void CardTen::ReadCardParameters(Grid* pGrid)
 {
     Input* pIn = pGrid->GetInput();

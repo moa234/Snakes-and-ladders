@@ -369,7 +369,6 @@ void Grid::ClearGrid()
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		PlayerList[i] = new Player(CellList[NumVerticalCells - 1][0], i); // first cell
-		PlayerList[i]->Draw(pOut); // initially draw players in the first cell
 	}
 
 	// Initialize currPlayerNumber with 0 (first player)

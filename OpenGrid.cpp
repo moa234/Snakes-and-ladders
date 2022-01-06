@@ -1,7 +1,11 @@
 #include "OpenGrid.h"
-
 OpenGrid::OpenGrid(ApplicationManager* pApp) :Action(pApp)
 {
+	//when opening a new grid one of the necessary clean ups is to re-intialize the isSet flags with there
+	//initial value to be able to load cards 9,10,11 with new values 
+	CardNine::reset_is_Set();
+	CardTen::reset_is_Set();
+	CardEleven::reset_is_Set();
 }
 void OpenGrid::ReadActionParameters()
 {
@@ -55,6 +59,7 @@ void OpenGrid::Execute()
 		GameObject* pCard;
 		switch (cardNumber) //switch case to create empty card of specific number
 		{
+			
 		case 1:
 			pCard = new CardOne(0);
 			break;
@@ -91,7 +96,7 @@ void OpenGrid::Execute()
 		case 12:
 			pCard = new CardTwelve(0);
 			break;
-
+		
 		}
 		pCard->Load(InFile, card);
 		pGrid->AddObjectToCell(pCard);
@@ -103,4 +108,5 @@ void OpenGrid::Execute()
 
 OpenGrid::~OpenGrid()
 {
+	
 }

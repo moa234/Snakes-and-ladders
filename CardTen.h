@@ -20,6 +20,7 @@ public:
     virtual void Load(ifstream& Infile, Object_Type obj);
     virtual void Save(ofstream& OutFile, Object_Type obj);
     static  void reset_is_saved();
+    static void reset_is_Set();
     virtual void ReadCardParameters(Grid* pGrid);
     virtual void Apply(Grid* pGrid, Player* pPlayer);
     virtual ~CardTen();
