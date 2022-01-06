@@ -343,6 +343,36 @@ void Grid::SaveAll(ofstream& OutFile, Object_Type obj)
 	}
 }
 
+void Grid::NewGame()
+{
+	//Delete players drawings
+	
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		PlayerList[i]->ClearDrawing(pOut);
+	}
+	//reset the players 
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		delete PlayerList[i];
+	}
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		PlayerList[i] = new Player(CellList[NumVerticalCells - 1][0], i); // first cell
+		PlayerList[i]->Draw(pOut); // initially draw players in the first cell
+	}
+
+	// Initialize currPlayerNumber with 0 (first player)
+	currPlayerNumber = 0; // start with the first player
+
+	// Initialize Clipboard with NULL
+	Clipboard = NULL;
+
+	// Initialize endGame with false
+	endGame = false;
+
+}
+
 void Grid::ClearGrid()
 {
 	// Deallocate the Cell Objects of the CellList

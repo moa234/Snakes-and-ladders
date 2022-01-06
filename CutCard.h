@@ -1,5 +1,5 @@
 #pragma once
-#include "action.h"
+#include "Action.h"
 class CutCard:public Action
 {
 		CellPosition CutCell;

@@ -5,7 +5,7 @@ void NewGame::ReadActionParameters(){}
 void NewGame::Execute() 
 {
 	Grid* pGrid = pManager->GetGrid();
-	pGrid->ClearGrid();
+	pGrid->NewGame();
 	//Restarts players' positions, wallets,turn returns to player 0
 } 
 NewGame::~NewGame(){}
