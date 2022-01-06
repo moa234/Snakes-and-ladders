@@ -6,16 +6,31 @@ using namespace std;
 
 CardTwo::CardTwo(const CellPosition & pos) : Card(pos) // set the cell position of the card
 {
+	CardCount++;
 	cardNumber = 2; 
 }
 
-void CardTwo::Apply(Grid *pGrid, Player *pPlayer){
-     Card::Apply(pGrid, pPlayer);
+void CardTwo::Save(ofstream& OutFile, Object_Type obj)
+{
+	if (obj != card)
+		return;
+	Card::Save(OutFile, obj);
+	OutFile << endl;
+}
 
-CellPosition playerCellPosition = pPlayer->GetCell()->GetCellPosition();
+CardTwo::~CardTwo()
+{
+	CardCount--;
+}
 
-Ladder *pLadder=pGrid->GetNextLadder(playerCellPosition);
+void CardTwo::Apply(Grid* pGrid, Player* pPlayer) {
+	Card::Apply(pGrid, pPlayer);
 
-if(pLadder){
-    pLadder->Apply(pGrid, pPlayer);
+	CellPosition playerCellPosition = pPlayer->GetCell()->GetCellPosition();
+
+	Ladder* pLadder = pGrid->GetNextLadder(playerCellPosition);
+
+	if (pLadder) {
+		pLadder->Apply(pGrid, pPlayer);
+	}
 }

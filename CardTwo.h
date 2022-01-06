@@ -11,8 +11,7 @@ public:
 	CardTwo(const CellPosition & pos); // A Constructor takes card position
 
 
-	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardOne on the passed Player
-	                                                  // by decrementing the player's wallet by the walletAmount data member
-	
+	virtual void Apply(Grid* pGrid, Player* pPlayer); 
+	virtual void Save(ofstream& OutFile, Object_Type obj);
 	virtual ~CardTwo(); // A Virtual Destructor
 };

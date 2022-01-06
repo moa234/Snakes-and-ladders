@@ -83,3 +83,9 @@ void Cell::DrawLadderOrSnake(Output* pOut) const
 		pGameObject->Draw(pOut); // draw it either ladder or snake
 
 }
+
+Cell::~Cell()
+{
+	if (pGameObject)// there is a game object
+		delete pGameObject;//delete this object
+}

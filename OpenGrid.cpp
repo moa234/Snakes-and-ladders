@@ -58,9 +58,9 @@ void OpenGrid::Execute()
 		case 1:
 			pCard = new CardOne(0);
 			break;
-			/*case 2:
-				pCard = new CardTwo(cardPosition);
-				break;*/
+		case 2:
+				pCard = new CardTwo(0);
+				break;
 		case 3:
 			pCard = new CardThree(0);
 			break;

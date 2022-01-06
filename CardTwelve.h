@@ -6,9 +6,10 @@
 class CardTwelve :
     public Card
 {
-    CellPosition CP;
+    //no parameters
 public:
     CardTwelve(const CellPosition& pos);
+    virtual void ReadCardParameters(Grid* pGrid);// no parameters to read
     virtual void Apply(Grid* pGrid, Player* pPlayer);
 	virtual void Save(ofstream& OutFile, Object_Type obj);
     ~CardTwelve();

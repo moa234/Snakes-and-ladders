@@ -37,4 +37,10 @@ void SaveGrid::Execute()
 
 SaveGrid::~SaveGrid()
 {
+	//we need at the end of save action to reset issaved parameter in cards 9,10,11 because
+	//user may want to save again in the same program execution so to be able to execute SaveGrid again
+	//the variables assosiated with saving must be reseted to its intial value
+	CardNine::reset_is_saved();
+	CardTen::reset_is_saved();
+	CardEleven::reset_is_saved();
 }

@@ -3,6 +3,7 @@
 
 CardEight::CardEight(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
+	CardCount++;
 	cardNumber = 8;
 }
 void CardEight::ReadCardParameters(Grid* pGrid)
@@ -17,6 +18,15 @@ void CardEight::ReadCardParameters(Grid* pGrid)
 
 	pOut->ClearStatusBar();
 
+}
+void CardEight::Load(ifstream& Infile, Object_Type obj)
+{
+	if (obj != card)
+		return;
+	Card::Load(Infile, obj);
+	int Bval;
+	Infile >> Bval;
+	Bail=Bval;
 }
 void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 {
@@ -49,6 +59,15 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
+void CardEight::Save(ofstream& OutFile, Object_Type obj)
+{
+	if (obj != card)
+		return;
+	Card::Save(OutFile, obj);
+	OutFile << Bail << endl;
+}
+
 CardEight::~CardEight(void)
 {
+	CardCount--;
 }

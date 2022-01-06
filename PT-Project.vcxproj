@@ -146,6 +146,7 @@
     <ClCompile Include="CardTen.cpp" />
     <ClCompile Include="CardThree.cpp" />
     <ClCompile Include="CardTwelve.cpp" />
+    <ClCompile Include="CardTwo.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellPosition.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -221,6 +222,7 @@
     <ClInclude Include="CardTen.h" />
     <ClInclude Include="CardThree.h" />
     <ClInclude Include="CardTwelve.h" />
+    <ClInclude Include="CardTwo.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellPosition.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />

@@ -5,6 +5,10 @@ CardTwelve::CardTwelve(const CellPosition& pos):Card(pos)
 	cardNumber = 12;
 }
 
+void CardTwelve::ReadCardParameters(Grid* pGrid)
+{
+}
+
 void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Output *pOut = pGrid->GetOutput();

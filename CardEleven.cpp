@@ -70,6 +70,11 @@ void CardEleven::Save(ofstream& OutFile, Object_Type obj)
     OutFile << endl;
 }
 
+void CardEleven::reset_is_saved()
+{
+    issaved = 0;
+}
+
 void CardEleven::ReadCardParameters(Grid* pGrid)
 {
     Input* pIn = pGrid->GetInput();
