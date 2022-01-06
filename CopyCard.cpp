@@ -5,7 +5,7 @@ CopyCard::CopyCard(ApplicationManager* pApp): Action(pApp) {}
 
  void CopyCard::ReadActionParameters()
  {
-	Grid *pGrid;
+	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	pOut->PrintMessage("Click on the source cell to copy");
 	Input* pIn = pGrid->GetInput();
@@ -14,10 +14,13 @@ CopyCard::CopyCard(ApplicationManager* pApp): Action(pApp) {}
  }
  void	CopyCard:: Execute() 
  {
-	 Grid *pGrid;
-	 Card * card;
-	 Cell c(CopiedCell);
-	 card=c.HasCard();
-	 pGrid->SetClipboard(card);
+	ReadActionParameters();
+	Grid* pGrid = pManager->GetGrid();
+	Card* card =pGrid->CurrentCellCard(CopiedCell);
+	pGrid->SetClipboard(card);
+
+	 /*Grid* pGrid = pManager->GetGrid();
+	 CellPosition * card = CopiedCell;
+	 pGrid->SetClipboard(card);*/
  }
 CopyCard::~CopyCard() {}

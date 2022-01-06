@@ -1,7 +1,11 @@
 #include "OpenGrid.h"
-
 OpenGrid::OpenGrid(ApplicationManager* pApp) :Action(pApp)
 {
+	//when opening a new grid one of the necessary clean ups is to re-intialize the isSet flags with there
+	//initial value to be able to load cards 9,10,11 with new values 
+	CardNine::reset_is_Set();
+	CardTen::reset_is_Set();
+	CardEleven::reset_is_Set();
 }
 void OpenGrid::ReadActionParameters()
 {
@@ -10,7 +14,7 @@ void OpenGrid::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 	pOut->PrintMessage("Enter the file name to load data from:");
 	name = pIn->GetString(pOut);
-	InFile.open(name);
+	InFile.open(name+".txt");
 	pOut->ClearStatusBar();
 }
 void OpenGrid::Execute()
@@ -50,7 +54,50 @@ void OpenGrid::Execute()
 	InFile >> CardCount;
 	for (int i = 0;i < CardCount;i++)
 	{
-		GameObject* pCard = new Card(CellPosition(0)); //creating empty object
+		int cardNumber;
+		InFile >> cardNumber;
+		GameObject* pCard;
+		switch (cardNumber) //switch case to create empty card of specific number
+		{
+			
+		case 1:
+			pCard = new CardOne(0);
+			break;
+		case 2:
+				pCard = new CardTwo(0);
+				break;
+		case 3:
+			pCard = new CardThree(0);
+			break;
+		case 4:
+			pCard = new CardFour(0);
+			break;
+		case 5:
+			pCard = new CardFive(0);
+			break;
+		case 6:
+			pCard = new CardSix(0);
+			break;
+		case 7:
+			pCard = new CardSeven(0);
+			break;
+		case 8:
+			pCard = new CardEight(0);
+			break;
+		case 9:
+			pCard = new CardNine(0);
+			break;
+		case 10:
+			pCard = new CardTen(0);
+			break;
+		case 11:
+			pCard = new CardEleven(0);
+			break;
+		case 12:
+			pCard = new CardTwelve(0);
+			break;
+		
+		}
 		pCard->Load(InFile, card);
 		pGrid->AddObjectToCell(pCard);
 	}
@@ -61,4 +108,5 @@ void OpenGrid::Execute()
 
 OpenGrid::~OpenGrid()
 {
+	
 }

@@ -11,7 +11,8 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardSix on the passed Player
 													// if there is a gameobject its effect will be implemented
-													  
+	virtual void Load(ifstream& Infile, Object_Type obj);
+	virtual void Save(ofstream& OutFile, Object_Type obj);
 	virtual ~CardSix(); // A Virtual Destructor
 };
 

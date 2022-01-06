@@ -2,7 +2,6 @@
 
 Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position of the GameObject
 {
-	CardCount++;
 }
 
 void Card::SetCardNumber(int cnum)
@@ -41,12 +40,18 @@ void Card::Load(ifstream& Infile, Object_Type obj)
 {
 	if (obj != card)
 		return;
-	int cnum, cposition;
-	Infile >> cnum >> cposition;
-	SetCardNumber(cnum);
+
+	int  cposition;
+	Infile>>cposition;
+	
 	position = CellPosition::GetCellPositionFromNum(cposition);// setting the cell position to the correspoding cellnumber that is found in the load file
+	
 }
-void Card::Apply(Grid* pGrid, Player* pPlayer) 
+void Card::SetCardPos(CellPosition &pos)
+{
+	position = pos;	
+}
+void Card::Apply(Grid* pGrid, Player* pPlayer)
 {
 	// As written below the "Roll Dice" action in the document ==> Check the Project Document
 	// "If a player reaches a card of any other type", the following message should be printed then wait mouse click
@@ -56,5 +61,4 @@ void Card::Apply(Grid* pGrid, Player* pPlayer)
 int Card::CardCount = 0;
 Card::~Card()
 {
-	CardCount--;
 }

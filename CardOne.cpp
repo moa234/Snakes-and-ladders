@@ -5,11 +5,32 @@ using namespace std;
 
 CardOne::CardOne(const CellPosition & pos) : Card(pos) // set the cell position of the card
 {
+	CardCount++;
 	cardNumber = 1; // set the inherited cardNumber data member with the card number (1 here)
+}
+
+void CardOne::Load(ifstream& Infile, Object_Type obj)
+{
+	if (obj != card)
+		return;
+	Card::Load(Infile, obj);
+	int val;
+	Infile >> val;
+
+	walletAmount=val;
+}
+
+void CardOne::Save(ofstream& OutFile, Object_Type obj)
+{
+	if (obj != card)
+		return;
+	Card::Save(OutFile, obj);
+	OutFile << walletAmount << endl;
 }
 
 CardOne::~CardOne(void)
 {
+	CardCount--;
 }
 
 void CardOne::ReadCardParameters(Grid * pGrid)

@@ -146,6 +146,7 @@
     <ClCompile Include="CardTen.cpp" />
     <ClCompile Include="CardThree.cpp" />
     <ClCompile Include="CardTwelve.cpp" />
+    <ClCompile Include="CardTwo.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellPosition.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -193,9 +194,10 @@
     <ClCompile Include="InputDiceValue.cpp" />
     <ClCompile Include="Ladder.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NewGame.cpp" />
     <ClCompile Include="OpenGrid.cpp" />
     <ClCompile Include="Output.cpp" />
-    <ClCompile Include="Paste.cpp" />
+    <ClCompile Include="PasteCard.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RollDiceAction.cpp" />
     <ClCompile Include="SaveGrid.cpp" />
@@ -220,6 +222,7 @@
     <ClInclude Include="CardTen.h" />
     <ClInclude Include="CardThree.h" />
     <ClInclude Include="CardTwelve.h" />
+    <ClInclude Include="CardTwo.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellPosition.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -251,9 +254,10 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputDiceValue.h" />
     <ClInclude Include="Ladder.h" />
+    <ClInclude Include="NewGame.h" />
     <ClInclude Include="OpenGrid.h" />
     <ClInclude Include="Output.h" />
-    <ClInclude Include="Paste.h" />
+    <ClInclude Include="PasteCard.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RollDiceAction.h" />
     <ClInclude Include="SaveGrid.h" />

@@ -55,6 +55,7 @@ Snake * Cell::HasSnake() const
 	return dynamic_cast<Snake*>(pGameObject); // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
 }
 
+
 Card * Cell::HasCard() const
 {
 
@@ -69,15 +70,7 @@ Card * Cell::HasCard() const
 
 void Cell::DrawCellOrCard(Output* pOut) const
 {
-	// Checks if there is a Card on the cell
-	/*if (HasCard())
-	{
-		cout << "ok" << endl;
-	}
-	else
-	{
-		cout << "no" << endl;
-	}*/
+
 	if (HasCard()) // means if not NULL
 		pGameObject->Draw(pOut); // draw the card then
 	else
@@ -90,4 +83,10 @@ void Cell::DrawLadderOrSnake(Output* pOut) const
 	if (HasLadder() || HasSnake())
 		pGameObject->Draw(pOut); // draw it either ladder or snake
 
+}
+
+Cell::~Cell()
+{
+	if (pGameObject)// there is a game object
+		delete pGameObject;//delete this object
 }

@@ -38,15 +38,16 @@ Grid::Grid(Input *pIn, Output *pOut) : pIn(pIn), pOut(pOut) // Initializing pIn,
 
 bool Grid::AddObjectToCell(GameObject *pNewObject) // think if any validation is needed
 {
-	// Get the cell position of pNewObject
+														// Get the cell position of pNewObject
 	CellPosition pos = pNewObject->GetPosition();
-	if (pos.IsValidCell()) // Check if valid position
+	if (pos.IsValidCell())								 // Check if valid position
 	{
-		// Get the previous GameObject of the Cell
+														// Get the previous GameObject of the Cell
 		GameObject *pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if (pPrevObject)  // the cell already contains a game object
 			return false; // do NOT add and return false
-		// Set the game object of the Cell with the new game object
+		
+						  // Set the game object of the Cell with the new game object
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(pNewObject);
 
 		return true; // indicating that addition is done
@@ -95,8 +96,13 @@ void Grid::SetClipboard(Card *pCard) // to be used in copy/cut
 	// you may update slightly in implementation if you want (but without breaking responsibilities)
 	Clipboard = pCard;
 }
+/*void Grid::SetClipboard(CellPosition pCard) // to be used in copy/cut
+{
+	Clipboard = CellList[pCard.VCell()][pCard.HCell()]->GetGameObject();
+	// you may update slightly in implementation if you want (but without breaking responsibilities)
+}*/
 
-Card *Grid::GetClipboard() const // to be used in paste
+Card* Grid::GetClipboard() const // to be used in paste
 {
 	return Clipboard;
 }
@@ -111,11 +117,32 @@ bool Grid::GetEndGame() const
 	return endGame;
 }
 
+
 void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
 
+/*void Grid::Replay()
+{
+	if (currPlayerNumber == 0)
+	{
+		currPlayerNumber = MaxPlayerCount - 1;
+	}
+	else	if (currPlayerNumber == 1)
+	{
+		currPlayerNumber = 0;
+	}
+	else	if (currPlayerNumber == 2)
+	{
+		currPlayerNumber = 1;
+	}
+	else	if (currPlayerNumber == 3)
+	{
+		currPlayerNumber = 2;
+	}
+	// this generates value from MaxPlayerCount - 1 to 0
+}*/
 // ========= Other Getters =========
 
 Player *Grid::GetCurrentPlayer() const
@@ -131,7 +158,6 @@ Ladder *Grid::GetNextLadder(const CellPosition &position)
 	{
 		for (int j = startH; j < NumHorizontalCells; j++) // searching from startH and RIGHT
 		{
-			return CellList[i][j]->HasLadder();
 
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
 			if (CellList[i][j]->HasLadder())
@@ -217,16 +243,17 @@ GameObject* Grid::CurrentCellLadder(const CellPosition& position)
 	return current;
 }
 
-Player* Grid::MinWalletPlayer() const
+Player* Grid::MinWalletPlayer(int &who) const
 {
 	int min = PlayerList[0]->GetWallet();
 	Player *P = PlayerList[0];
-	for (int i = 1; i < 4; i++)
+	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		if (PlayerList[i]->GetWallet() < min)
 		{
 			min = PlayerList[i]->GetWallet();
 			P = PlayerList[i];
+			who = i;
 		}
 	}
 	return P;
@@ -245,6 +272,20 @@ int Grid::GetSnakeCount()
 int Grid::GetCardCount()
 {
 	return Card::GetObjectCount();
+}
+
+int Grid::GetCurrentPlayerNum() const
+{
+	return currPlayerNumber;
+}
+
+Card* Grid::CurrentCellCard(const CellPosition& position)
+{
+	//this function find whether the cell has a snake and return 
+	//pointer to this object if there is no snake it will return null
+	Card* current = CellList[position.VCell()][position.HCell()]->HasCard();
+
+	return current;
 }
 
 // ========= User Interface Functions =========
@@ -318,6 +359,36 @@ void Grid::SaveAll(ofstream& OutFile, Object_Type obj)
 	}
 }
 
+void Grid::NewGame()
+{
+	//Delete players drawings
+	
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		PlayerList[i]->ClearDrawing(pOut);
+	}
+	//reset the players 
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		delete PlayerList[i];
+	}
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		PlayerList[i] = new Player(CellList[NumVerticalCells - 1][0], i); // first cell
+		PlayerList[i]->Draw(pOut); // initially draw players in the first cell
+	}
+
+	// Initialize currPlayerNumber with 0 (first player)
+	currPlayerNumber = 0; // start with the first player
+
+	// Initialize Clipboard with NULL
+	Clipboard = NULL;
+
+	// Initialize endGame with false
+	endGame = false;
+
+}
+
 void Grid::ClearGrid()
 {
 	// Deallocate the Cell Objects of the CellList
@@ -344,7 +415,6 @@ void Grid::ClearGrid()
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		PlayerList[i] = new Player(CellList[NumVerticalCells - 1][0], i); // first cell
-		PlayerList[i]->Draw(pOut); // initially draw players in the first cell
 	}
 
 	// Initialize currPlayerNumber with 0 (first player)

@@ -11,7 +11,8 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 
 	virtual void ReadCardParameters(Grid * pGrid);
-
+	virtual void Load(ifstream& Infile, Object_Type obj);
+	virtual void Save(ofstream& OutFile, Object_Type obj);
 	~CardEight(void);
 
 };

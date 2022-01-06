@@ -1,8 +1,8 @@
 #include "CardSix.h"
 
-
 CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card position
 {
+	CardCount++; //increments the card count
 	cardNumber = 6;
 }
  void CardSix:: ReadCardParameters(Grid* pGrid)// Reads the parameters of CardSix which is: cell position to move to
@@ -11,7 +11,7 @@ CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card
 	 Output* pOut = pGrid->GetOutput();
 	 pOut->PrintMessage("Select cell number to move player to: ");
 	 CellPosition Cell_selected = pIn->GetCellClicked();
-	 pOut->PrintMessage("You have selected cell number " + to_string(Cell_selected.GetCellNum()) + " are you sure(y/n)? ");
+	 /*pOut->PrintMessage("You have selected cell number " + to_string(Cell_selected.GetCellNum()) + " are you sure(y/n)? ");
 	 string answer = pIn->GetString(pOut);
 	 while (answer == "n" || answer == "N") //double check on user input
 	 {
@@ -19,7 +19,7 @@ CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card
 		 Cell_selected = pIn->GetCellClicked();
 		 pOut->PrintMessage("You have selected cell number " + to_string(Cell_selected.GetCellNum()) + " are you sure(y/n)? ");
 		 answer = pIn->GetString(pOut);
-	 }
+	 }*/
 	 CP = Cell_selected;
 	 pOut->ClearStatusBar();
 }
@@ -35,7 +35,28 @@ CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card
 	 }
  }
 
+ void CardSix::Load(ifstream& Infile, Object_Type obj)
+ {
+	
+	 if (obj != card)
+		 return;
+	 Card::Load(Infile, obj);
+	 int cellnum;
+	 Infile >> cellnum;
+	 
+	 CP = CellPosition(cellnum);
+	 
+ }
+
+ void CardSix::Save(ofstream& OutFile, Object_Type obj)
+ {
+	 if (obj != card)
+		 return;
+	 Card::Save(OutFile, obj);
+	 OutFile << CP.GetCellNum() << endl;
+ }
+
  CardSix:: ~CardSix()
  {
-
+	 CardCount--; //decrement the card count
   }

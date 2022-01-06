@@ -11,7 +11,7 @@ void SaveGrid::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 	pOut->PrintMessage("Enter the file name to save data into:");
 	name=pIn->GetString(pOut);
-	OutFile.open(name);
+	OutFile.open(name+".txt");
 	pOut->ClearStatusBar();
 }
 
@@ -24,7 +24,7 @@ void SaveGrid::Execute()
 	int ladderCount, SnakeCount, CardCount; //variables to store count of game objects
 	ladderCount = pGrid->GetLadderCount();// storing the number of occurance
 	SnakeCount = pGrid->GetSnakeCount();
-	CardCount = pGrid->GetLadderCount();
+	CardCount = pGrid->GetCardCount();
 	OutFile << ladderCount << endl; //printing as required file format
 	pGrid->SaveAll(OutFile, ladder); //calling SaveAll in Grid to be able to Call Save of ladder objects in the cell list
 	OutFile << SnakeCount << endl;
@@ -37,4 +37,10 @@ void SaveGrid::Execute()
 
 SaveGrid::~SaveGrid()
 {
+	//we need at the end of save action to reset issaved parameter in cards 9,10,11 because
+	//user may want to save again in the same program execution so to be able to execute SaveGrid again
+	//the variables assosiated with saving must be reseted to its intial value
+	CardNine::reset_is_saved();
+	CardTen::reset_is_saved();
+	CardEleven::reset_is_saved();
 }

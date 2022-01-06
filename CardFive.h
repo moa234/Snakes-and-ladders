@@ -3,11 +3,13 @@
 #include "Card.h"
 
 class CardFive : public Card {
-    int roll;
+  
 
     public:
         CardFive(const CellPosition& pos);
+        virtual void ReadCardParameters(Grid* pGrid);// no parameters to read
         virtual void Apply(Grid* pGrid, Player* pPlayer);
+        virtual void Save(ofstream& OutFile, Object_Type obj);
         ~CardFive();
 
 };

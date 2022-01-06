@@ -10,6 +10,11 @@
 #include "OpenGrid.h"
 #include "SwitchToPlayModeAction.h"
 #include "SwitchToDesignModeAction.h"
+#include "CopyCard.h"
+#include "CutCard.h"
+#include "PasteCard.h"
+#include "NewGame.h"
+
 
 ///TODO: Add #include for all action types
 
@@ -70,6 +75,18 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddSnake(this);
 		break;
 
+	case COPY_CARD:
+		pAct = new CopyCard(this);
+		break;
+
+	case CUT_CARD:
+		pAct = new CutCard(this);
+		break;
+
+	case PASTE_CARD:
+		pAct = new PasteCard(this);
+		break;		
+
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
@@ -91,12 +108,18 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new InputDiceValue(this);
 		break;
 
+	case NEW_GAME:
+		pAct = new NewGame(this);
+		break;
+
 	case TO_DESIGN_MODE:
 		pAct = new SwitchToDesignModeAction(this);
 		break;
+
 	case SAVE_GRID:
 		pAct = new SaveGrid(this);
 		break;
+
 	case OPEN_GRID:
 		pAct = new OpenGrid(this);
 		break;

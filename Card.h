@@ -23,7 +23,7 @@ public:
 
 	virtual void ReadCardParameters(Grid * pGrid); // It reads the parameters specific for each Card Type
 	                                               // It is a virtual function (implementation depends on Card Type)
-
+	void SetCardPos(CellPosition &pos);
 	virtual void Apply(Grid* pGrid, Player* pPlayer);  // It applies the effect of the Card Type on the passed player
 	                                                   // It is a virtual function (implementation depends on Card Type)
 	virtual void Load(ifstream& Infile, Object_Type obj);

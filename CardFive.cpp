@@ -4,7 +4,12 @@
 using namespace std;
 CardFive::CardFive(const CellPosition & pos) : Card(pos) // set the cell position of the card
 {
+	CardCount++;
 	cardNumber = 5; 
+}
+
+void CardFive::ReadCardParameters(Grid* pGrid)
+{
 }
 
 
@@ -23,6 +28,17 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer) {
 	 }
 }
 
+void CardFive::Save(ofstream& OutFile, Object_Type obj)
+{
+	if (obj != card)
+		return;
+	Card::Save(OutFile, obj);
+	OutFile << endl;
+}
+
+CardFive::~CardFive(){
+	CardCount--;
+}
 
 
 

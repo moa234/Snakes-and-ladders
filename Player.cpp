@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include "Card.h"
 #include "GameObject.h"
 
 Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
@@ -25,7 +25,13 @@ Cell* Player::GetCell() const
 
 void Player::SetWallet(int wallet)
 {
-	this->wallet = wallet;
+	if (wallet < 0 )
+	{
+		this->wallet = 0;
+		return;
+	}
+		this->wallet = wallet;
+	
 	// Make any needed validations
 }
 
@@ -58,7 +64,7 @@ void Player::SetDoNotPlay(int penalty) //penalty should be from -1 to 3
 }
 int Player::GetDoNotPlay() 
 {
-	return DoNotPlay;
+	return this->DoNotPlay;
 }
 // ====== Drawing Functions ======
 
@@ -94,17 +100,36 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
-
-	turnCount += 1;
 	
-	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
-	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
-	
-	if (turnCount == 3)
+	if (diceNumber == 0)
 	{
-		wallet += 10 * diceNumber;
-		turnCount = 0;
+		turnCount += 1;
+		if (turnCount == 3)
+		{
+			wallet += 10 * diceNumber;
+			turnCount = 0;
+			return;
+		}
 		return;
+	}
+	if (DoNotPlay == 0)
+	{
+		int cardval = (pCell->GetGameObject()) ? dynamic_cast<Card*>(pCell->GetGameObject())->GetCardNumber() : 0;;
+		if (cardval != 3)
+		{
+			turnCount += 1;
+
+			// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
+			//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
+
+			if (turnCount == 3)
+			{
+				wallet += 10 * diceNumber;
+				turnCount = 0;
+				return;
+			}
+		}
+
 	}
 
 	// 3- Set the justRolledDiceNum with the passed diceNumber

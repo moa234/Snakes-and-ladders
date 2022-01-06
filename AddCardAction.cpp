@@ -3,15 +3,26 @@
 #include "Input.h"
 #include "Output.h"
 #include "CardOne.h"
-#include "CardSix.h"
+#include "CardTwo.h"
+#include "CardThree.h"
+#include "CardFour.h"
 #include "CardFive.h"
+#include "CardSix.h"
 #include "CardSeven.h"
+#include "CardEight.h"
+#include "CardNine.h"
+#include "CardTen.h"
+#include "CardEleven.h"
+#include "CardTwelve.h"
+
+
 
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
 	pManager=pApp;
 	// Initializes the pManager pointer of Action with the passed pointer
+	Can_Add = 1; // intializes Can_Add flag with 1 
 }
 
 AddCardAction::~AddCardAction()
@@ -48,7 +59,12 @@ void AddCardAction::ReadActionParameters()
 	cardNumber = cnum;
 	pOut->PrintMessage("Select card postion on the grid"); //taking from the user the cell position from the grid to set the card cell position with
 	CellPosition CP = pIn->GetCellClicked();
-	pOut->PrintMessage("You have selected cell number " + to_string(CP.GetCellNum()) + " are you sure(y/n)? ");
+	if (CP.GetCellNum() == 1 || CP.GetCellNum() == 99)
+	{
+		pGrid->PrintErrorMessage("You can't add a card in the First/Last cell, Click anywhere to continue");
+		Can_Add = 0;
+	}
+	/*pOut->PrintMessage("You have selected cell number " + to_string(CP.GetCellNum()) + " are you sure(y/n)? ");
 	string answer = pIn->GetString(pOut);
 	while (answer == "n" || answer == "N") //double check on user input
 	{
@@ -56,24 +72,24 @@ void AddCardAction::ReadActionParameters()
 		CP = pIn->GetCellClicked();
 		pOut->PrintMessage("You have selected cell number " + to_string(CP.GetCellNum()) + " are you sure(y/n)? ");
 		answer = pIn->GetString(pOut);
-	}
+	}*/
+	
 	cardPosition = CP;
-
 	pOut->ClearStatusBar();
 }
 
 void AddCardAction::Execute() 
 {
-
 	
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-	
+
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- The first line of any Action Execution is to read its parameter first
 
 	ReadActionParameters();
-
+	if (!Can_Add)
+		return;
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
 	Card * pCard = NULL; // will point to the card object type
 	switch (cardNumber)
@@ -81,7 +97,7 @@ void AddCardAction::Execute()
 	case 1:
 		pCard = new CardOne(cardPosition);
 		break;
-	/*case 2:
+	case 2:
 		pCard = new CardTwo(cardPosition);
 		break;
 	case 3:
@@ -89,19 +105,17 @@ void AddCardAction::Execute()
 		break;
 	case 4:
 		pCard = new CardFour(cardPosition);
-		break;*/
+		break;
 	case 5:
 		pCard = new CardFive(cardPosition); 
 		break;
-
-	//	//....
 	case 6:
 		pCard = new CardSix(cardPosition);
 		break;
 	case 7:
 		pCard = new CardSeven(cardPosition);
 		break;
-	/*case 8:
+	case 8:
 		pCard = new CardEight(cardPosition);
 		break;
 	case 9:
@@ -116,7 +130,7 @@ void AddCardAction::Execute()
 	case 12:
 		pCard = new CardTwelve(cardPosition);
 		break;
-*/
+
 
 
 
@@ -132,7 +146,7 @@ void AddCardAction::Execute()
 		if (!added)
 		{
 			pGrid->PrintErrorMessage("Error: This cell already has a card! Click to continue ...");
-			delete pGrid;// there is no need to continue storing the Card because it will already not be added 
+			delete pCard;// there is no need to continue storing the Card because it will already not be added 
 		}
 		// A- We get a pointer to the Grid from the ApplicationManager
 

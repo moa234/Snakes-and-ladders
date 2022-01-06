@@ -2,6 +2,7 @@
 
 CardSeven::CardSeven(const CellPosition& pos) :Card(pos), firstCell(1)
 {
+	CardCount++;
 	cardNumber = 7;
 }
 
@@ -28,6 +29,15 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 	}
 }
 
+void CardSeven::Save(ofstream& OutFile, Object_Type obj)
+{
+	if (obj != card)
+		return;
+	Card::Save(OutFile, obj);
+	OutFile << endl;
+}
+
 CardSeven::~CardSeven()
 {
+	CardCount--;
 }
