@@ -38,15 +38,16 @@ Grid::Grid(Input *pIn, Output *pOut) : pIn(pIn), pOut(pOut) // Initializing pIn,
 
 bool Grid::AddObjectToCell(GameObject *pNewObject) // think if any validation is needed
 {
-	// Get the cell position of pNewObject
+														// Get the cell position of pNewObject
 	CellPosition pos = pNewObject->GetPosition();
-	if (pos.IsValidCell()) // Check if valid position
+	if (pos.IsValidCell())								 // Check if valid position
 	{
-		// Get the previous GameObject of the Cell
+														// Get the previous GameObject of the Cell
 		GameObject *pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if (pPrevObject)  // the cell already contains a game object
 			return false; // do NOT add and return false
-		// Set the game object of the Cell with the new game object
+		
+						  // Set the game object of the Cell with the new game object
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(pNewObject);
 
 		return true; // indicating that addition is done
@@ -95,8 +96,13 @@ void Grid::SetClipboard(Card *pCard) // to be used in copy/cut
 	// you may update slightly in implementation if you want (but without breaking responsibilities)
 	Clipboard = pCard;
 }
+/*void Grid::SetClipboard(CellPosition pCard) // to be used in copy/cut
+{
+	Clipboard = CellList[pCard.VCell()][pCard.HCell()]->GetGameObject();
+	// you may update slightly in implementation if you want (but without breaking responsibilities)
+}*/
 
-Card *Grid::GetClipboard() const // to be used in paste
+Card* Grid::GetClipboard() const // to be used in paste
 {
 	return Clipboard;
 }
@@ -116,8 +122,8 @@ void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
-/*
-void Grid::Replay()
+
+/*void Grid::Replay()
 {
 	if (currPlayerNumber == 0)
 	{
@@ -271,6 +277,15 @@ int Grid::GetCardCount()
 int Grid::GetCurrentPlayerNum() const
 {
 	return currPlayerNumber;
+}
+
+Card* Grid::CurrentCellCard(const CellPosition& position)
+{
+	//this function find whether the cell has a snake and return 
+	//pointer to this object if there is no snake it will return null
+	Card* current = CellList[position.VCell()][position.HCell()]->HasCard();
+
+	return current;
 }
 
 // ========= User Interface Functions =========

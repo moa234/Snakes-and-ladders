@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include "Card.h"
 #include "GameObject.h"
 
 Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
@@ -114,17 +114,22 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	}
 	if (DoNotPlay == 0)
 	{
-		turnCount += 1;
-
-		// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
-		//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
-
-		if (turnCount == 3)
+		int cardval = (pCell->GetGameObject()) ? dynamic_cast<Card*>(pCell->GetGameObject())->GetCardNumber() : 0;;
+		if (cardval != 3)
 		{
-			wallet += 10 * diceNumber;
-			turnCount = 0;
-			return;
+			turnCount += 1;
+
+			// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
+			//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
+
+			if (turnCount == 3)
+			{
+				wallet += 10 * diceNumber;
+				turnCount = 0;
+				return;
+			}
 		}
+
 	}
 
 	// 3- Set the justRolledDiceNum with the passed diceNumber

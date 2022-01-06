@@ -1,6 +1,7 @@
 #include "PasteCard.h"
 #include "Grid.h"
-
+#include"GameObject.h"
+#include "Card.h"
 
 PasteCard::PasteCard(ApplicationManager* pApp): Action(pApp) {}
 
@@ -19,19 +20,25 @@ void PasteCard:: ReadActionParameters()
 
 void PasteCard::Execute()
 {
+	ReadActionParameters();
+
 	Grid* pGrid = pManager->GetGrid();
-	Card * card;
-	 Cell c(PasteCell);
-	card= pGrid->GetClipboard();
+	Card * cardp = pGrid->GetClipboard();
+	if (cardp)
+	{
+		cardp->SetCardPos(PasteCell);
+		bool added = pGrid->AddObjectToCell(cardp);
+		if (!added)
+		{
+			pGrid->PrintErrorMessage("Cell contains an object, can't paste ! Click to continue. . . . .");
+			this->Execute();
+		}
+	}
+	//cardp->SetCardPos(PasteCell);
+	//bool x=pGrid->AddObjectToCell(pGobj);
  }
-
-
-
-
-
-
-
-
-
-
+/*
+pCard->ReadCardParameters(pGrid);
+bool added = pGrid->AddObjectToCell(pCard);
+*/
 PasteCard::~PasteCard(){}

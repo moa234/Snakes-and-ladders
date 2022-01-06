@@ -82,8 +82,8 @@ Abdelrahman
 */
 
   //da el code el aslyy isA mane7taghoo4
-
-	bool ended = pManager->GetGrid()->GetEndGame();
+	Grid* pGrid = pManager->GetGrid();
+	bool ended = pGrid->GetEndGame();
 	if (ended)
 	{
 		return;
@@ -96,9 +96,10 @@ Abdelrahman
 		currentplayer->SetDoNotPlay((currentplayer->GetDoNotPlay()) - 1);
 		currentplayer->Move(pManager->GetGrid(), 0);
 
-		pManager->GetGrid()->AdvanceCurrentPlayer();
+		pGrid->AdvanceCurrentPlayer();
 		return;
 	}
+
 	srand((int)time(NULL));
 	int diceNumber = 1 + rand() % 6; 
 	currentplayer->SetRolledDiceNum(diceNumber);
@@ -107,11 +108,10 @@ Abdelrahman
 	if (currentplayer->GetDoNotPlay() ==-1)
 	{
 		currentplayer->SetDoNotPlay(0);
-		pManager->GetGrid()->AdvanceCurrentPlayer();
 		return;
 	}
 
-	pManager->GetGrid()->AdvanceCurrentPlayer();
+	pGrid->AdvanceCurrentPlayer();
 
 }
 

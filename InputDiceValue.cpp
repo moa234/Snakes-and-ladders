@@ -21,16 +21,35 @@ void InputDiceValue::ReadActionParameters()
 		pOut->PrintMessage("Re-enter dice value");
 		dicevalue = pIn->GetInteger(pOut);
 	}
+	pOut->ClearStatusBar();
 }
 
 void InputDiceValue::Execute()
 {
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
-	pGrid->GetCurrentPlayer()->Move(pGrid, dicevalue);
-	pGrid->AdvanceCurrentPlayer();
-	pGrid->GetOutput()->ClearStatusBar();
+	Player* currentplayer = pGrid->GetCurrentPlayer();
+
 	
+	if (currentplayer->GetDoNotPlay() > 0)
+	{
+
+		currentplayer->SetDoNotPlay((currentplayer->GetDoNotPlay()) - 1);
+		currentplayer->Move(pManager->GetGrid(), 0);
+
+		pGrid->AdvanceCurrentPlayer();
+		return;
+	}
+
+	currentplayer->SetRolledDiceNum(dicevalue);
+	currentplayer->Move(pManager->GetGrid(), dicevalue);
+
+	if (currentplayer->GetDoNotPlay() == -1)
+	{
+		currentplayer->SetDoNotPlay(0);
+		return;
+	}
+	pGrid->AdvanceCurrentPlayer();
 }
 
 InputDiceValue::~InputDiceValue()

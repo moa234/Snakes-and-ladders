@@ -47,7 +47,11 @@ void Card::Load(ifstream& Infile, Object_Type obj)
 	position = CellPosition::GetCellPositionFromNum(cposition);// setting the cell position to the correspoding cellnumber that is found in the load file
 	
 }
-void Card::Apply(Grid* pGrid, Player* pPlayer) 
+void Card::SetCardPos(CellPosition &pos)
+{
+	position = pos;	
+}
+void Card::Apply(Grid* pGrid, Player* pPlayer)
 {
 	// As written below the "Roll Dice" action in the document ==> Check the Project Document
 	// "If a player reaches a card of any other type", the following message should be printed then wait mouse click

@@ -14,10 +14,13 @@ CopyCard::CopyCard(ApplicationManager* pApp): Action(pApp) {}
  }
  void	CopyCard:: Execute() 
  {
-	 Grid* pGrid = pManager->GetGrid();
-	 Card * card;
-	 Cell c(CopiedCell);
-	 card=c.HasCard();
-	 pGrid->SetClipboard(card);
+	ReadActionParameters();
+	Grid* pGrid = pManager->GetGrid();
+	Card* card =pGrid->CurrentCellCard(CopiedCell);
+	pGrid->SetClipboard(card);
+
+	 /*Grid* pGrid = pManager->GetGrid();
+	 CellPosition * card = CopiedCell;
+	 pGrid->SetClipboard(card);*/
  }
 CopyCard::~CopyCard() {}

@@ -55,6 +55,7 @@ Snake * Cell::HasSnake() const
 	return dynamic_cast<Snake*>(pGameObject); // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
 }
 
+
 Card * Cell::HasCard() const
 {
 

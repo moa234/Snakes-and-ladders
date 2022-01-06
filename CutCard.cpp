@@ -14,11 +14,12 @@ void CutCard::ReadActionParameters()
  }
 void CutCard::Execute() 
 {
+	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
-	 Card * card1;
-	 Cell c(CutCell);
-	 card1=c.HasCard();
-	 pGrid->SetClipboard(card1);
+
+	Card* card = pGrid->CurrentCellCard(CutCell);
+	pGrid->SetClipboard(card);
+
 	 const CellPosition cc(CutCell);
 	 pGrid->RemoveObjectFromCell(cc);
 }

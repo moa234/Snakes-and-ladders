@@ -76,9 +76,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case COPY_CARD:
 		pAct = new CopyCard(this);
 		break;
+
 	case CUT_CARD:
 		pAct = new CutCard(this);
 		break;
+
 	case PASTE_CARD:
 		pAct = new PasteCard(this);
 		break;		
@@ -111,9 +113,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case TO_DESIGN_MODE:
 		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
+
 	case SAVE_GRID:
 		pAct = new SaveGrid(this);
 		break;
+
 	case OPEN_GRID:
 		pAct = new OpenGrid(this);
 		break;
