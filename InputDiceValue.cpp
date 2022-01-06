@@ -1,5 +1,5 @@
 #include "InputDiceValue.h"
-# include "Grid.h"
+#include "Grid.h"
 #include "Player.h"
 
 InputDiceValue::InputDiceValue(ApplicationManager* pApp) : Action(pApp)
@@ -11,14 +11,15 @@ void InputDiceValue::ReadActionParameters()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	pOut->PrintMessage("Enter the dice value:");
+	pOut->PrintMessage("Please enter a dice value between 1-6: ");
 
 	dicevalue = pIn->GetInteger(pOut); // read dice number from the user
 
-	if (dicevalue > 6 || dicevalue < 0)
+	while (dicevalue > 6 || dicevalue < 1)
 	{
-		dicevalue = 0;
 		pGrid->PrintErrorMessage("Invalid dice value! click to continue ...");
+		pOut->PrintMessage("Re-enter dice value");
+		dicevalue = pIn->GetInteger(pOut);
 	}
 }
 

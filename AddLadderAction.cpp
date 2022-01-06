@@ -35,8 +35,18 @@ void AddLadderAction::ReadActionParameters()
 
 
 	///TODO: Make the needed validations on the read parameters
-
-	if (startPos.GetCellNum() >= endPos.GetCellNum())
+	if (startPos.HCell() == -1 || endPos.VCell() == -1)
+	{
+		//error
+		valid = 0;
+		pGrid->PrintErrorMessage("Error: Snake cannot be added outside grid! Click to continue ...");
+	}
+	else if (startPos.GetCellNum() == 1)
+	{
+		valid = 0;
+		pGrid->PrintErrorMessage("Error: Cannot add ladder to first cell! Click to continue ...");
+	}
+	else if (startPos.GetCellNum() >= endPos.GetCellNum())
 	{
 		//error
 		valid = 0;
@@ -48,10 +58,15 @@ void AddLadderAction::ReadActionParameters()
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: start cell and endcell cannot be in a different column! Click to continue ...");
 	}
-	else if (pGrid->CurrentCellObject(endPos) != NULL)
+	else if (pGrid->CurrentCellSnake(endPos) != NULL)
 	{
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: endcell cannot contain snake! Click to continue ...");
+	}
+	else if (pGrid->CurrentCellLadder(endPos) != NULL)
+	{
+		valid = 0;
+		pGrid->PrintErrorMessage("Error: endcell cannot contain Ladder! Click to continue ...");
 	}
 	CellPosition col(0,startPos.HCell());
 	for (int i = 0; i < 8; i++)
