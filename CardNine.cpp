@@ -42,6 +42,13 @@ bool CardNine::isOwner(const Player* Check_Owner)
 
 
 
+Card* CardNine::CopyCard()
+{
+    Card* copy = new CardNine(0);
+    CardCount--;
+    return copy;
+}
+
 Card* CardNine::PasteCard()
 {
     Card* copy = new CardNine(0);

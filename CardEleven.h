@@ -17,12 +17,13 @@ public:
     static bool isOwner(const Player* Check_Owner); // checks that the send player is the owner of the card or not
    // static Player* GetOwner();
     virtual Card* PasteCard();
+    virtual Card* CopyCard();
     virtual void Load(ifstream& Infile, Object_Type obj);
     virtual void Save(ofstream& OutFile, Object_Type obj);
     static  void reset_is_saved();
     static void reset_is_Set();
     virtual void ReadCardParameters(Grid* pGrid);
-    virtual void Apply(Grid* pGrid, Player* pPlayer);
+    virtual void Apply(Grid * pGrid, Player * pPlayer);
     virtual ~CardEleven();
 };
 

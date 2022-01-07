@@ -29,6 +29,12 @@ Card* CardThree::PasteCard()
 	Card* copy = new CardThree(0);
 	return copy;
 }
+Card* CardThree::CopyCard()
+{
+	Card* copy = new CardThree(0);
+	CardCount--;
+	return copy;
+}
 void CardThree::Save(ofstream& OutFile, Object_Type obj)
 {
 	if (obj != card)

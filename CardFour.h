@@ -9,5 +9,6 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 	virtual void Save(ofstream& OutFile, Object_Type obj);
 	virtual Card* PasteCard();
+	virtual Card* CopyCard();
 	~CardFour(void);
 };

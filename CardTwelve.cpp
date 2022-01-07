@@ -15,6 +15,13 @@ Card* CardTwelve::PasteCard()
 	return copy;
 }
 
+Card* CardTwelve::CopyCard()
+{
+	Card* copy = new CardTwelve(0);
+	CardCount--;
+	return copy;
+}
+
 void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Output *pOut = pGrid->GetOutput();

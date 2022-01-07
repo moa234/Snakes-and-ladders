@@ -37,15 +37,7 @@ int Card::GetObjectCount()
 	return CardCount;
 }
 
-void Card::IncementCardCount()
-{
-	CardCount++;
-}
 
-void Card::DecrementCardCount()
-{
-	CardCount--;
-}
 
 void Card::Load(ifstream& Infile, Object_Type obj)
 {
