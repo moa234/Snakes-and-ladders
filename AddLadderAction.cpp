@@ -69,7 +69,7 @@ void AddLadderAction::ReadActionParameters()
 		pGrid->PrintErrorMessage("Error: endcell cannot contain Ladder! Click to continue ...");
 	}
 	CellPosition col(0,startPos.HCell());
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i <= 8; i++)
 	{
 		GameObject* snake = pGrid->CurrentCellSnake(col);
 		
