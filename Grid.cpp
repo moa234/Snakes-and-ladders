@@ -109,6 +109,7 @@ void Grid::SetEndGame(bool endGame)
 {
 	if (endGame)
 	{
+		// print message with the winner player if ended
 		PrintErrorMessage("Player " + to_string(GetCurrentPlayerNum()) + " is the winner, Click new game to restart game");
 	}
 	this->endGame = endGame;
@@ -163,7 +164,7 @@ Player* Grid::GetNextPlayer(const CellPosition& position)
 		{
 
 
-			///TODO: Check if CellList[i][j] has a ladder, if yes return it
+			///TODO: Check if CellList[i][j] has a player, if yes return it
 			for (int k = 0; k < 4; k++)
 			{
 				if (CellList[i][j]->GetCellPosition().GetCellNum() == PlayerList[k]->GetCell()->GetCellPosition().GetCellNum())
@@ -180,11 +181,11 @@ Player* Grid::GetNextPlayer(const CellPosition& position)
 
 Player* Grid::CheckCurrentCellPlayer(const CellPosition& position, int pnum)
 {
-	if (PlayerList[pnum]->GetCell()->GetCellPosition().GetCellNum() == position.GetCellNum())
+	if (PlayerList[pnum]->GetCell()->GetCellPosition().GetCellNum() == position.GetCellNum()) // cehck if position given is the same as player cell position
 	{
 		return PlayerList[pnum];
 	}
-	return NULL;
+	return NULL; // not found
 }
 
 GameObject* Grid::CurrentCellObject(const CellPosition& position)
@@ -228,6 +229,8 @@ GameObject* Grid::CurrentCellLadder(const CellPosition& position)
 
 Player* Grid::MinWalletPlayer(int &who) const
 {
+	// who is the index of least amount of coins player
+	// this function returns the player who has the least amount of coins
 	int min = PlayerList[0]->GetWallet();
 	Player *P = PlayerList[0];
 	for (int i = 0; i < MaxPlayerCount; i++)
