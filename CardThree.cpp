@@ -21,14 +21,12 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 	pOut->ClearStatusBar();
 }
 
-//paste Card
 Card* CardThree::PasteCard()
 {
 	Card* copy = new CardThree(0);
 	return copy;
 }
 
-//Copy Card
 Card* CardThree::CopyCard()
 {
 	Card* copy = new CardThree(0);
@@ -36,7 +34,6 @@ Card* CardThree::CopyCard()
 	return copy;
 }
 
-//Save Card
 void CardThree::Save(ofstream& OutFile, Object_Type obj)
 {
 	if (obj != card)

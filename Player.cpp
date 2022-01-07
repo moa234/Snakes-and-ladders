@@ -53,12 +53,12 @@ void Player::DeductWallet(int val)
 	// deduct given amount
 }
 
-bool Player::EnoughCredit(int val)
+bool Player::EnoughCredit(int val)// checks if money of player is bigger than value of fees to set the wallet with 0 not negative
 {
 	return (wallet>=val);
 }
 
-void Player::IncrementWallet(int val)
+void Player::IncrementWallet(int val)//increases the value of the wallet wit the passed value
 {
 	wallet += val;
 }
