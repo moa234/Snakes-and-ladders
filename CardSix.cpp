@@ -45,6 +45,7 @@ CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card
  Card* CardSix::CopyCard()
  {
 	 CardSix* copy = new CardSix(0);
+	 copy->CP = this->CP;
 	 CardCount--;
 	 return copy;
  }
