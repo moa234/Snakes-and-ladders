@@ -131,7 +131,8 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		}
 		return;
 	}
-		//getting card number to prevent turnCount from increasing if the player stopped on two consecutive CardThree.
+	
+	//getting card number to prevent turnCount from increasing if the player stopped on two consecutive CardThree.
 	int cardval = (pCell->GetGameObject()) ? dynamic_cast<Card*>(pCell->GetGameObject())->GetCardNumber() : 0;;
 	if (cardval != 3)//
 	{
