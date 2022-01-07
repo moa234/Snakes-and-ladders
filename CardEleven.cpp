@@ -92,7 +92,7 @@ void CardEleven::ReadCardParameters(Grid* pGrid)
     Output* pOut = pGrid->GetOutput();
     if (!isSet)
     {
-        pGrid->PrintErrorMessage("You have to pay money for the owner of the cell, Click anywhere to continue");
+        pOut->PrintMessage("Set the purchase price of this card: ");
         int Purchaseprice = pIn->GetInteger(pOut);
         while (!SetPurchasePrice(Purchaseprice))
         {
