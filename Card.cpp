@@ -32,12 +32,11 @@ void Card::Save(ofstream& OutFile, Object_Type obj)
 		return;
 	OutFile << cardNumber << " " << position.GetCellNum() << " "; // output the card num and it's cell becacuse this step will be printed for all Cards therefore it's implemented in base class
 }
+
 int Card::GetObjectCount()
 {
 	return CardCount;
 }
-
-
 
 void Card::Load(ifstream& Infile, Object_Type obj)
 {
