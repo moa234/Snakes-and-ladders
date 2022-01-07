@@ -9,9 +9,9 @@ void CardTwelve::ReadCardParameters(Grid* pGrid)
 {
 }
 
-Card* CardTwelve::PasteCard(CellPosition newPos)
+Card* CardTwelve::PasteCard()
 {
-	Card* copy = new CardTwelve(newPos);
+	Card* copy = new CardTwelve(0);
 	*copy = *this;
 	return copy;
 }

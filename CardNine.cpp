@@ -42,9 +42,9 @@ bool CardNine::isOwner(const Player* Check_Owner)
 
 
 
-Card* CardNine::PasteCard(CellPosition newPos)
+Card* CardNine::PasteCard()
 {
-    Card* copy = new CardNine(newPos);
+    Card* copy = new CardNine(0);
     *copy = *this;
     return copy;
 }

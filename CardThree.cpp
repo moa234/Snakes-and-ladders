@@ -24,9 +24,9 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
-Card* CardThree::PasteCard(CellPosition newPos)
+Card* CardThree::PasteCard()
 {
-	Card* copy = new CardThree(newPos);
+	Card* copy = new CardThree(0);
 	*copy = *this;
 	return copy;
 }

@@ -24,9 +24,9 @@ CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card
 	 pOut->ClearStatusBar();
 }
 
- Card* CardSix::PasteCard(CellPosition newPos)
+ Card* CardSix::PasteCard()
  {
-	 Card* copy = new CardSix(newPos);
+	 Card* copy = new CardSix(0);
 	 *copy = *this;
 	 return copy;
  }

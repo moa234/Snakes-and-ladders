@@ -16,9 +16,9 @@ void CardTwo::Save(ofstream& OutFile, Object_Type obj)
 	Card::Save(OutFile, obj);
 	OutFile << endl;
 }
-Card* CardTwo::PasteCard(CellPosition newPos)
+Card* CardTwo::PasteCard()
 {
-    Card* copy = new CardTwo(newPos);
+    Card* copy = new CardTwo(0);
     *copy = *this;
     return copy;
 }
