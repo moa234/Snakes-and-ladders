@@ -8,7 +8,7 @@ CardFive::CardFive(const CellPosition & pos) : Card(pos) // set the cell positio
 	cardNumber = 5; 
 }
 
-void CardFive::ReadCardParameters(Grid* pGrid)
+void CardFive::ReadCardParameters(Grid* pGrid) //Card five doesn't take parameters from user it immedietly applies its effect
 {
 }
 
@@ -17,11 +17,11 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer) {
 		
  Card::Apply(pGrid, pPlayer);
  pGrid->PrintErrorMessage("You have reached card five. Go back with same amount you rolled");
-	int diceValueRolled = pPlayer->GetRolledDiceNum();
+	int diceValueRolled = pPlayer->GetRolledDiceNum(); //Get the rolled dice number to go back with the same amount
 
-	CellPosition playerCellPosition = pPlayer->GetCell()->GetCellPosition();
-	playerCellPosition.AddCellNum(-1 * diceValueRolled);
-	pGrid->UpdatePlayerCell(pPlayer, playerCellPosition);
+	CellPosition playerCellPosition = pPlayer->GetCell()->GetCellPosition(); //Get player position to go back again
+	playerCellPosition.AddCellNum(-1 * diceValueRolled); // Multiply by -1 to go backwards
+	pGrid->UpdatePlayerCell(pPlayer, playerCellPosition);  //Update player cell to move this player backwards
  GameObject* Object = pGrid->CurrentCellObject(playerCellPosition);
 	 if (Object) //if the  player moved to cell contains an object
 	 {
