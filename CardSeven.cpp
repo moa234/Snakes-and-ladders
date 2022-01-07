@@ -10,6 +10,13 @@ void CardSeven::ReadCardParameters(Grid* pGrid)
 {
 }
 
+Card* CardSeven::PasteCard(CellPosition newPos)
+{
+	Card* copy = new CardSeven(newPos);
+	*copy = *this;
+	return copy;
+}
+
 void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);

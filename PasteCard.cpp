@@ -23,10 +23,9 @@ void PasteCard::Execute()
 	ReadActionParameters();
 
 	Grid* pGrid = pManager->GetGrid();
-	Card * cardp = pGrid->GetClipboard()->PasteCard();
+	Card * cardp = pGrid->GetClipboard()->PasteCard(PasteCell);
 	if (cardp)
 	{
-		cardp->SetCardPos(PasteCell);
 		bool added = pGrid->AddObjectToCell(cardp);
 		if (!added)
 		{
