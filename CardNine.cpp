@@ -120,14 +120,14 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 
         if (answ == "yes")
         {
-            if (pPlayer->GetWallet() >= Purchase_Price)
+            if (pPlayer->EnoughCredit(Purchase_Price))
             {
                 SetOwner(pPlayer);
-                pPlayer->SetWallet(pPlayer->GetWallet() - Purchase_Price);
+                pPlayer->DeductWallet(Purchase_Price);
             }
             else
             {
-                pOut->PrintMessage("You do not have enough money to buy this card");
+                pGrid->PrintErrorMessage("You do not have enough money to buy this card, Click anywhere to continue");
             }
         }
     }
@@ -135,17 +135,17 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
     {
         if (!isOwner(pPlayer))
         {
-            pOut->PrintMessage("You have to pay money for the owner of the cell");
-            int walletAfterDeduction = pPlayer->GetWallet() - Fees_Pay;
-            owner->SetWallet(owner->GetWallet() + Fees_Pay);
-            if (walletAfterDeduction < 0)
+            pGrid->PrintErrorMessage("You have to pay money for the owner of the cell, Click anywhere to continue");
+            bool HaveEnoughCredit = pPlayer->EnoughCredit(Fees_Pay);
+            if (HaveEnoughCredit)
             {
-                pPlayer->SetWallet(0);
+                owner->IncrementWallet(Fees_Pay);
             }
             else
             {
-                pPlayer->SetWallet(walletAfterDeduction);
+                owner->IncrementWallet(pPlayer->GetWallet());
             }
+            pPlayer->DeductWallet(Fees_Pay);
         }
     }
     pOut->ClearStatusBar();

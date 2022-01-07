@@ -36,6 +36,7 @@ int Card::GetObjectCount()
 {
 	return CardCount;
 }
+
 void Card::Load(ifstream& Infile, Object_Type obj)
 {
 	if (obj != card)

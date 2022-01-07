@@ -19,8 +19,9 @@ void DeleteGameObject::Execute()
 {
     Grid* pGrid = pManager->GetGrid();
     ReadActionParameters();
-    pGrid->RemoveObjectFromCell(startPosition);
-
+        pGrid->RemoveObjectFromCell(startPosition);
+    
+        
 
    /* Ladder* pLadder = selectedCell.HasLadder();
     Snake* pSnek = selectedCell.HasSnake();

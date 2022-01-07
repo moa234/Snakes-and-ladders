@@ -1,5 +1,6 @@
 #include "CopyCard.h"
 #include "Grid.h"
+#include "card.h"
 
 CopyCard::CopyCard(ApplicationManager* pApp): Action(pApp) {}
 

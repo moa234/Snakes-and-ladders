@@ -37,7 +37,9 @@ public:
 	//....
 
 	int GetTurnCount() const;		// A getter for the turnCount
-	bool DeductWallet(int); //A function that deducts ceartin amout from player if the player has sufficient money in the wallet 
+	void DeductWallet(int val); //A function that deducts ceartin amout from player if the player has sufficient money in the wallet 
+	bool EnoughCredit(int val); 
+	void IncrementWallet(int val);
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	// ====== Drawing Functions ======

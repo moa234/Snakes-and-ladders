@@ -45,6 +45,24 @@ int Player::GetTurnCount() const
 	return turnCount;
 }
 
+void Player::DeductWallet(int val)
+{
+	if (wallet - val < 0)
+		wallet = 0;
+	else
+		wallet -= val;
+}
+
+bool Player::EnoughCredit(int val)
+{
+	return (wallet>=val);
+}
+
+void Player::IncrementWallet(int val)
+{
+	wallet += val;
+}
+
 int Player::GetRolledDiceNum() const {
 	return justRolledDiceNum;
 }
