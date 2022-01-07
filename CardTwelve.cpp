@@ -18,7 +18,7 @@ Card* CardTwelve::PasteCard()
 Card* CardTwelve::CopyCard()
 {
 	Card* copy = new CardTwelve(0);
-	DecrementCardCount();
+	CardCount--;
 	return copy;
 }
 

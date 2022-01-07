@@ -16,6 +16,7 @@ public:
     static void SetOwner(Player* Owner);
     static bool isOwner(const Player* Check_Owner); // checks that the send player is the owner of the card or not
    // static Player* GetOwner();
+    virtual Card* CopyCard();
     virtual Card* PasteCard();
     virtual void Load(ifstream& Infile, Object_Type obj);
     virtual void Save(ofstream& OutFile, Object_Type obj);

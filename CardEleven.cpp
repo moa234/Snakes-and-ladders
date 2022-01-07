@@ -48,6 +48,13 @@ Card* CardEleven::PasteCard()
     return copy;
 }
 
+Card* CardEleven::CopyCard()
+{
+    Card* copy = new CardEleven(0);
+    CardCount--;
+    return copy;
+}
+
 void CardEleven::Load(ifstream& Infile, Object_Type obj)
 {
     if (obj != card)
