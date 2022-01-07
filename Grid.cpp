@@ -146,7 +146,7 @@ Ladder *Grid::GetNextLadder(const CellPosition &position)
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
 			if (CellList[i][j]->HasLadder())
 			{
-				return CellList[i][j]->HasLadder();
+				return CellList[i][j]->HasLadder();// returns a pointer to the ladder if there is one nearby
 			}
 
 		}
