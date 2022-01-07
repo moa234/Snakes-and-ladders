@@ -30,23 +30,28 @@ void InputDiceValue::Execute()
 	Grid* pGrid = pManager->GetGrid();
 	Player* currentplayer = pGrid->GetCurrentPlayer();
 
-	
+	//Checking if the player is on card 4 or 8 ;so he can't move
 	if (currentplayer->GetDoNotPlay() > 0)
 	{
-
+		//decreasing DoNotPlay
 		currentplayer->SetDoNotPlay((currentplayer->GetDoNotPlay()) - 1);
+		
+		//calling move function setting dice roll to zero to increase turnCount
 		currentplayer->Move(pManager->GetGrid(), 0);
 
 		pGrid->AdvanceCurrentPlayer();
 		return;
 	}
 
+	//if DoNotPlay=0,the player will play normally.
 	currentplayer->SetRolledDiceNum(dicevalue);
 	currentplayer->Move(pManager->GetGrid(), dicevalue);
 
 	if (currentplayer->GetDoNotPlay() == -1)
 	{
 		currentplayer->SetDoNotPlay(0);
+		//the player will return;thus the CurrentPlayer will not be advanced
+		//(he will roll the dice again)
 		return;
 	}
 	pGrid->AdvanceCurrentPlayer();

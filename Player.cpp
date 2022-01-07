@@ -2,12 +2,11 @@
 #include "Card.h"
 #include "GameObject.h"
 
-Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
+Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum), DoNotPlay(0)
 {
 	this->pCell = pCell;
 	this->turnCount = 0;
-	this->DoNotPlay=0;
-
+	
 	// Make all the needed initialization or validations
 }
 
@@ -72,8 +71,7 @@ void Player::SetRolledDiceNum(int value) {
 	justRolledDiceNum = value;
 }
 
-
-// I added  a data member called DoNotPlay, Setter and getter -for cards 3,4,8
+//setter for DoNotPlay
 void Player::SetDoNotPlay(int penalty) 
 {
 	if (penalty>=-1||penalty>=3) //penalty should be from -1 to 3
@@ -81,6 +79,8 @@ void Player::SetDoNotPlay(int penalty)
 		DoNotPlay=penalty;
 	}
 }
+
+//Getter for DoNotPlay
 int Player::GetDoNotPlay() 
 {
 	return this->DoNotPlay;
@@ -131,7 +131,8 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		}
 		return;
 	}
-		//getting card number to prevent turnCount from increasing if the player stopped on two consecutive CardThree.
+	
+	//getting card number to prevent turnCount from increasing if the player stopped on two consecutive CardThree.
 	int cardval = (pCell->GetGameObject()) ? dynamic_cast<Card*>(pCell->GetGameObject())->GetCardNumber() : 0;;
 	if (cardval != 3)//
 	{

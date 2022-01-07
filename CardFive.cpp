@@ -16,6 +16,7 @@ void CardFive::ReadCardParameters(Grid* pGrid)
 void CardFive::Apply(Grid* pGrid, Player* pPlayer) {
 		
  Card::Apply(pGrid, pPlayer);
+ pGrid->PrintErrorMessage("You have reached card five. Go back with same amount you rolled");
 	int diceValueRolled = pPlayer->GetRolledDiceNum();
 
 	CellPosition playerCellPosition = pPlayer->GetCell()->GetCellPosition();

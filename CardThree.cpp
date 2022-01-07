@@ -8,31 +8,35 @@ CardThree::CardThree(const CellPosition & pos) : Card(pos) // set the cell posit
 }
 void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 { 
-	Card::Apply(pGrid, pPlayer);// output card num...
+	Card::Apply(pGrid, pPlayer);			// output card number
 
 	Output* pOut = pGrid->GetOutput();
 	
 	pGrid->PrintErrorMessage("You won an extra dice roll! click to continue" );
 
-	pPlayer->SetDoNotPlay(-1);
-	//DoNotPlay is a data member in Player used to indicate if the player has an 
-	//extra dice roll(-1),cancelled dice roll (1) or in prision(3)
-	//if DoNotPlay=0 he will play normally
+	pPlayer->SetDoNotPlay(-1);				/*DoNotPlay is a data member in Player used to indicate if the player has an
+											extra dice roll(-1),cancelled dice roll (1) or in the prision(3)
+											if DoNotPlay=0 he will play normally */
+
 	pOut->ClearStatusBar();
 }
 
-//paste card
+//paste Card
 Card* CardThree::PasteCard()
 {
 	Card* copy = new CardThree(0);
 	return copy;
 }
+
+//Copy Card
 Card* CardThree::CopyCard()
 {
 	Card* copy = new CardThree(0);
 	CardCount--;
 	return copy;
 }
+
+//Save Card
 void CardThree::Save(ofstream& OutFile, Object_Type obj)
 {
 	if (obj != card)

@@ -93,7 +93,7 @@ Output *Grid::GetOutput() const
 	return pOut;
 }
 
-void Grid::SetClipboard(Card *pCard) // to be used in CopyCard/CutCard
+void Grid::SetClipboard(Card *pCard) // to be used in CopyCard & CutCard
 {
 	// you may update slightly in implementation if you want (but without breaking responsibilities)
 	Clipboard = pCard;
