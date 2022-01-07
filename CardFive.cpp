@@ -31,7 +31,6 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer) {
 Card* CardFive::PasteCard()
 {
 	Card* copy = new CardFive(0);
-	*copy = *this;
 	return copy;
 }
 

@@ -14,7 +14,6 @@ void CardSeven::ReadCardParameters(Grid* pGrid)
 Card* CardSeven::PasteCard()
 {
 	Card* copy = new CardSeven(0);
-	*copy = *this;
 	return copy;
 }
 

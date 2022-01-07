@@ -45,7 +45,6 @@ bool CardTen::isOwner(const Player* Check_Owner)
 Card* CardTen::PasteCard()
 {
     Card* copy = new CardTen(0);
-    *copy = *this;
     return copy;
 }
 
