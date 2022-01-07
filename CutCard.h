@@ -7,6 +7,7 @@ public:
 	CutCard(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	virtual void Execute() ; 
-	virtual ~CutCard(); 
+	void deleteClipboard(Card* pcard);
+	virtual ~CutCard();
 };
 

@@ -15,13 +15,35 @@ CopyCard::CopyCard(ApplicationManager* pApp): Action(pApp) {}
  }
  void	CopyCard:: Execute() 
  {
+	 
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
-	Card* card =pGrid->CurrentCellCard(CopiedCell);
+	Card* card = pGrid->CurrentCellCard(CopiedCell);
+	if (card)
+	{
+		card = card->CopyCard();
+	}
+	else
+	{
+		pGrid->PrintErrorMessage("there is no card to copy");
+		return;
+	}
+	Card* clipboard = pGrid->GetClipboard();
+	if (clipboard)
+	{
+		deleteClipboard(clipboard);
+	}
 	pGrid->SetClipboard(card);
 
 	 /*Grid* pGrid = pManager->GetGrid();
 	 CellPosition * card = CopiedCell;
 	 pGrid->SetClipboard(card);*/
  }
+
+ void CopyCard::deleteClipboard(Card* pcard)
+ {
+	 pcard->IncrementCardCount();
+	 delete pcard;
+ }
+
 CopyCard::~CopyCard() {}

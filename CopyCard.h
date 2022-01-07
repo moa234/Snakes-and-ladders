@@ -6,6 +6,7 @@ class CopyCard: public Action
 public:
 	CopyCard(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
-	virtual void Execute() ;  
+	virtual void Execute() ;
+	void deleteClipboard(Card* pcard);
 	virtual ~CopyCard();  
 };

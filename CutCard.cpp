@@ -17,10 +17,28 @@ void CutCard::Execute()
 {
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
-
-	Card* card = pGrid->CurrentCellCard(CutCell)->PasteCard();
+	Card* card = pGrid->CurrentCellCard(CutCell);
+	if (card)
+	{
+		card = card->CopyCard();
+	}
+	else
+	{
+		pGrid->PrintErrorMessage("there is no card to cut");
+		return;
+	}
+	Card* clipboard = pGrid->GetClipboard();
+	if (clipboard)
+	{
+		deleteClipboard(clipboard);
+	}
 	pGrid->SetClipboard(card);
 	pGrid->RemoveObjectFromCell(CutCell);
 }
 	 
+void CutCard::deleteClipboard(Card* pcard)
+{
+	pcard->IncrementCardCount();
+	delete pcard;
+}
 CutCard::~CutCard(){}

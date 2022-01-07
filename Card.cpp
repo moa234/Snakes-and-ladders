@@ -65,3 +65,8 @@ int Card::CardCount = 0;
 Card::~Card()
 {
 }
+
+void Card::IncrementCardCount()
+{
+	CardCount++;
+}
