@@ -34,6 +34,13 @@ Card* CardFive::PasteCard()
 	return copy;
 }
 
+Card* CardFive::CopyCard()
+{
+	CardFive* copy = new CardFive(0);
+	CardCount--;
+	return copy;
+}
+
 void CardFive::Save(ofstream& OutFile, Object_Type obj)
 {
 	if (obj != card)

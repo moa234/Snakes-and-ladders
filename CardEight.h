@@ -12,6 +12,7 @@ public:
 
 	virtual void ReadCardParameters(Grid * pGrid);
 	virtual Card* PasteCard();
+	virtual Card* CopyCard();
 	virtual void Load(ifstream& Infile, Object_Type obj);
 	virtual void Save(ofstream& OutFile, Object_Type obj);
 	~CardEight(void);

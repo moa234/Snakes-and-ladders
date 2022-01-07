@@ -42,6 +42,13 @@ CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card
 	 }
  }
 
+ Card* CardSix::CopyCard()
+ {
+	 CardSix* copy = new CardSix(0);
+	 CardCount--;
+	 return copy;
+ }
+
  void CardSix::Load(ifstream& Infile, Object_Type obj)
  {
 	

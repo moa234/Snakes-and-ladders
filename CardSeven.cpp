@@ -17,6 +17,12 @@ Card* CardSeven::PasteCard()
 	return copy;
 }
 
+Card* CardSeven::CopyCard()
+{
+	CardSeven* copy = new CardSeven(0);
+	CardCount--;
+	return copy;
+}
 void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);

@@ -25,6 +25,13 @@ Card* CardEight::PasteCard()
 	copy->Bail = this->Bail;
 	return copy;
 }
+Card* CardEight::CopyCard()
+{
+	CardEight* copy = new CardEight(0);
+	CardCount--;
+	return copy;
+}
+
 void CardEight::Load(ifstream& Infile, Object_Type obj)
 {
 	if (obj != card)
