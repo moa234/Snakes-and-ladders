@@ -131,26 +131,21 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		}
 		return;
 	}
-	if (DoNotPlay == 0)
-	{
 		//getting card number to prevent turnCount from increasing if the player stopped on two consecutive CardThree.
-		int cardval = (pCell->GetGameObject()) ? dynamic_cast<Card*>(pCell->GetGameObject())->GetCardNumber() : 0;;
-		if (cardval != 3)//
+	int cardval = (pCell->GetGameObject()) ? dynamic_cast<Card*>(pCell->GetGameObject())->GetCardNumber() : 0;;
+	if (cardval != 3)//
+	{
+		turnCount += 1;
+		// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
+		//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
+		if (turnCount == 3)
 		{
-			turnCount += 1;
-
-			// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
-			//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
-
-			if (turnCount == 3)
-			{
-				wallet += 10 * diceNumber;
-				turnCount = 0;
-				return;
-			}
+			wallet += 10 * diceNumber;
+			turnCount = 0;
+			return;
 		}
-
 	}
+
 
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 
