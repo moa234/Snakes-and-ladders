@@ -2,7 +2,7 @@
 OpenGrid::OpenGrid(ApplicationManager* pApp) :Action(pApp)
 {
 	//when opening a new grid one of the necessary clean ups is to re-intialize the isSet flags with there
-	//initial value to be able to load cards 9,10,11 with new values 
+	//initial value to be able to load cards 9,10,11 with there new values 
 	CardNine::reset_is_Set();
 	CardTen::reset_is_Set();
 	CardEleven::reset_is_Set();
@@ -12,7 +12,7 @@ void OpenGrid::ReadActionParameters()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	pOut->PrintMessage("Enter the file name to load data from:");
+	pOut->PrintMessage("Enter the file name to load data from:"); //getting name of file 
 	name = pIn->GetString(pOut);
 	InFile.open(name+".txt");
 	pOut->ClearStatusBar();
@@ -23,7 +23,7 @@ void OpenGrid::Execute()
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 	ReadActionParameters();
-	if (!InFile.is_open())
+	if (!InFile.is_open()) //in case of file is not found in the folder
 	{
 		pGrid->PrintErrorMessage("The file name entered is not found, Click anywhere to continue");
 		pOut->ClearStatusBar();
@@ -102,7 +102,7 @@ void OpenGrid::Execute()
 		pGrid->AddObjectToCell(pCard);
 	}
 	InFile.close();
-	pGrid->PrintErrorMessage("Successsfully Loaded the grid, Click anywhare to continue");
+	pGrid->PrintErrorMessage("Successsfully Loaded the grid, Click anywhere to continue");
 	pOut->ClearStatusBar();
 }
 
