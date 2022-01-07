@@ -128,10 +128,13 @@ void CardEleven::Apply(Grid* pGrid, Player* pPlayer)
 
     if (owner == NULL)
     {
-        pOut->PrintMessage("Price of this card " + to_string(Purchase_Price) + "Coins Do you want to buy this card?(yes/no)");
-        string answ = pIn->GetString(pOut);
-
-        if (answ == "yes")
+        pOut->PrintMessage("Price of this card " + to_string(Purchase_Price) + "Coins Do you want to buy this card?(Y/N)");
+        string answer = pIn->GetString(pOut);
+        while (answer != "n" && answer != "N" && answer != "y" && answer != "Y")
+        {
+            answer = pIn->GetString(pOut);
+        }
+        if (answer == "y" || answer=="Y")
         {
             if (pPlayer->EnoughCredit(Purchase_Price))
             {

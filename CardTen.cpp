@@ -129,9 +129,12 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
     if (owner == NULL)
     {
         pOut->PrintMessage("Price of this card " + to_string(Purchase_Price) + "Coins Do you want to buy this card?(yes/no)");
-        string answ = pIn->GetString(pOut);
-
-        if (answ == "yes")
+        string answer = pIn->GetString(pOut);
+        while (answer != "n" && answer != "N" && answer != "y" && answer != "Y")
+        {
+            answer = pIn->GetString(pOut);
+        }
+        if (answer == "Y" || answer=="y")
         {
             if (pPlayer->EnoughCredit(Purchase_Price))
             {
