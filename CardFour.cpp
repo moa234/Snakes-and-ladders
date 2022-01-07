@@ -16,6 +16,12 @@ CardFour:: CardFour(const CellPosition& pos):Card(pos) // A Constructor takes ca
 	 Card* copy = new CardFour(0);
 	 return copy;
  }
+ Card* CardFour::CopyCard()
+ {
+	 Card* copy = new CardFour(0);
+	 CardCount--;
+	 return copy;
+ }
  void CardFour::Save(ofstream& OutFile, Object_Type obj)
  {
 	 if (obj != card)

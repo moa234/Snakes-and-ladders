@@ -21,6 +21,12 @@ Card* CardTwo::PasteCard()
     CardTwo* copy = new CardTwo(0);
     return copy;
 }
+Card* CardTwo::CopyCard()
+{
+    CardTwo* copy = new CardTwo(0);
+    CardCount--;
+    return copy;
+}
 void CardTwo::Apply(Grid *pGrid, Player *pPlayer)
 {
     Card::Apply(pGrid, pPlayer);
