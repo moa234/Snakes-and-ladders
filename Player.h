@@ -36,8 +36,8 @@ public:
 	void SetWallet(int wallet);		// A setter for the wallet
 	int GetWallet() const;			// a getter for the wallet
 
-	void SetRolledDiceNum(int value);
-	int GetRolledDiceNum() const;
+	void SetRolledDiceNum(int value); // a setter for just rolled dice
+	int GetRolledDiceNum() const; // a getter for just rolled dice
 
 	void SetDoNotPlay(int penalty);	// a setter for the DoNotPlay
 	int GetDoNotPlay() ;			// a getter for the DoNotPlay
@@ -46,8 +46,8 @@ public:
 
 	int GetTurnCount() const;		// A getter for the turnCount
 	void DeductWallet(int val); //A function that deducts ceartin amout from player if the player has sufficient money in the wallet 
-	bool EnoughCredit(int val); 
-	void IncrementWallet(int val);
+	bool EnoughCredit(int val);  // functon that returns true if player wallet is greater than passed amount
+	void IncrementWallet(int val); // a function that increments the walled by a given value
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	// ====== Drawing Functions ======

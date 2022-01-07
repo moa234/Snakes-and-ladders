@@ -8,7 +8,7 @@ class AddSnake : public Action
 	// [Action Parameters]
 	CellPosition startPos; // 1- The start position of the Snake
 	CellPosition endPos;   // 2- The end position of the Snake
-	bool valid;
+	bool valid; // boolean set to true if snake can be added to given cell position
 	// Note: These parameters should be read in ReadActionParameters()
 
 public:

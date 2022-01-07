@@ -8,7 +8,7 @@
 AddSnake::AddSnake(ApplicationManager* pApp) : Action(pApp)
 {
 	// Initializes the pManager pointer of Action with the passed pointer
-	valid = 1;
+	valid = 1;// initialize the valid member to true
 }
 
 
@@ -36,51 +36,52 @@ void AddSnake::ReadActionParameters()
 
 	///TODO: Make the needed validations on the read parameters
 	
-	if (!startPos.IsValidCell() || !endPos.IsValidCell())
+	if (!startPos.IsValidCell() || !endPos.IsValidCell())  // check if start or end cells are valid
 	{
 		//error
-		valid = 0;
+		valid = 0; // change valid to false so it cannot be added
 		pGrid->PrintErrorMessage("Error: Snake cannot be added outside grid! Click to continue ...");
 	}
-	else if (startPos.GetCellNum() == 99)
+	else if (startPos.GetCellNum() == 99) // checks if start position is the last cell of grid
 	{
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: Cannot add snkae to last cell! Click to continue ...");
 	}
-	else if (startPos.GetCellNum() <= endPos.GetCellNum())
+	else if (startPos.GetCellNum() <= endPos.GetCellNum()) // checks if endcell below after start cell
 	{
 		//error
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: Start cell cannot exceed end cell! Click to continue ...");
 	}
-	else if (startPos.HCell() != endPos.HCell())
+	else if (startPos.HCell() != endPos.HCell()) // checks if snake is placed in one column
 	{
 		//error
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: start cell and endcell cannot be in a different column! Click to continue ...");
 	}
-	else if (pGrid->CurrentCellLadder(endPos) != NULL)
+	else if (pGrid->CurrentCellLadder(endPos) != NULL) // checks if the endcell contains a ladder
 	{
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: endcell cannot contain ladder! Click to continue ...");
 	}
-	else if (pGrid->CurrentCellSnake(endPos) != NULL)
+	else if (pGrid->CurrentCellSnake(endPos) != NULL) // checks if endcell contains a snake
 	{
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: endcell cannot contain snake! Click to continue ...");
 	}
 	else
 	{
-		CellPosition col(0, startPos.HCell());
+		CellPosition col(0, startPos.HCell()); // create cellposition object to first row of ladder column
 		for (int i = 0; i <= 8; i++)
 		{
+			// loops over cellpositions of Snake column and gets all objects in the column
 			GameObject* snake = pGrid->CurrentCellSnake(col);
 
 			GameObject* ladder = pGrid->CurrentCellLadder(col);
 
-			if (ladder)
+			if (ladder) // check if start position is an end of a ladder if found
 			{
-				CellPosition ladderEnd = dynamic_cast<Ladder*>(ladder)->GetEndPosition();
+				CellPosition ladderEnd = dynamic_cast<Ladder*>(ladder)->GetEndPosition(); // get cellposition end of ladder
 				if (startPos.GetCellNum() == ladderEnd.GetCellNum())
 				{
 					valid = 0;
@@ -88,7 +89,7 @@ void AddSnake::ReadActionParameters()
 				}
 
 			}
-			if (snake)
+			if (snake) // check for overlapping snakes if found
 			{
 				CellPosition snakeEnd = dynamic_cast<Snake*>(snake)->GetEndPosition();
 				if (startPos.GetCellNum() == snakeEnd.GetCellNum())
@@ -120,7 +121,7 @@ void AddSnake::Execute()
 	// and hence initializes its data members
 	ReadActionParameters();
 
-	if (!valid)
+	if (!valid) // do not create snake when validation are not met
 	{
 		return;
 	}
@@ -137,6 +138,7 @@ void AddSnake::Execute()
 	{
 		// Print an appropriate message
 		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+		//delete the created snake
 		delete pSnake;
 	}
 	// Here, the Snake is created and added to the GameObject of its Cell, so we finished executing the AddSnake

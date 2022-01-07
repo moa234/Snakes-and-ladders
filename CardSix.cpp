@@ -31,6 +31,7 @@ CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card
 												// if there is a gameobject its effect will be implemented
  {
 	 Card::Apply(pGrid, pPlayer);
+	 pGrid->PrintErrorMessage("Player will go to cell " + to_string(CP.GetCellNum()) + " Click anywhere to continue!");
 	 pGrid->UpdatePlayerCell(pPlayer,CP);
 	 GameObject* Object = pGrid->CurrentCellObject(CP);
 	 if (Object) //if the  player moved to cell contains an object

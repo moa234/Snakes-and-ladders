@@ -31,6 +31,7 @@ void Card::Save(ofstream& OutFile, Object_Type obj)
 	if (obj != card)
 		return;
 	OutFile << cardNumber << " " << position.GetCellNum() << " "; // output the card num and it's cell becacuse this step will be printed for all Cards therefore it's implemented in base class
+																	//special output parameters is implemented to suit each card
 }
 
 int Card::GetObjectCount()
@@ -47,7 +48,7 @@ void Card::Load(ifstream& Infile, Object_Type obj)
 	Infile>>cposition;
 	
 	position = CellPosition::GetCellPositionFromNum(cposition);// setting the cell position to the correspoding cellnumber that is found in the load file
-	
+																//Special input parameters is implemented for each card load
 }
 void Card::SetCardPos(CellPosition &pos)
 {

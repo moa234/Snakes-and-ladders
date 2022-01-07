@@ -66,7 +66,7 @@ public:
 	GameObject* CurrentCellObject(const CellPosition & position); //determine whether current cell has a gameobject or not
 	GameObject* CurrentCellSnake(const CellPosition& position);
 	GameObject* CurrentCellLadder(const CellPosition& position);
-    Player* MinWalletPlayer(int &who) const; //retruns player with minimum wallet value and sends the numerical value of the player
+    Player* MinWalletPlayer(int &who) const; //retruns player with minimum wallet value and sends the index of the player
 	int GetLadderCount(); //getter for number of ladders in the grid
 	int GetSnakeCount();// getter for number of snakes in grid
 	int GetCardCount();//getter for number of cards in grid

@@ -9,7 +9,7 @@ class AddLadderAction : public Action
 	// [Action Parameters]
 	CellPosition startPos; // 1- The start position of the ladder
 	CellPosition endPos;   // 2- The end position of the ladder
-	bool valid;
+	bool valid; // boolean set to true if Ladder can be added to given cell position
 	// Note: These parameters should be read in ReadActionParameters()
 
 public:

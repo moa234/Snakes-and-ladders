@@ -14,15 +14,15 @@
 #include "CardTen.h"
 #include "CardEleven.h"
 #include "CardTwelve.h"
-
-
+//including all cards files to be able to create new object of them when any card of them is required to be added
 
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
 	pManager=pApp;
 	// Initializes the pManager pointer of Action with the passed pointer
-	Can_Add = 1; // intializes Can_Add flag with 1 
+	Can_Add = 1; // intializes Can_Add flag with 1 because the normal case is to add 
+				// but the abnormal case is 0 where there is a rule violation to grid
 }
 
 AddCardAction::~AddCardAction()
@@ -57,18 +57,19 @@ void AddCardAction::ReadActionParameters()
 		cnum = pIn->GetInteger(pOut);
 	}
 	cardNumber = cnum;
-	pOut->PrintMessage("Select card postion on the grid"); //taking from the user the cell position from the grid to set the card cell position with
-	CellPosition CP = pIn->GetCellClicked();
+	pOut->PrintMessage("Select card postion on the grid"); 
+	CellPosition CP = pIn->GetCellClicked(); //taking from the user the cell position from the grid to set the card cell position with that cell
 	if (!CP.IsValidCell()) //if the user choosed invalid position not on the grid
 	{
 		pGrid->PrintErrorMessage("invalid position to add card! click to continue. . . . . .");
-		Can_Add = 0;
+		Can_Add = 0; // this is abnormal case where the user clicks on a postion outside the grid itself thus Can_Add flag is turned to 0
 		return;
 	}
 	if (CP.GetCellNum() == 1 || CP.GetCellNum() == 99)
 	{
-		pGrid->PrintErrorMessage("You can't add a card in the First/Last cell, Click anywhere to continue");
+		pGrid->PrintErrorMessage("You can't add a card in the First/Last cell, Click anywhere to continue");// This is abnormal case where there is rule violation (no card at first or last cell) thus Can_Add flag is turned to 0
 		Can_Add = 0;
+		return;
 	}
 	
 	
@@ -86,7 +87,7 @@ void AddCardAction::Execute()
 	// 1- The first line of any Action Execution is to read its parameter first
 
 	ReadActionParameters();
-	if (!Can_Add)
+	if (!Can_Add) //if there is abnormal case (Can_Add=0) there will be no action executed
 		return;
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
 	Card * pCard = NULL; // will point to the card object type
@@ -139,12 +140,15 @@ void AddCardAction::Execute()
 	if (pCard)
 	{
 		Grid* pGrid = pManager->GetGrid();
-		pCard->ReadCardParameters(pGrid);
-		bool added = pGrid->AddObjectToCell(pCard);
-		if (!added)
+		if (pGrid->CurrentCellObject(cardPosition)) //if there is already an object in the cell no card will be added 
 		{
-			pGrid->PrintErrorMessage("Error: This cell already has a card! Click to continue ...");
-			delete pCard;// there is no need to continue storing the Card because it will already not be added 
+			pGrid->PrintErrorMessage("Error: This cell already has an Object Can't add card! Click to continue ...");
+			delete pCard;// There is no need to continue storing the card that won't be added thus it will be deleted
+		}
+		else
+		{
+			pCard->ReadCardParameters(pGrid); //In case there is no object in the cardPosition cell read the parameters and add the object to its cell
+			pGrid->AddObjectToCell(pCard);
 		}
 		// A- We get a pointer to the Grid from the ApplicationManager
 
