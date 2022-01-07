@@ -107,6 +107,10 @@ Card* Grid::GetClipboard() const // to be used in paste
 
 void Grid::SetEndGame(bool endGame)
 {
+	if (endGame)
+	{
+		PrintErrorMessage("Player " + to_string(GetCurrentPlayerNum()) + " is the winner, Click new game to restart game");
+	}
 	this->endGame = endGame;
 }
 

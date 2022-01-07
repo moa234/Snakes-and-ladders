@@ -128,7 +128,7 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
 
     if (owner == NULL)
     {
-        pOut->PrintMessage("Price of this card " + to_string(Purchase_Price) + " Do you want to buy this card?(yes/no)");
+        pOut->PrintMessage("Price of this card " + to_string(Purchase_Price) + "Coins Do you want to buy this card?(yes/no)");
         string answ = pIn->GetString(pOut);
 
         if (answ == "yes")

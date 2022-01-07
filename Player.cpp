@@ -70,9 +70,9 @@ int Player::GetRolledDiceNum() const {
 void Player::SetRolledDiceNum(int value) {
 	justRolledDiceNum = value;
 }
-//3amalt setters we getters lel roll number 34an 2e7tagto fe card 5
 
-//Abdelrahman  I added  a data member called DoNotPlay, Setter and getter -for cards 3,4,8
+
+// I added  a data member called DoNotPlay, Setter and getter -for cards 3,4,8
 void Player::SetDoNotPlay(int penalty) //penalty should be from -1 to 3
 {
 	if (penalty>=-1||penalty>=3)
@@ -176,6 +176,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 	if (pos.GetCellNum() == 99)
 	{
+		
 		pGrid->SetEndGame(true);
 	}
 

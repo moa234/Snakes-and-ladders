@@ -50,7 +50,7 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 	pOut->PrintMessage("You reached the prision!");
 	if ((pPlayer->GetWallet()) >= Bail)
 	{
-		pOut->PrintMessage("Would you like to pay the bail? enter Y/N");
+		pOut->PrintMessage("Would you like to pay the bail "+to_string(Bail) +" coin? enter Y/N");
 
 		string answer = pIn->GetString(pOut);
 		while (answer != "n" && answer != "N" && answer != "y" && answer != "Y")
@@ -61,7 +61,7 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 		if (answer == "y" || answer == "Y")
 		{
 			int x = pPlayer->GetWallet();
-			pPlayer->SetWallet(x - Bail);
+			pPlayer->DeductWallet( Bail);
 		}
 		else
 		{
