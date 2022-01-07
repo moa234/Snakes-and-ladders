@@ -15,7 +15,7 @@ Card* CardOne::PasteCard()
 	//creating new card
 	CardOne *copy = new CardOne(0);
 
-	copy->walletAmount = walletAmount;
+	copy->walletAmount = walletAmount; //Sets the parameter of the card to the copy
 	return copy;
 }
 
@@ -26,7 +26,7 @@ Card* CardOne::CopyCard()//used to take a copy from the selected card to the cli
 	/*A new card is now made for paste but it is not
 	pasted yet so actual number is reduced*/
 
-	copy->walletAmount = walletAmount; 
+	copy->walletAmount = walletAmount; //Sets the parameter of the card to the copy
 
 	return copy;
 }

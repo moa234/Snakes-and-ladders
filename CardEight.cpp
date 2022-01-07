@@ -48,7 +48,7 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	pOut->PrintMessage("You reached the prision!Pay the bail or you won't be able to move for three turns");
+	pGrid->PrintErrorMessage("(THE PRISION) Pay the bail or you won't be able to move for three turns.Click to continue");
 	if (pPlayer->EnoughCredit(Bail))
 	{
 		pOut->PrintMessage("Would you like to pay the bail "+to_string(Bail) +" coins? enter Y/N");
@@ -71,7 +71,7 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 	}
 	else
 	{
-		pGrid->PrintErrorMessage("No enough money in the wallet!");
+		pGrid->PrintErrorMessage("No enough money in the wallet! click to continue");
 		pPlayer->SetDoNotPlay(3);
 	}
 	pOut->ClearStatusBar();

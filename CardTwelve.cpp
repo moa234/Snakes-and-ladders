@@ -1,7 +1,7 @@
 #include "CardTwelve.h"
 CardTwelve::CardTwelve(const CellPosition& pos):Card(pos)
 {
-	CardCount++;
+	CardCount++; //increments the card count by 1
 	cardNumber = 12;
 }
 
@@ -48,6 +48,7 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 	}
 	if (CardTen::isOwner(pPlayer))
 	{
+		//checking that the current player owns this station or not
 		if (CardTen::GetPrice() > maximum)
 		{
 			maximum = CardTen::GetPrice();
@@ -56,6 +57,7 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 	}
 	if (CardEleven::isOwner(pPlayer))
 	{
+		//checking that the current player owns this station or not
 		if (CardEleven::GetPrice() > maximum)
 		{
 			maximum = CardEleven::GetPrice();
@@ -64,19 +66,18 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 	}
 	if (card_num == 0)
 	{
-		//in case no station owned by player
-		pOut->PrintMessage("No station ownership by player to move, click anywhere to continue");
-		pIn->GetCellClicked();
+		//in case no station owned by player card_num variable won't be changed
+		pGrid->PrintErrorMessage("No station ownership by player to move, click anywhere to continue");
 		pOut->ClearStatusBar();
 		return;
 	}
 	int PrevPlayerNum = pGrid->GetCurrentPlayerNum(); //Storing the index of player who's ownership will be moved
-	if (pPlayer == leastp)
+	if (pPlayer == leastp) //if the player who's ownership will be removed from his is the least amount of coins player
 	{
-		pGrid->PrintErrorMessage("Current player has least amount of coins and no ownership will be changed, click to continue");
+		pGrid->PrintErrorMessage("Current player has least amount of coins therefore no ownership will be removed from this player, click to continue");
 		return;
 	}
-	switch (card_num)
+	switch (card_num) // setting the ownership of the most expensive card to the least amount of coins player
 	{
 	case 9:
 		CardNine::SetOwner(leastp);
@@ -101,7 +102,7 @@ void CardTwelve::Save(ofstream& OutFile, Object_Type obj)
 
 CardTwelve::~CardTwelve()
 {
-	CardCount--;
+	CardCount--;// decrement the card count by one
 }
 
 
