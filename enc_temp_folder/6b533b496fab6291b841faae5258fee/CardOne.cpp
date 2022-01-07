@@ -12,7 +12,6 @@ CardOne::CardOne(const CellPosition & pos) : Card(pos) // set the cell position 
 Card* CardOne::PasteCard()
 {
 	CardOne *copy = new CardOne(0);
-	DecrementCardCount();//A new card is now made for paste but it is not pasted yet so actual
 	copy->walletAmount = walletAmount;
 	return copy;
 }

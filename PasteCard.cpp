@@ -23,7 +23,16 @@ void PasteCard::Execute()
 	ReadActionParameters();
 
 	Grid* pGrid = pManager->GetGrid();
-	Card * cardp = pGrid->GetClipboard()->PasteCard();
+	Card* cardp;
+	if (cardp = pGrid->GetClipboard())
+	{
+		cardp = pGrid->GetClipboard()->PasteCard();
+	}
+	else
+	{
+		pGrid->PrintErrorMessage("There is no card to paste, click anywhere to continue");
+	}
+		
 	if (cardp)
 	{
 		cardp->SetCardPos(PasteCell);

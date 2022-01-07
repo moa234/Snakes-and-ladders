@@ -61,7 +61,7 @@ void Grid::RemoveObjectFromCell(const CellPosition &pos)
 	if (pos.IsValidCell()&&CurrentCellObject(pos)) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-		CellList[pos.VCell()][pos.HCell()]->GetGameObject()->~GameObject();
+		delete CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
 	else
@@ -96,18 +96,9 @@ Output *Grid::GetOutput() const
 void Grid::SetClipboard(Card *pCard) // to be used in copy/cut
 {
 	// you may update slightly in implementation if you want (but without breaking responsibilities)
-	if (GetClipboard())
-	{
-		delete Clipboard;
-		Clipboard = NULL;
-	}
 	Clipboard = pCard;
 }
-/*void Grid::SetClipboard(CellPosition pCard) // to be used in copy/cut
-{
-	Clipboard = CellList[pCard.VCell()][pCard.HCell()]->GetGameObject();
-	// you may update slightly in implementation if you want (but without breaking responsibilities)
-}*/
+
 
 Card* Grid::GetClipboard() const // to be used in paste
 {
@@ -130,26 +121,7 @@ void Grid::AdvanceCurrentPlayer()
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
 
-/*void Grid::Replay()
-{
-	if (currPlayerNumber == 0)
-	{
-		currPlayerNumber = MaxPlayerCount - 1;
-	}
-	else	if (currPlayerNumber == 1)
-	{
-		currPlayerNumber = 0;
-	}
-	else	if (currPlayerNumber == 2)
-	{
-		currPlayerNumber = 1;
-	}
-	else	if (currPlayerNumber == 3)
-	{
-		currPlayerNumber = 2;
-	}
-	// this generates value from MaxPlayerCount - 1 to 0
-}*/
+
 // ========= Other Getters =========
 
 Player *Grid::GetCurrentPlayer() const

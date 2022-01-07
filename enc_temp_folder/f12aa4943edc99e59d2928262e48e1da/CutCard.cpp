@@ -18,7 +18,7 @@ void CutCard::Execute()
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
 
-	Card* card = pGrid->CurrentCellCard(CutCell)->PasteCard();
+	Card* card = pGrid->CurrentCellCard(CutCell);
 	pGrid->SetClipboard(card);
 	pGrid->RemoveObjectFromCell(CutCell);
 }
