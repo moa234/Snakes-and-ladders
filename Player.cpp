@@ -47,10 +47,11 @@ int Player::GetTurnCount() const
 
 void Player::DeductWallet(int val)
 {
-	if (wallet - val < 0)
+	if (wallet - val < 0) // sets wallet to 0 if wallet is negative after deduction
 		wallet = 0;
 	else
 		wallet -= val;
+	// deduct given amount
 }
 
 bool Player::EnoughCredit(int val)
@@ -73,9 +74,9 @@ void Player::SetRolledDiceNum(int value) {
 
 
 // I added  a data member called DoNotPlay, Setter and getter -for cards 3,4,8
-void Player::SetDoNotPlay(int penalty) //penalty should be from -1 to 3
+void Player::SetDoNotPlay(int penalty) 
 {
-	if (penalty>=-1||penalty>=3)
+	if (penalty>=-1||penalty>=3) //penalty should be from -1 to 3
 	{
 		DoNotPlay=penalty;
 	}
@@ -119,7 +120,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
 	
-	if (diceNumber == 0 || wallet == 0)
+	if (diceNumber == 0 || wallet == 0) // increase turn count if player cannot move
 	{
 		turnCount += 1;
 		if (turnCount == 3)
@@ -130,7 +131,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		}
 		return;
 	}
-	if (DoNotPlay == 0)
+	if (DoNotPlay == 0) // increase turn count ony if 
 	{
 		int cardval = (pCell->GetGameObject()) ? dynamic_cast<Card*>(pCell->GetGameObject())->GetCardNumber() : 0;;
 		if (cardval != 3)
