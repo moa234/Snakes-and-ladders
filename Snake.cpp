@@ -29,7 +29,11 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 	//    Review the "pGrid" functions and decide which function can be used for that
 
 	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
-
+	GameObject* Object = pGrid->CurrentCellObject(endCellPos);
+	if (Object) //if the  player moved to cell contains a card
+	{
+		Object->Apply(pGrid, pPlayer); //apply the effect of this card
+	}
 }
 
 void Snake::SetEndcell(CellPosition CP)

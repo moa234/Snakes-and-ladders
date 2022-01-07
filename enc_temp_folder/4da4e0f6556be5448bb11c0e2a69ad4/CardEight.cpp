@@ -28,7 +28,6 @@ Card* CardEight::PasteCard()
 Card* CardEight::CopyCard()
 {
 	CardEight* copy = new CardEight(0);
-	copy->Bail = this->Bail;
 	CardCount--;
 	return copy;
 }
