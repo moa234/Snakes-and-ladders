@@ -120,7 +120,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
 	
-	if (diceNumber == 0 || wallet == 0) // increase turn count if player cannot move
+	if (diceNumber == 0 || wallet == 0)		//checking if the player can't move ;when DoNotPlay > 0 or wallet is empty.
 	{
 		turnCount += 1;
 		if (turnCount == 3)
@@ -131,10 +131,11 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		}
 		return;
 	}
-	if (DoNotPlay == 0) // increase turn count ony if 
+	if (DoNotPlay == 0)
 	{
+		//getting card number to prevent turnCount from increasing if the player stopped on two consecutive CardThree.
 		int cardval = (pCell->GetGameObject()) ? dynamic_cast<Card*>(pCell->GetGameObject())->GetCardNumber() : 0;;
-		if (cardval != 3)
+		if (cardval != 3)//
 		{
 			turnCount += 1;
 
