@@ -27,7 +27,6 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 Card* CardThree::PasteCard()
 {
 	Card* copy = new CardThree(0);
-	*copy = *this;
 	return copy;
 }
 void CardThree::Save(ofstream& OutFile, Object_Type obj)
