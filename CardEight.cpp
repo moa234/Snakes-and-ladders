@@ -68,6 +68,11 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 			pPlayer->SetDoNotPlay(3);
 		}
 	}
+	else
+	{
+		pGrid->PrintErrorMessage("No enough money in the wallet!");
+		pPlayer->SetDoNotPlay(3);
+	}
 	pOut->ClearStatusBar();
 
 }
