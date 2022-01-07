@@ -17,6 +17,12 @@ void CutCard::Execute()
 {
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
+	if (!CutCell.IsValidCell())
+	{
+		pGrid->PrintErrorMessage("invalid cell to cut! click to continue. . . . . .");
+		return;
+	}
+	
 	Card* card = pGrid->CurrentCellCard(CutCell);
 	if (card)
 	{

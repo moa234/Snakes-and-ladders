@@ -18,6 +18,11 @@ CopyCard::CopyCard(ApplicationManager* pApp): Action(pApp) {}
 	 
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
+	if (!CopiedCell.IsValidCell())
+	{
+		pGrid->PrintErrorMessage("invalid cell to copy! click to continue. . . . . .");
+		return;
+	}
 	Card* card = pGrid->CurrentCellCard(CopiedCell);
 	if (card)
 	{
