@@ -19,7 +19,6 @@ void CardTwo::Save(ofstream& OutFile, Object_Type obj)
 Card* CardTwo::PasteCard()
 {
     CardTwo* copy = new CardTwo(0);
-    copy->walletAmount = this->walletAmount;
     return copy;
 }
 void CardTwo::Apply(Grid *pGrid, Player *pPlayer)
