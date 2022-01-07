@@ -17,6 +17,8 @@
 #include "CardTen.h"
 #include "CardEleven.h"
 #include "CardTwelve.h"
+
+//including  files of objects that will be dynamically allocated in open action 
 class OpenGrid :
 	public Action
 {

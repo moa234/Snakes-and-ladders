@@ -372,7 +372,7 @@ void Grid::NewGame()
 
 }
 
-void Grid::ClearGrid()
+void Grid::ClearGrid() //Clears all Grid objects to be able to open a new grid
 {
 	// Deallocate the Cell Objects of the CellList
 	for (int i = NumVerticalCells - 1; i >= 0; i--)
