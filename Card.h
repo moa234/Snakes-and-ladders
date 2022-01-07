@@ -31,7 +31,5 @@ public:
 	virtual void Load(ifstream& Infile, Object_Type obj);
 	virtual void Save(ofstream& OutFile, Object_Type obj);
 	static int GetObjectCount();
-	static void IncementCardCount();//increments the card count by 1
-    void DecrementCardCount(); //deceremnts the count of cards by 1
 	virtual ~Card(); // A Virtual Destructor
 };
