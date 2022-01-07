@@ -59,6 +59,12 @@ void AddCardAction::ReadActionParameters()
 	cardNumber = cnum;
 	pOut->PrintMessage("Select card postion on the grid"); //taking from the user the cell position from the grid to set the card cell position with
 	CellPosition CP = pIn->GetCellClicked();
+	if (!CP.IsValidCell()) //if the user choosed invalid position not on the grid
+	{
+		pGrid->PrintErrorMessage("invalid position to add card! click to continue. . . . . .");
+		Can_Add = 0;
+		return;
+	}
 	if (CP.GetCellNum() == 1 || CP.GetCellNum() == 99)
 	{
 		pGrid->PrintErrorMessage("You can't add a card in the First/Last cell, Click anywhere to continue");

@@ -3,7 +3,9 @@
 #include"GameObject.h"
 #include "Card.h"
 
-PasteCard::PasteCard(ApplicationManager* pApp): Action(pApp) {}
+PasteCard::PasteCard(ApplicationManager* pApp): Action(pApp) {
+	Can_Add = 1;
+}
 
 
 void PasteCard:: ReadActionParameters()
@@ -13,6 +15,18 @@ void PasteCard:: ReadActionParameters()
 	pOut->PrintMessage("Click on the destination cell");
 	Input* pIn = pGrid->GetInput();
 	PasteCell = pIn->GetCellClicked();
+	if (!PasteCell.IsValidCell())
+	{
+		pGrid->PrintErrorMessage("invalid Position to Paste! click to continue. . . . . .");
+		Can_Add = 0;
+		return;
+	}
+	if (PasteCell.GetCellNum() == 1 || PasteCell.GetCellNum() == 99)
+	{
+		pGrid->PrintErrorMessage("You can't Paste a card in the First/Last cell, Click anywhere to continue");
+		Can_Add = 0;
+		return;
+	}
 	pOut->ClearStatusBar();
 
 }
@@ -21,12 +35,14 @@ void PasteCard:: ReadActionParameters()
 void PasteCard::Execute()
 {
 	ReadActionParameters();
-
+	if (!Can_Add)
+		return;
 	Grid* pGrid = pManager->GetGrid();
 	Card* cardp;
 	if (cardp = pGrid->GetClipboard())
 	{
-		cardp = pGrid->GetClipboard()->PasteCard();
+		if(!pGrid->CurrentCellObject(PasteCell)) //if there is no object in the cell you can paste the card
+			cardp = pGrid->GetClipboard()->PasteCard();
 	}
 	else
 	{
@@ -40,14 +56,10 @@ void PasteCard::Execute()
 		if (!added)
 		{
 			pGrid->PrintErrorMessage("Cell contains an object, can't paste ! Click to continue. . . . .");
-			this->Execute();
+			
 		}
 	}
-	//cardp->SetCardPos(PasteCell);
-	//bool x=pGrid->AddObjectToCell(pGobj);
+	
  }
-/*
-pCard->ReadCardParameters(pGrid);
-bool added = pGrid->AddObjectToCell(pCard);
-*/
+
 PasteCard::~PasteCard(){}
