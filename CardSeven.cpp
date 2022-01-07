@@ -1,10 +1,11 @@
 #include "CardSeven.h"
 
-CardSeven::CardSeven(const CellPosition& pos) :Card(pos), firstCell(1)
+CardSeven::CardSeven(const CellPosition& pos) :Card(pos)
 {
 	CardCount++;
 	cardNumber = 7;
 }
+const CellPosition CardSeven::firstCell(1);
 
 void CardSeven::ReadCardParameters(Grid* pGrid)
 {

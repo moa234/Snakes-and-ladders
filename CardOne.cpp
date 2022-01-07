@@ -11,8 +11,8 @@ CardOne::CardOne(const CellPosition & pos) : Card(pos) // set the cell position 
 
 Card* CardOne::PasteCard()
 {
-	Card *copy = new CardOne(0);
-	*copy = *this;
+	CardOne *copy = new CardOne(0);
+	copy->walletAmount = walletAmount;
 	return copy;
 }
 

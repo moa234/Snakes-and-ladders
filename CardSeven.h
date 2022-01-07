@@ -2,7 +2,7 @@
 #include "Card.h"
 class CardSeven : public Card
 {
-	const CellPosition firstCell;
+	static const CellPosition firstCell;
 public:
 	CardSeven(const CellPosition& pos);
 

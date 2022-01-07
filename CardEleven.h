@@ -2,7 +2,6 @@
 #include "Card.h"
 class CardEleven :public Card
 {
-    CellPosition CP;
     static int Purchase_Price;
     static int Fees_Pay;
     static Player* owner;

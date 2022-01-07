@@ -26,8 +26,8 @@ CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card
 
  Card* CardSix::PasteCard()
  {
-	 Card* copy = new CardSix(0);
-	 *copy = *this;
+	 CardSix* copy = new CardSix(0);
+	 copy->CP = this->CP;
 	 return copy;
  }
  void CardSix::Apply(Grid* pGrid, Player* pPlayer) // Applies the effect of CardSix on the passed Player

@@ -96,6 +96,11 @@ Output *Grid::GetOutput() const
 void Grid::SetClipboard(Card *pCard) // to be used in copy/cut
 {
 	// you may update slightly in implementation if you want (but without breaking responsibilities)
+	if (GetClipboard())
+	{
+		delete Clipboard;
+		Clipboard = NULL;
+	}
 	Clipboard = pCard;
 }
 /*void Grid::SetClipboard(CellPosition pCard) // to be used in copy/cut

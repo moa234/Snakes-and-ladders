@@ -21,8 +21,8 @@ void CardEight::ReadCardParameters(Grid* pGrid)
 }
 Card* CardEight::PasteCard()
 {
-	Card* copy = new CardEight(0);
-	*copy = *this;
+	CardEight* copy = new CardEight(0);
+	copy->Bail = this->Bail;
 	return copy;
 }
 void CardEight::Load(ifstream& Infile, Object_Type obj)

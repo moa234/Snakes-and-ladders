@@ -1,5 +1,6 @@
 #include "CutCard.h"
 #include "Grid.h"
+#include "Card.h"
 
 CutCard::CutCard(ApplicationManager* pApp):Action(pApp) {}
 
@@ -17,7 +18,7 @@ void CutCard::Execute()
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
 
-	Card* card = pGrid->CurrentCellCard(CutCell);
+	Card* card = pGrid->CurrentCellCard(CutCell)->PasteCard();
 	pGrid->SetClipboard(card);
 
 	 const CellPosition cc(CutCell);
