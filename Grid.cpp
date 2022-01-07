@@ -267,8 +267,8 @@ int Grid::GetCurrentPlayerNum() const
 
 Card* Grid::CurrentCellCard(const CellPosition& position)
 {
-	//this function find whether the cell has a snake and return 
-	//pointer to this object if there is no snake it will return null
+	//this function find whether the cell has a Card and return it
+	//pointer to this object if there is no card it will return null
 	Card* current = CellList[position.VCell()][position.HCell()]->HasCard();
 
 	return current;

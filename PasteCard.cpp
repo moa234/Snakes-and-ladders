@@ -41,7 +41,7 @@ void PasteCard::Execute()
 	Card* cardp;
 	if (cardp = pGrid->GetClipboard())
 	{
-		if(!pGrid->CurrentCellObject(PasteCell)) //if there is no object in the cell you can paste the card
+		if(!pGrid->CurrentCellObject(PasteCell))			//if there is no object in the cell you can paste the card
 			cardp = pGrid->GetClipboard()->PasteCard();
 	}
 	else
