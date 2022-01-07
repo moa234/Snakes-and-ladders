@@ -42,6 +42,13 @@ bool CardNine::isOwner(const Player* Check_Owner)
 
 
 
+Card* CardNine::PasteCard(CellPosition newPos)
+{
+    Card* copy = new CardNine(newPos);
+    *copy = *this;
+    return copy;
+}
+
 void CardNine::Load(ifstream& Infile, Object_Type obj)
 {
     if (obj != card)

@@ -19,6 +19,12 @@ void CardEight::ReadCardParameters(Grid* pGrid)
 	pOut->ClearStatusBar();
 
 }
+Card* CardEight::PasteCard(CellPosition newPos)
+{
+	Card* copy = new CardEight(newPos);
+	*copy = *this;
+	return copy;
+}
 void CardEight::Load(ifstream& Infile, Object_Type obj)
 {
 	if (obj != card)

@@ -9,9 +9,9 @@ CardOne::CardOne(const CellPosition & pos) : Card(pos) // set the cell position 
 	cardNumber = 1; // set the inherited cardNumber data member with the card number (1 here)
 }
 
-Card* CardOne::PasteCard()
+Card* CardOne::PasteCard(CellPosition newPos)
 {
-	Card *copy = new CardOne(0);
+	Card *copy = new CardOne(newPos);
 	*copy = *this;
 	return copy;
 }

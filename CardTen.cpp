@@ -42,6 +42,13 @@ bool CardTen::isOwner(const Player* Check_Owner)
 
 
 
+Card* CardTen::PasteCard(CellPosition newPos)
+{
+    Card* copy = new CardTen(newPos);
+    *copy = *this;
+    return copy;
+}
+
 void CardTen::Load(ifstream& Infile, Object_Type obj)
 {
     if (obj != card)

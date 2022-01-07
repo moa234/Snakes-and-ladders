@@ -10,6 +10,7 @@ class CardTwelve :
 public:
     CardTwelve(const CellPosition& pos);
     virtual void ReadCardParameters(Grid* pGrid);// no parameters to read
+    virtual Card* PasteCard(CellPosition newPos);
     virtual void Apply(Grid* pGrid, Player* pPlayer);
 	virtual void Save(ofstream& OutFile, Object_Type obj);
     ~CardTwelve();
