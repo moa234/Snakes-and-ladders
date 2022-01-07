@@ -229,6 +229,8 @@ GameObject* Grid::CurrentCellLadder(const CellPosition& position)
 
 Player* Grid::MinWalletPlayer(int &who) const
 {
+	// who is the index of least amount of coins player
+	// this function returns the player who has the least amount of coins
 	int min = PlayerList[0]->GetWallet();
 	Player *P = PlayerList[0];
 	for (int i = 0; i < MaxPlayerCount; i++)
