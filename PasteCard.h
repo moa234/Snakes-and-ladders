@@ -6,12 +6,8 @@ class PasteCard :	public Action
 		bool Can_Add;
 public:
 
-	PasteCard(void);
-
-	PasteCard(ApplicationManager* pApp);
-
-	virtual void ReadActionParameters();
-	virtual void Execute() ; 
-
-	~PasteCard(void);
+	PasteCard(ApplicationManager* pApp);					//constructor
+	virtual void ReadActionParameters();					//getting from the user cell to paste card from
+	virtual void Execute() ;								//getting from the Clipboard  the card to set  the chosen cell with
+	~PasteCard(void);										//destructor
 };
