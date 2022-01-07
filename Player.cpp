@@ -119,7 +119,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
 	
-	if (diceNumber == 0)
+	if (diceNumber == 0 || wallet == 0)
 	{
 		turnCount += 1;
 		if (turnCount == 3)
