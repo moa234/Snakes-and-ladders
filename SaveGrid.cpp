@@ -10,8 +10,8 @@ void SaveGrid::ReadActionParameters()
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 	pOut->PrintMessage("Enter the file name to save data into:");
-	name=pIn->GetString(pOut);
-	OutFile.open(name+".txt");
+	name=pIn->GetString(pOut); //get the file name from the user
+	OutFile.open(name+".txt"); // opening the file for output
 	pOut->ClearStatusBar();
 }
 
@@ -28,11 +28,11 @@ void SaveGrid::Execute()
 	OutFile << ladderCount << endl; //printing as required file format
 	pGrid->SaveAll(OutFile, ladder); //calling SaveAll in Grid to be able to Call Save of ladder objects in the cell list
 	OutFile << SnakeCount << endl;
-	pGrid->SaveAll(OutFile, snake);
+	pGrid->SaveAll(OutFile, snake); //calling SaveAll in Grid to be able to Call Save of snake objects in the cell list
 	OutFile << CardCount << endl;
-	pGrid->SaveAll(OutFile, card);
-	OutFile.close();
-	pGrid->PrintErrorMessage("Successsfully saved the grid, Click anywhare to continue");
+	pGrid->SaveAll(OutFile, card);//calling SaveAll in Grid to be able to Call Save of card objects in the cell list
+	OutFile.close(); //closing the opened file 
+	pGrid->PrintErrorMessage("Successsfully saved the grid, Click anywhere to continue");
 }
 
 SaveGrid::~SaveGrid()
