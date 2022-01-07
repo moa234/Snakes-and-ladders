@@ -11,15 +11,6 @@ CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card
 	 Output* pOut = pGrid->GetOutput();
 	 pOut->PrintMessage("Select cell number to move player to: ");
 	 CellPosition Cell_selected = pIn->GetCellClicked();
-	 /*pOut->PrintMessage("You have selected cell number " + to_string(Cell_selected.GetCellNum()) + " are you sure(y/n)? ");
-	 string answer = pIn->GetString(pOut);
-	 while (answer == "n" || answer == "N") //double check on user input
-	 {
-		 pOut->PrintMessage("Re-select card postion on the grid");
-		 Cell_selected = pIn->GetCellClicked();
-		 pOut->PrintMessage("You have selected cell number " + to_string(Cell_selected.GetCellNum()) + " are you sure(y/n)? ");
-		 answer = pIn->GetString(pOut);
-	 }*/
 	 CP = Cell_selected;
 	 pOut->ClearStatusBar();
 }

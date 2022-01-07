@@ -64,15 +64,7 @@ void AddCardAction::ReadActionParameters()
 		pGrid->PrintErrorMessage("You can't add a card in the First/Last cell, Click anywhere to continue");
 		Can_Add = 0;
 	}
-	/*pOut->PrintMessage("You have selected cell number " + to_string(CP.GetCellNum()) + " are you sure(y/n)? ");
-	string answer = pIn->GetString(pOut);
-	while (answer == "n" || answer == "N") //double check on user input
-	{
-		pOut->PrintMessage("Re-select card postion on the grid");
-		CP = pIn->GetCellClicked();
-		pOut->PrintMessage("You have selected cell number " + to_string(CP.GetCellNum()) + " are you sure(y/n)? ");
-		answer = pIn->GetString(pOut);
-	}*/
+	
 	
 	cardPosition = CP;
 	pOut->ClearStatusBar();
