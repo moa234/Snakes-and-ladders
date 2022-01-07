@@ -5,18 +5,24 @@
 
 class Player
 {
-	Cell * pCell;		   // pointer to the current Cell of the player
+	Cell * pCell;			// pointer to the current Cell of the player
 
-	const int playerNum;   // the player number (from 0 to MaxPlayerCount-1)
-	                       // player number does NOT change after construction (const.)
+	const int playerNum;	// the player number (from 0 to MaxPlayerCount-1)
+							// player number does NOT change after construction (const.)
 
-	int stepCount;		   // step count which is the same as his cellNum: from 1 to NumVerticalCells*NumHorizontalCells
-	int wallet;		       // player's wallet (how many coins he has -- integer)
-	int justRolledDiceNum; // the current dice number which is just rolled by the player
-	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
-	                       // and reset again when reached 3
-	                       // it is used to indicate when to move and when to add to your wallet
-	int DoNotPlay;		   // if NOT EQUAL to zero the player will not roll the dice
+	int stepCount;			// step count which is the same as his cellNum: from 1 to NumVerticalCells*NumHorizontalCells
+	
+	int wallet;				// player's wallet (how many coins he has -- integer)
+	
+	int justRolledDiceNum;	// the current dice number which is just rolled by the player
+	
+	int turnCount;			// a counter that starts with 0, is incremented with each dice roll
+							// and reset again when reached 3
+							// it is used to indicate when to move and when to add to your wallet
+
+	int DoNotPlay;		    // DoNotPlay is a data member in Player used to indicate if the player has an 
+							// extra dice roll(-1),cancelled dice roll (1) or in prision(3)
+							// if DoNotPlay=0 he will play normally
 	
 public:
 
@@ -29,10 +35,12 @@ public:
 
 	void SetWallet(int wallet);		// A setter for the wallet
 	int GetWallet() const;			// a getter for the wallet
+
 	void SetRolledDiceNum(int value);
 	int GetRolledDiceNum() const;
-	void SetDoNotPlay(int penalty);
-	int GetDoNotPlay() ;
+
+	void SetDoNotPlay(int penalty);	// a setter for the DoNotPlay
+	int GetDoNotPlay() ;			// a getter for the DoNotPlay
 
 	//....
 
