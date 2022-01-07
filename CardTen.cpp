@@ -128,7 +128,7 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
 
     if (owner == NULL)//Asks first if the card has an owner
     {
-        pOut->PrintMessage("Price of this card " + to_string(Purchase_Price) + "Coins Do you want to buy this card?(yes/no)");
+        pOut->PrintMessage("Price of this card " + to_string(Purchase_Price) + " Coins Do you want to buy this card?(Y/N)");
         string answer = pIn->GetString(pOut);
         while (answer != "n" && answer != "N" && answer != "y" && answer != "Y")
         {
