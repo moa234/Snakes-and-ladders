@@ -27,7 +27,7 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer);  // It applies the effect of the Card Type on the passed player
 	                                                   // It is a virtual function (implementation depends on Card Type)
 
-	//PasteCard() & CopyCard() has the diffrent implementations in card(1->12) classes
+	//PasteCard() & CopyCard() has  diffrent implementations in card(1->12) classes(virtual)
 	virtual Card* PasteCard()=0;		//used to take the copied card from the clipboard to grid
 	virtual Card* CopyCard() = 0;		//used to take a copy from the selected card to the clipboard
 
