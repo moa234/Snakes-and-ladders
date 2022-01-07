@@ -24,6 +24,12 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
+Card* CardThree::PasteCard(CellPosition newPos)
+{
+	Card* copy = new CardThree(newPos);
+	*copy = *this;
+	return copy;
+}
 void CardThree::Save(ofstream& OutFile, Object_Type obj)
 {
 	if (obj != card)

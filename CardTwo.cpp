@@ -16,6 +16,12 @@ void CardTwo::Save(ofstream& OutFile, Object_Type obj)
 	Card::Save(OutFile, obj);
 	OutFile << endl;
 }
+Card* CardTwo::PasteCard(CellPosition newPos)
+{
+    Card* copy = new CardTwo(newPos);
+    *copy = *this;
+    return copy;
+}
 void CardTwo::Apply(Grid *pGrid, Player *pPlayer)
 {
     Card::Apply(pGrid, pPlayer);

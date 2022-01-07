@@ -23,6 +23,13 @@ CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card
 	 CP = Cell_selected;
 	 pOut->ClearStatusBar();
 }
+
+ Card* CardSix::PasteCard(CellPosition newPos)
+ {
+	 Card* copy = new CardSix(newPos);
+	 *copy = *this;
+	 return copy;
+ }
  void CardSix::Apply(Grid* pGrid, Player* pPlayer) // Applies the effect of CardSix on the passed Player
 												// if there is a gameobject its effect will be implemented
  {

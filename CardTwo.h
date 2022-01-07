@@ -13,5 +13,6 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); 
 	virtual void Save(ofstream& OutFile, Object_Type obj);
+	virtual	Card* PasteCard(CellPosition newPos);
 	virtual ~CardTwo(); // A Virtual Destructor
 };

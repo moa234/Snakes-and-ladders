@@ -9,6 +9,8 @@ public:
 
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardSix which is: cell position to move to
 
+	virtual Card* PasteCard(CellPosition newPos);
+
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardSix on the passed Player
 													// if there is a gameobject its effect will be implemented
 	virtual void Load(ifstream& Infile, Object_Type obj);
