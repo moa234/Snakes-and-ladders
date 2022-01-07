@@ -6,10 +6,14 @@ CardFour:: CardFour(const CellPosition& pos):Card(pos) // A Constructor takes ca
 }
  void CardFour:: Apply(Grid* pGrid, Player* pPlayer)
  {
+	Card::Apply(pGrid, pPlayer);			// output card number
 	Output* pOut = pGrid->GetOutput();
+	
 	pGrid->PrintErrorMessage("You reached Card 4! You can't roll next turn! click to continue" );
-		pPlayer->SetDoNotPlay(1);
-		pOut->ClearStatusBar();
+	
+	pPlayer->SetDoNotPlay(1);
+	
+	pOut->ClearStatusBar();
  }
  Card* CardFour::PasteCard()
  {

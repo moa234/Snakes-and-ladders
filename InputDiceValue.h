@@ -2,15 +2,15 @@
 #include "Action.h"
 class InputDiceValue : public Action
 {
-	int dicevalue;
+	int dicevalue; // entered dice number to be played
 public:
 
-	InputDiceValue(ApplicationManager* pApp);
+	InputDiceValue(ApplicationManager* pApp); // constructor
 
-	virtual void ReadActionParameters();
+	virtual void ReadActionParameters(); // read dicevalue from the user
 
-	virtual void Execute();
+	virtual void Execute(); // move player by given dice value
 
-	virtual ~InputDiceValue();
+	virtual ~InputDiceValue(); //virtual destructor
 };
 
