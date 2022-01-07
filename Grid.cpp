@@ -231,6 +231,7 @@ Player* Grid::MinWalletPlayer(int &who) const
 {
 	int min = PlayerList[0]->GetWallet();
 	Player *P = PlayerList[0];
+	who = 0;
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		if (PlayerList[i]->GetWallet() < min)
