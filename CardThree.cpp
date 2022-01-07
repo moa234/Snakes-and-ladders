@@ -11,19 +11,17 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);// output card num...
 
 	Output* pOut = pGrid->GetOutput();
+	
 	pGrid->PrintErrorMessage("You won an extra dice roll! click to continue" );
-	pPlayer->SetDoNotPlay(-1);
-	//pGrid->Replay();
-	pOut->ClearStatusBar();
-	/*
-	ActionType ActType=;
-	ApplicationManager AppManager;
-	AppManager.ExecuteAction(ActType);
-	AppManager.UpdateInterface();
-	*/
 
+	pPlayer->SetDoNotPlay(-1);
+	//DoNotPlay is a data member in Player used to indicate if the player has an 
+	//extra dice roll(-1),cancelled dice roll (1) or in prision(3)
+	//if DoNotPlay=0 he will play normally
+	pOut->ClearStatusBar();
 }
 
+//paste card
 Card* CardThree::PasteCard()
 {
 	Card* copy = new CardThree(0);
