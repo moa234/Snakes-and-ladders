@@ -3,7 +3,7 @@
 class PasteCard :	public Action
 {
 		CellPosition PasteCell;
-
+		bool Can_Add;
 public:
 
 	PasteCard(void);

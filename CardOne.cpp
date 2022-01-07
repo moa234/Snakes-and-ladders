@@ -10,17 +10,24 @@ CardOne::CardOne(const CellPosition & pos) : Card(pos) // set the cell position 
 }
 
 Card* CardOne::PasteCard()
+//used to take the copied card from the clipboard to grid
 {
+	//creating new card
 	CardOne *copy = new CardOne(0);
+
 	copy->walletAmount = walletAmount;
 	return copy;
 }
 
-Card* CardOne::CopyCard()
+Card* CardOne::CopyCard()//used to take a copy from the selected card to the clipboard
 {
 	CardOne* copy = new CardOne(0);
-	CardCount--;//A new card is now made for paste but it is not pasted yet so actual
-	copy->walletAmount = walletAmount;
+	CardCount--;
+	/*A new card is now made for paste but it is not
+	pasted yet so actual number is reduced*/
+
+	copy->walletAmount = walletAmount; 
+
 	return copy;
 }
 

@@ -3,7 +3,6 @@
 class CardSix : public Card
 {
 	CellPosition CP;  // the position that the player will move to 
-
 public:
 	CardSix(const CellPosition& pos); // A Constructor takes card position
 

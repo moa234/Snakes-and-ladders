@@ -11,6 +11,12 @@ CardSix:: CardSix(const CellPosition& pos):Card(pos) // A Constructor takes card
 	 Output* pOut = pGrid->GetOutput();
 	 pOut->PrintMessage("Select cell number to move player to: ");
 	 CellPosition Cell_selected = pIn->GetCellClicked();
+	 
+	 while(!Cell_selected.IsValidCell() || Cell_selected.GetCellNum() == this->GetPosition().GetCellNum()) //if the user choosed invalid position not on the grid or the position to go to is the same card position(this will lead to infinite recursive calls)
+	 {
+		 pOut->PrintMessage("Re-Select Cell, invalid position to move player!");
+		 Cell_selected = pIn->GetCellClicked();
+	 }
 	 CP = Cell_selected;
 	 pOut->ClearStatusBar();
 }

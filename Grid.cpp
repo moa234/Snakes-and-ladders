@@ -40,7 +40,7 @@ bool Grid::AddObjectToCell(GameObject *pNewObject) // think if any validation is
 {
 														// Get the cell position of pNewObject
 	CellPosition pos = pNewObject->GetPosition();
-	if (pos.IsValidCell())								 // Check if valid position
+	if (pos.IsValidCell() &&pos.GetCellNum()!=1)								 // Check if valid position
 	{
 														// Get the previous GameObject of the Cell
 		GameObject *pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
