@@ -11,21 +11,29 @@ CardFour:: CardFour(const CellPosition& pos):Card(pos) // A Constructor takes ca
 	
 	pGrid->PrintErrorMessage("You reached Card 4! You can't roll next turn! click to continue" );
 	
-	pPlayer->SetDoNotPlay(1);
+	pPlayer->SetDoNotPlay(1);				/*DoNotPlay is a data member in Player used to indicate if the player has an
+											extra dice roll(-1),cancelled dice roll (1) or in the prision(3)
+											if DoNotPlay=0 he will play normally */
 	
 	pOut->ClearStatusBar();
  }
+
+//paste Card
  Card* CardFour::PasteCard()
  {
 	 Card* copy = new CardFour(0);
 	 return copy;
  }
+
+//Copy Card
  Card* CardFour::CopyCard()
  {
 	 Card* copy = new CardFour(0);
 	 CardCount--;
 	 return copy;
  }
+
+//Save Card
  void CardFour::Save(ofstream& OutFile, Object_Type obj)
  {
 	 if (obj != card)
