@@ -28,6 +28,13 @@ void CardFive::Apply(Grid* pGrid, Player* pPlayer) {
 	 }
 }
 
+Card* CardFive::PasteCard(CellPosition newPos)
+{
+	Card* copy = new CardFive(newPos);
+	*copy = *this;
+	return copy;
+}
+
 void CardFive::Save(ofstream& OutFile, Object_Type obj)
 {
 	if (obj != card)

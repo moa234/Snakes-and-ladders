@@ -11,6 +11,12 @@ CardFour:: CardFour(const CellPosition& pos):Card(pos) // A Constructor takes ca
 		pPlayer->SetDoNotPlay(1);
 		pOut->ClearStatusBar();
  }
+ Card* CardFour::PasteCard(CellPosition newPos)
+ {
+	 Card* copy = new CardFour( newPos);
+	 *copy = *this;
+	 return copy;
+ }
  void CardFour::Save(ofstream& OutFile, Object_Type obj)
  {
 	 if (obj != card)
