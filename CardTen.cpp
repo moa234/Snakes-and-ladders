@@ -55,7 +55,7 @@ Card* CardTen::PasteCard()
     return copy;
 }
 
-void CardTen::Load(ifstream& Infile, Object_Type obj)
+void CardTen::Load(ifstream& Infile, Object_Type obj) //Input file to input the data and objects of the grid
 {
     if (obj != card)
         return;
@@ -70,7 +70,7 @@ void CardTen::Load(ifstream& Infile, Object_Type obj)
     }
 }
 
-void CardTen::Save(ofstream& OutFile, Object_Type obj)
+void CardTen::Save(ofstream& OutFile, Object_Type obj) //Output file that shows the data and input of the grid
 {
     if (obj != card)
         return;
@@ -97,11 +97,11 @@ void CardTen::ReadCardParameters(Grid* pGrid)
 {
     Input* pIn = pGrid->GetInput();
     Output* pOut = pGrid->GetOutput();
-    if (!isSet)
+    if (!isSet) //Static boolean to make sure the parameters are set only one time when you call it
     {
         pOut->PrintMessage("Set the purchase price of this card: ");
         int Purchaseprice = pIn->GetInteger(pOut);
-        while (!SetPurchasePrice(Purchaseprice))
+        while (!SetPurchasePrice(Purchaseprice))// Bolean set function to make sure the entered purchase price value is positive
         {
             pGrid->PrintErrorMessage("You must enter a positive value!, click any where to continue");
             pOut->PrintMessage("Re-Enter a positive value");
@@ -109,7 +109,7 @@ void CardTen::ReadCardParameters(Grid* pGrid)
         }
         pOut->PrintMessage("Set the fees price number that a player must pay if he steps on the card");
         int Feesprice = pIn->GetInteger(pOut);
-        while (!SetFeesPrice(Feesprice))
+        while (!SetFeesPrice(Feesprice)) // Bolean set function to make sure the entered purchase price value is positive
         {
             pGrid->PrintErrorMessage("You must enter a positive value!, click any where to continue");
             pOut->PrintMessage("Re-Enter a positive value");
@@ -126,7 +126,7 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
     Input* pIn = pGrid->GetInput();
     Output* pOut = pGrid->GetOutput();
 
-    if (owner == NULL)
+    if (owner == NULL)//Asks first if the card has an owner
     {
         pOut->PrintMessage("Price of this card " + to_string(Purchase_Price) + "Coins Do you want to buy this card?(yes/no)");
         string answer = pIn->GetString(pOut);
@@ -136,7 +136,7 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
         }
         if (answer == "Y" || answer=="y")
         {
-            if (pPlayer->EnoughCredit(Purchase_Price))
+            if (pPlayer->EnoughCredit(Purchase_Price))// Function to check if player has more money than purchase price or not
             {
                 SetOwner(pPlayer);
                 pPlayer->DeductWallet(Purchase_Price);
@@ -149,17 +149,17 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
     }
     else
     {
-        if (!isOwner(pPlayer))
+        if (!isOwner(pPlayer))// Checks if this person is the owner of the card or not to decide who will pay
         {
             pGrid->PrintErrorMessage("You have to pay money for the owner of the cell, Click anywhere to continue");
-            bool HaveEnoughCredit = pPlayer->EnoughCredit(Fees_Pay);
-            if (HaveEnoughCredit)
+            bool HaveEnoughCredit = pPlayer->EnoughCredit(Fees_Pay); //boolean function HaveEnoughCredit to make sure that when the player pays the fees he doesn't have negative money
+            if (HaveEnoughCredit)// To make sure that the owner of the card took the money of the player who paid fees not more
             {
-                owner->IncrementWallet(Fees_Pay);
+                owner->IncrementWallet(Fees_Pay);// function to take the fees money from the player who paid 
             }
             else
             {
-                owner->IncrementWallet(pPlayer->GetWallet());
+                owner->IncrementWallet(pPlayer->GetWallet());//Increment the owner's wallet with the money left with the player
             }
             pPlayer->DeductWallet(Fees_Pay);
         }

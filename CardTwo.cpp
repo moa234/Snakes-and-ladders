@@ -30,7 +30,7 @@ Card* CardTwo::CopyCard()
 void CardTwo::Apply(Grid *pGrid, Player *pPlayer)
 {
     Card::Apply(pGrid, pPlayer);
-
+    pGrid->PrintErrorMessage("You have reached card two. You will jump to the nearest ladder ahead of you");
     CellPosition playerCellPosition = pPlayer->GetCell()->GetCellPosition();
     Ladder *pLadder = pGrid->GetNextLadder(playerCellPosition);
 
