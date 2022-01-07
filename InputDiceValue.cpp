@@ -15,10 +15,10 @@ void InputDiceValue::ReadActionParameters()
 
 	dicevalue = pIn->GetInteger(pOut); // read dice number from the user
 
-	while (dicevalue > 6 || dicevalue < 1)
+	while (dicevalue > 6 || dicevalue < 1) // validate dicevalue to be between 1 and 6
 	{
 		pGrid->PrintErrorMessage("Invalid dice value! click to continue ...");
-		pOut->PrintMessage("Re-enter dice value");
+		pOut->PrintMessage("Re-enter dice value"); // keeps entering dice value until it is between range
 		dicevalue = pIn->GetInteger(pOut);
 	}
 	pOut->ClearStatusBar();
@@ -26,8 +26,20 @@ void InputDiceValue::ReadActionParameters()
 
 void InputDiceValue::Execute()
 {
+	// call read action parameters to read dice value
 	ReadActionParameters();
+	
+	//get grid from pmanager
 	Grid* pGrid = pManager->GetGrid();
+	
+	// 1- Check if the Game is ended (Use the GetEndGame() function of pGrid), if yes, make the appropriate action
+	bool ended = pGrid->GetEndGame();
+	if (ended)
+	{
+		return;
+	}
+
+	// Get the "current" player from pGrid
 	Player* currentplayer = pGrid->GetCurrentPlayer();
 
 	//Checking if the player is on card 4 or 8 ;so he can't move
@@ -44,16 +56,19 @@ void InputDiceValue::Execute()
 	}
 
 	//if DoNotPlay=0,the player will play normally.
-	currentplayer->SetRolledDiceNum(dicevalue);
+
+	//Move the currentPlayer using function Move of class player
 	currentplayer->Move(pManager->GetGrid(), dicevalue);
 
-	if (currentplayer->GetDoNotPlay() == -1)
+	if (currentplayer->GetDoNotPlay() == -1) // check if player has an extra rolldice
 	{
 		currentplayer->SetDoNotPlay(0);
 		//the player will return;thus the CurrentPlayer will not be advanced
 		//(he will roll the dice again)
 		return;
 	}
+
+	// Advance the current player number of pGrid
 	pGrid->AdvanceCurrentPlayer();
 }
 
