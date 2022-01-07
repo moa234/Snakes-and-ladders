@@ -11,7 +11,7 @@ void SwitchToDesignModeAction::Execute()
 {
     Grid *pGrid = pManager->GetGrid();
     Output *pOut = pGrid->GetOutput();
-    pOut->CreateDesignModeToolBar();
+    pOut->CreateDesignModeToolBar(); // All you need to do to change from play to design is to change the toolbar
 }
 SwitchToDesignModeAction::~SwitchToDesignModeAction() {
 
