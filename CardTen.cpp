@@ -4,7 +4,7 @@ CardTen::CardTen(const CellPosition& pos) : Card(pos) // A Constructor takes car
     CardCount++;
     cardNumber = 10;
 }
-bool CardTen::SetPurchasePrice(int PP)
+bool CardTen::SetPurchasePrice(int PP)//Make sure price is positive number
 {
     if (PP > 0)
     {
@@ -13,7 +13,7 @@ bool CardTen::SetPurchasePrice(int PP)
     }
     return false;
 }
-bool CardTen::SetFeesPrice(int FP)
+bool CardTen::SetFeesPrice(int FP)//Make sure price is a positive number
 {
     if (FP > 0)
     {
@@ -44,7 +44,7 @@ bool CardTen::isOwner(const Player* Check_Owner)
 
 Card* CardTen::CopyCard()
 {
-    Card* copy = new CardTen(0);
+    Card* copy = new CardTen(0);//Temporarily because i want to save it until i choose the cell i want to put it in
     CardCount--;
     return copy;
 }
@@ -59,7 +59,7 @@ void CardTen::Load(ifstream& Infile, Object_Type obj) //Input file to input the 
 {
     if (obj != card)
         return;
-    Card::Load(Infile, obj);
+    Card::Load(Infile, obj); //Input test file if i want to load in a grid
     if (!isSet)
     {
         int price, fees;
@@ -70,12 +70,12 @@ void CardTen::Load(ifstream& Infile, Object_Type obj) //Input file to input the 
     }
 }
 
-void CardTen::Save(ofstream& OutFile, Object_Type obj) //Output file that shows the data and input of the grid
+void CardTen::Save(ofstream& OutFile, Object_Type obj) //Output file that shows the data and input of the grid when we save the grid
 {
     if (obj != card)
         return;
     Card::Save(OutFile, obj);
-    if (!issaved)
+    if (!issaved)//To make sure parameters of the card is only written one time in the file
     {
         OutFile << Purchase_Price << " " << Fees_Pay;
         issaved = 1;
@@ -83,14 +83,14 @@ void CardTen::Save(ofstream& OutFile, Object_Type obj) //Output file that shows 
     OutFile << endl;
 }
 
-void CardTen::reset_is_saved()
+void CardTen::reset_is_saved()//To make sure in the file that the parameters of the card is constant in the file
 {
     issaved = 0;
 }
 
 void CardTen::reset_is_Set()
 {
-    isSet = 0;
+    isSet = 0; //To make sure paramaters set is constant inside the game
 }
 
 void CardTen::ReadCardParameters(Grid* pGrid)
@@ -166,7 +166,7 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
     }
     pOut->ClearStatusBar();
 }
-Player* CardTen::owner = NULL;
+Player* CardTen::owner = NULL;  //WE HAVE TO initialize the static variables with a value in the cpp
 bool CardTen::isSet = 0;
 int CardTen::Purchase_Price = 0;
 int CardTen::Fees_Pay = 0;
