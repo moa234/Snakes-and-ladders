@@ -61,11 +61,10 @@ public:
 	bool GetEndGame() const;		 // A getter for endGame data member
 
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
-	//void Replay();
 
 	GameObject* CurrentCellObject(const CellPosition & position); //determine whether current cell has a gameobject or not
-	GameObject* CurrentCellSnake(const CellPosition& position);
-	GameObject* CurrentCellLadder(const CellPosition& position);
+	GameObject* CurrentCellSnake(const CellPosition& position); //determine whether current cell has a snake or not
+	GameObject* CurrentCellLadder(const CellPosition& position); //determine whether current cell has a ladder or not
     Player* MinWalletPlayer(int &who) const; //retruns player with minimum wallet value and sends the index of the player
 	int GetLadderCount(); //getter for number of ladders in the grid
 	int GetSnakeCount();// getter for number of snakes in grid
@@ -79,9 +78,9 @@ public:
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
 
-	Player* GetNextPlayer(const CellPosition& position);
+	Player* GetNextPlayer(const CellPosition& position); // Gets a Pointer to the first player after the passed "position"
 
-	Player* CheckCurrentCellPlayer(const CellPosition& position, int pnum);
+	Player* CheckCurrentCellPlayer(const CellPosition& position, int pnum);  // gets a pointer to player with index passed in passed cellposition
 
 	// ========= User Interface Functions =========
 
