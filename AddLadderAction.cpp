@@ -35,11 +35,11 @@ void AddLadderAction::ReadActionParameters()
 
 
 	///TODO: Make the needed validations on the read parameters
-	if (startPos.HCell() == -1 || endPos.VCell() == -1)
+	if (!startPos.IsValidCell() || !endPos.IsValidCell())
 	{
 		//error
 		valid = 0;
-		pGrid->PrintErrorMessage("Error: Snake cannot be added outside grid! Click to continue ...");
+		pGrid->PrintErrorMessage("Error: Ladder cannot be added outside grid! Click to continue ...");
 	}
 	else if (startPos.GetCellNum() == 1)
 	{
@@ -68,39 +68,43 @@ void AddLadderAction::ReadActionParameters()
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: endcell cannot contain Ladder! Click to continue ...");
 	}
-	CellPosition col(0,startPos.HCell());
-	for (int i = 0; i <= 8; i++)
+	else
 	{
-		GameObject* snake = pGrid->CurrentCellSnake(col);
-		
-		GameObject* ladder = pGrid->CurrentCellLadder(col);
-		
-		if (snake)
+		CellPosition col(0, startPos.HCell());
+		for (int i = 0; i <= 8; i++)
 		{
-			CellPosition snakeEnd = dynamic_cast<Snake*>(snake)->GetEndPosition();
-			if (startPos.GetCellNum() == snakeEnd.GetCellNum())
+			GameObject* snake = pGrid->CurrentCellSnake(col);
+
+			GameObject* ladder = pGrid->CurrentCellLadder(col);
+
+			if (snake)
 			{
-				valid = 0;
-				pGrid->PrintErrorMessage("Error: startcell cannot contain snake! Click to continue ...");
+				CellPosition snakeEnd = dynamic_cast<Snake*>(snake)->GetEndPosition();
+				if (startPos.GetCellNum() == snakeEnd.GetCellNum())
+				{
+					valid = 0;
+					pGrid->PrintErrorMessage("Error: startcell cannot contain snake! Click to continue ...");
+				}
+
 			}
-			
+			if (ladder)
+			{
+				CellPosition ladderEnd = dynamic_cast<Ladder*>(ladder)->GetEndPosition();
+				if (startPos.GetCellNum() == ladderEnd.GetCellNum())
+				{
+					valid = 0;
+					pGrid->PrintErrorMessage("Error: startcell cannot contain ladder! Click to continue ...");
+				}
+				if (endPos.GetCellNum() > col.GetCellNum() && startPos.GetCellNum() < ladderEnd.GetCellNum())
+				{
+					valid = 0;
+					pGrid->PrintErrorMessage("Error: ladders cannot overlap! Click to continue ...");
+				}
+			}
+			col.SetVCell(i + 1);
 		}
-		if (ladder)
-		{
-			CellPosition ladderEnd = dynamic_cast<Ladder*>(ladder)->GetEndPosition();
-			if (startPos.GetCellNum() == ladderEnd.GetCellNum())
-			{
-				valid = 0;
-				pGrid->PrintErrorMessage("Error: startcell cannot contain ladder! Click to continue ...");
-			}
-			if (endPos.GetCellNum() > col.GetCellNum() && startPos.GetCellNum() < ladderEnd.GetCellNum() )
-			{
-				valid = 0;
-				pGrid->PrintErrorMessage("Error: ladders cannot overlap! Click to continue ...");
-			}
-		}
-		col.SetVCell(i + 1);
 	}
+	
 	
 
 	// Clear messages

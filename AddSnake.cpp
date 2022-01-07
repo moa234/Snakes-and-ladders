@@ -36,7 +36,7 @@ void AddSnake::ReadActionParameters()
 
 	///TODO: Make the needed validations on the read parameters
 	
-	if (startPos.HCell() == -1 || endPos.VCell() == -1)
+	if (!startPos.IsValidCell() || !endPos.IsValidCell())
 	{
 		//error
 		valid = 0;
@@ -69,39 +69,43 @@ void AddSnake::ReadActionParameters()
 		valid = 0;
 		pGrid->PrintErrorMessage("Error: endcell cannot contain snake! Click to continue ...");
 	}
-	CellPosition col(0, startPos.HCell());
-	for (int i = 0; i <= 8; i++)
+	else
 	{
-		GameObject* snake = pGrid->CurrentCellSnake(col);
-
-		GameObject* ladder = pGrid->CurrentCellLadder(col);
-
-		if (ladder)
+		CellPosition col(0, startPos.HCell());
+		for (int i = 0; i <= 8; i++)
 		{
-			CellPosition ladderEnd = dynamic_cast<Ladder*>(ladder)->GetEndPosition();
-			if (startPos.GetCellNum() == ladderEnd.GetCellNum())
-			{
-				valid = 0;
-				pGrid->PrintErrorMessage("Error: startcell cannot contain ladder! Click to continue ...");
-			}
+			GameObject* snake = pGrid->CurrentCellSnake(col);
 
-		}
-		if (snake)
-		{
-			CellPosition snakeEnd = dynamic_cast<Snake*>(snake)->GetEndPosition();
-			if (startPos.GetCellNum() == snakeEnd.GetCellNum())
+			GameObject* ladder = pGrid->CurrentCellLadder(col);
+
+			if (ladder)
 			{
-				valid = 0;
-				pGrid->PrintErrorMessage("Error: startcell cannot contain snake! Click to continue ...");
+				CellPosition ladderEnd = dynamic_cast<Ladder*>(ladder)->GetEndPosition();
+				if (startPos.GetCellNum() == ladderEnd.GetCellNum())
+				{
+					valid = 0;
+					pGrid->PrintErrorMessage("Error: startcell cannot contain ladder! Click to continue ...");
+				}
+
 			}
-			if (endPos.GetCellNum() < col.GetCellNum() && startPos.GetCellNum() > snakeEnd.GetCellNum())
+			if (snake)
 			{
-				valid = 0;
-				pGrid->PrintErrorMessage("Error: snakes cannot overlap! Click to continue ...");
+				CellPosition snakeEnd = dynamic_cast<Snake*>(snake)->GetEndPosition();
+				if (startPos.GetCellNum() == snakeEnd.GetCellNum())
+				{
+					valid = 0;
+					pGrid->PrintErrorMessage("Error: startcell cannot contain snake! Click to continue ...");
+				}
+				if (endPos.GetCellNum() < col.GetCellNum() && startPos.GetCellNum() > snakeEnd.GetCellNum())
+				{
+					valid = 0;
+					pGrid->PrintErrorMessage("Error: snakes cannot overlap! Click to continue ...");
+				}
 			}
+			col.SetVCell(i + 1);
 		}
-		col.SetVCell(i + 1);
 	}
+	
 
 	// Clear messages
 	pOut->ClearStatusBar();
